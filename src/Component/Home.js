@@ -7,62 +7,16 @@ import img4 from "../Component/images/step2.jpeg";
 import img5 from "../Component/images/step3.jpeg";
 import img6 from "../Component/images/step4.jpeg";
 import img7 from "../Component/images/section5.jpeg";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 const Home = () => {
   return (
     <>
    
         {/* nav */}
-        <nav
-          style={{ background: "#dce9d2" }}
-          className="navbar my-nav-bar navbar-expand-lg"
-        >
-          <a className="navbar-brand ml-5 my-links" href="#">
-            LOGO
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item ml-5">
-                <a className="nav-link font-weight-bold my-links" href="#">
-                  Services
-                </a>
-              </li>
-              <li className="nav-item ml-5">
-                <a className="nav-link font-weight-bold my-links" href="#">
-                  Contact
-                </a>
-              </li>
-              <li className="nav-item ml-5">
-                <a
-                  className="btn py-1 px-4 my-nav-btn1 mt-1"
-                  href="#"
-                  role="button"
-                >
-                  Signup
-                </a>
-              </li>
-              <li className="nav-item ml-5 mr-5">
-                <a
-                  className="btn py-1 px-4 my-nav-btn2 mt-1"
-                  href="#"
-                  role="button"
-                >
-                  Login
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <Navbar/>
+        
         <div class="bubble x1"></div>
         <div class="bubble x2"></div>
         <div class="bubble x3"></div>
@@ -187,78 +141,7 @@ const Home = () => {
         </section>
       
   {/* Footer */}
-  <footer className="text-center text-lg-start my-footer bg-body-tertiary ">
-    {/* Section: Social media */}
-    <section className="d-flex justify-content-center justify-content-lg-between p-3">
-      {/* Right */}
-    </section>
-    {/* Section: Social media */}
-    {/* Section: Links  */}
-    <section className="">
-      <div className="container  text-center text-md-start mt-5">
-        {/* Grid row */}
-        <div className="row mt-3">
-          {/* Grid column */}
-          <div className="col-md-3 col-lg-4  col-xl-3 mx-auto mb-4">
-            {/* Content */}
-            <h2 className="text-uppercase  font-weight-bold mb-4">Laundry</h2>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase font-weight-bolder mb-4">
-              Company Address
-            </h6>
-            <p>
-              <a href="#!" className="text-reset">
-                Address of the company
-              </a>
-            </p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase font-weight-bolder mb-4">
-              Operating Hours
-            </h6>
-            <p>Mon -Fri: 8am-8pm</p>
-            <p>Saturday: 9am-7pm</p>
-            <p>Sunday: 9am-6pm</p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase font-weight-bolder mb-4">
-              Check us out
-            </h6>
-            <p>
-              <i className="fas fa-home me-3" />{" "}
-            </p>
-            <p>
-              <i className="fas fa-envelope me-3" />
-            </p>
-            <p>
-              <i className="fas fa-phone me-3" />
-            </p>
-          </div>
-          {/* Grid column */}
-        </div>
-        {/* Grid row */}
-      </div>
-    </section>
-    {/* Section: Links  */}
-    {/* Copyright */}
-    {/* Copyright */}
-  </footer>
-  <div
-    className="text-center p-1 mt-3"
-    style={{ backgroundColor: "rgba(254, 254, 254, 0.05)" }}
-  >
-    <p className="font-weight-bolder">Design &amp; Developed by Appenius</p>
-  </div>
+ <Footer/>
   {/* Footer */}
 
       </>
