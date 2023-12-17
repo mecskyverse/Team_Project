@@ -1,7 +1,6 @@
 import React from 'react'
 import '../caraousalservbottom.css'
-import Item from "./itemshirt";
-import Carousal from "@itseasy21/react-elastic-carousel";
+
 // import img1 from "./images/img1.jpeg";
 // import img2 from "./images/img2.jpeg";
 // import img3 from "./images/img3.jpeg";

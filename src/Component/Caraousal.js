@@ -11,7 +11,7 @@ import Carousal from "@itseasy21/react-elastic-carousel";
 import img1 from "../Component/images/pexels-amina-filkins-5414061 1.png"
 import img2 from "../Component/images/pexels-tima-miroshnichenko-8774564 1.png"
 import img3 from "../Component/images/Rectangle 71.png"
-import img4 from "../Component/images/step4.jpeg"
+
 import img5 from "../Component/images/Component 1.png"
 import img6 from "../Component/images/Component 2.png"
 import img7 from "../Component/images/Component 3.png"
@@ -47,7 +47,7 @@ const CaraousalBottom = () => {
         <div className="item">
           <img src={img3} alt="ueis"  />
           <div id="comp">
-          <img  src={img6} alt="ueis"  />
+          <img  src={img7} alt="ueis"  />
           </div>
           
           <div id="cont">
@@ -60,7 +60,7 @@ const CaraousalBottom = () => {
         <div className="item">
           <img src={img2} alt="ueis"  />
           <div id="comp">
-          <img  src={img7} alt="ueis"  />
+          <img  src={img6} alt="ueis"  />
           </div>
           
           <div id="cont">
