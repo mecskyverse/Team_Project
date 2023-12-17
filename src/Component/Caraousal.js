@@ -31,9 +31,9 @@ const CaraousalBottom = () => {
       
        <Item>
         <div className="item">
-          <img src={img1} alt="ueis"  />
+          <img  src={img1} alt="ueis"  />
           <div id="comp">
-          <img  src={img5} alt="ueis"  />
+          <img  className="first" src={img5} alt="ueis"  />
           </div>
           <div id="cont">
           <p>Available On Weekends</p>
@@ -45,7 +45,7 @@ const CaraousalBottom = () => {
        </Item>
        <Item>
         <div className="item">
-          <img src={img2} alt="ueis"  />
+          <img src={img3} alt="ueis"  />
           <div id="comp">
           <img  src={img6} alt="ueis"  />
           </div>
@@ -58,7 +58,7 @@ const CaraousalBottom = () => {
        </Item>
        <Item>
         <div className="item">
-          <img src={img3} alt="ueis"  />
+          <img src={img2} alt="ueis"  />
           <div id="comp">
           <img  src={img7} alt="ueis"  />
           </div>

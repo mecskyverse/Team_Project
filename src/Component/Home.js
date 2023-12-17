@@ -20,7 +20,7 @@ const Home = () => {
    
         {/* nav */}
         <Navbar/>
-        <Bubble/>
+        {/* <Bubble/> */}
         
         
         

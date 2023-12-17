@@ -62,12 +62,21 @@
     font-family: 'Montserrat', sans-serif;
   height: fit-content;
 }
-
+.BottomCaraousal #comp .first{
+  position: absolute;
+    width: 112px;
+    height: 122px;
+    top: 243px;
+}
 .BottomCaraousal #comp{
+  padding-left: 13px;
+}
+
+.BottomCaraousal #comp img{
     position:absolute;
-    width:90px;
-    height:90px;
-    top:220px;
+    width:100px;
+    height:100px;
+    top:230px;
 }
 
 .BottomCaraousal #cont{
@@ -121,5 +130,12 @@ line-height: 100%; /* 35px */
   user-select: none;
   -webkit-box-pack: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+  /* CSS rules for screens with a width of 600 pixels or less */
+  .BottomCaraousal{
+    height: 700px;
+  }
 }
 

@@ -63,7 +63,7 @@ const Caraousalserv = () => {
             <img src={img3} alt="ueis" />
 
             <div id="cont">
-              <p>Dry Cleaning</p>
+              <p>Iron</p>
             </div>
           </div>
         </Item>
@@ -73,7 +73,7 @@ const Caraousalserv = () => {
             <img src={img4} alt="ueis" />
 
             <div id="cont">
-              <p>Iron</p>
+              <p>Dry Cleaning</p>
             </div>
           </div>
         </Item>
