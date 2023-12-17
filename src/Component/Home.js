@@ -9,6 +9,9 @@ import img6 from "../Component/images/step4.jpeg";
 import img7 from "../Component/images/section5.jpeg";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Bubble from "./Bubble";
+import Caraousal from "./Caraousal"
+import Caraousalserv from "./Caraousalserv"
 
 const Home = () => {
   return (
@@ -16,36 +19,10 @@ const Home = () => {
    
         {/* nav */}
         <Navbar/>
+        {/* <Bubble/> */}
         
-        <div class="bubble x1"></div>
-        <div class="bubble x2"></div>
-        <div class="bubble x3"></div>
-        <div class="bubble x4"></div>
-        <div class="bubble x5"></div>
-
-        <div class="bubble x6"></div>
-        <div class="bubble x7"></div>
-        <div class="bubble x8"></div>
-        <div class="bubble x9"></div>
-        <div class="bubble x10"></div>
-        <div class="bubble x11"></div>
-        <div class="bubble x12"></div>
-        <div class="bubble x13"></div>
-        <div class="bubble x14"></div>
-        <div class="bubble x15"></div>
-        <div class="bubble x16"></div>
-        <div class="bubble x17"></div>
-
-        <div class="bubble x7"></div>
-        <div class="bubble x8"></div>
-        <div class="bubble x9"></div>
-        <div class="bubble x10"></div>
-        <div class="bubble x11"></div>
-        <div class="bubble x12"></div>
-        <div class="bubble x13"></div>
-        <div class="bubble x14"></div>
-        <div class="bubble x15"></div>
-        <div class="bubble x16"></div>
+        
+        
         {/* section1 */}
         <section className="container-fluid my-section-1">
           <div className="row">
@@ -66,7 +43,7 @@ const Home = () => {
           </div>
         </section>
         {/* section2 */}
-        
+        <Caraousal/>
         {/* section3 */}
         <section className="container-fluid py-5 my-section-3">
           <h3 style={{ color: "#D76D6D" }} className="text-center pt-3 ">
@@ -113,6 +90,12 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+
+<Caraousalserv/>
+
+
+
         {/* section5 */}
         <section className="container-fluid my-section-5">
           <div className="row">

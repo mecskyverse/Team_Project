@@ -77,6 +77,7 @@ const Footer = () => {
   >
     <p className="font-weight-bolder">Design &amp; Developed by Appenius</p>
   </div>
+  
     </div>
   )
 }
