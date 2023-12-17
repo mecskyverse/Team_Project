@@ -21,7 +21,7 @@ const CaraousalBottom = () => {
         { width: 1, itemsToShow: 1},
         { width: 550, itemsToShow: 1 },
         { width: 768, itemsToShow: 2},
-        { width: 1200, itemsToShow: 3},
+        { width: 1200, itemsToShow: 3.1},
       ];
   return (
     <div className="BottomCaraousal">
@@ -36,7 +36,7 @@ const CaraousalBottom = () => {
           <img  src={img5} alt="ueis"  />
           </div>
           <div id="cont">
-          <p>Availabe On Weekends</p>
+          <p>Available On Weekends</p>
           </div>
          
          
@@ -56,6 +56,35 @@ const CaraousalBottom = () => {
           
         </div>
        </Item>
+       <Item>
+        <div className="item">
+          <img src={img3} alt="ueis"  />
+          <div id="comp">
+          <img  src={img7} alt="ueis"  />
+          </div>
+          
+          <div id="cont">
+          <p>Certified Professional Cleaners</p>
+          </div>
+         
+        </div>
+       </Item>
+
+       <Item>
+        <div className="item">
+          <img src={img3} alt="ueis"  />
+          <div id="comp">
+          <img  src={img7} alt="ueis"  />
+          </div>
+          
+          <div id="cont">
+          <p>Certified Professional Cleaners</p>
+          </div>
+         
+        </div>
+       </Item>
+
+
        <Item>
         <div className="item">
           <img src={img3} alt="ueis"  />

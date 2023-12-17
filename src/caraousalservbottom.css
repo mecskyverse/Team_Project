@@ -1,0 +1,31 @@
+/* Marquee.css */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-content {
+  color: #00B6CE;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-scroll 10s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+  200% {
+    transform: translateX(100%);
+  }
+}

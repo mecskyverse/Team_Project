@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import Bubble from "./Bubble";
 import Caraousal from "./Caraousal"
 import Caraousalserv from "./Caraousalserv"
+import CaraousalServBottom from "./Caraousalservbottom";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
    
         {/* nav */}
         <Navbar/>
-        {/* <Bubble/> */}
+        <Bubble/>
         
         
         
@@ -93,11 +94,14 @@ const Home = () => {
 
 
 <Caraousalserv/>
+<CaraousalServBottom/>
+
 
 
 
         {/* section5 */}
         <section className="container-fluid my-section-5">
+   
           <div className="row">
             <div className="col-lg-6 col-sm-12 col-md-6">
               {/* <img className="img-section5 mt-5" src="images/section5.jpeg" alt="" /> */}
