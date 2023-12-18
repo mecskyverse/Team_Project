@@ -201,7 +201,7 @@ border-radius: 35%;
   -moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 65%;
+  left: 60%;
   top: 70%;
   
   -webkit-transform: scale(0.4);
@@ -214,7 +214,7 @@ border-radius: 35%;
   -moz-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
   animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
   
-  left: 70%;
+  left: 60%;
   top: 10%;
   
   -webkit-transform: scale(0.3);
@@ -227,7 +227,7 @@ border-radius: 35%;
   -moz-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
   animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
   
-  left: 80%;
+  left: 60%;
   top: 50%;
   
   -webkit-transform: scale(0.6);
@@ -240,7 +240,7 @@ border-radius: 35%;
   -moz-animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 80%;
+  left: 60%;
   top: 80%;
   
   -webkit-transform: scale(0.3);
@@ -261,7 +261,7 @@ border-radius: 35%;
   -webkit-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate; 
-  left: 75%;
+  left: 60%;
   top: 1%; 
   -webkit-transform: scale(0.7);
   -moz-transform: scale(0.7);
@@ -351,7 +351,7 @@ border-radius: 35%;
       margin-left:0px;
   }
   100% { 
-      margin-left:50px;
+      margin-left:5%;
   }
 }
 
@@ -360,7 +360,7 @@ border-radius: 35%;
       margin-left:0px;
   }
   100% { 
-      margin-left:50px;
+      margin-left:5%;
   }
 }
 
@@ -369,6 +369,6 @@ border-radius: 35%;
       margin-left:0px;
   }
   100% { 
-      margin-left:50px;
+      margin-left:5%;
   }
 }

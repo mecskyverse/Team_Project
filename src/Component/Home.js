@@ -52,7 +52,7 @@ const Home = () => {
           </h3>
           <h1 className="text-center mb-5 mt-3">Get it done in 4 steps</h1>
           <div className="row">
-            <div className="col-lg-3 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
+            <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card ">
                 <div className="card-body ">
                   <h4 className="text-center text-uppercase my-step">Step 1</h4>
@@ -62,7 +62,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
+            <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card  mb-sm-4 mb-md-4 ">
                 <div className="card-body ">
                   <h4 className="text-center text-uppercase my-step">Step 2</h4>
@@ -71,7 +71,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 mt-sm-5   mt-md-5 col-md-4 col-sm-5">
+            <div className="col-lg-3 mb-5 mt-sm-5   mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card  mb-sm-5 mb-md-5">
                 <div className="card-body ">
                   <h4 className="text-center text-uppercase my-step">Step 3</h4>
@@ -80,7 +80,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
+            <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card ">
                 <div className="card-body ">
                   <h4 className="text-center text-uppercase my-step">Step 4</h4>
