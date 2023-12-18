@@ -1,5 +1,9 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+// import { FaWhatsapp } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -49,17 +53,20 @@ const Footer = () => {
           {/* Grid column */}
           <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             {/* Links */}
-            <h6 className="text-uppercase font-weight-bolder mb-4">
+            <h6 className="text-uppercase font-weight-bolder mb-3">
               Check us out
             </h6>
-            <p>
-              <i className="fas fa-home me-3" />{" "}
+            <p className='icons'>
+              {/* <i className="fas fa-home me-3" />{" "} */}
+          
+              <FaWhatsapp />
+             
             </p>
-            <p>
-              <i className="fas fa-envelope me-3" />
+            <p className='icons'>
+            <FaInstagram />
             </p>
-            <p>
-              <i className="fas fa-phone me-3" />
+            <p className='icons'>
+            <FaFacebook />
             </p>
           </div>
           {/* Grid column */}
