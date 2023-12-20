@@ -163,7 +163,7 @@ border-radius: 35%;
   animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
   
   left: 20%;
-  top: 0;
+  top: 100%;
   
   -webkit-transform: scale(0.3);
   -moz-transform: scale(0.3);
@@ -202,7 +202,7 @@ border-radius: 35%;
   animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
   left: 60%;
-  top: 70%;
+  top: 100%;
   
   -webkit-transform: scale(0.4);
   -moz-transform: scale(0.4);

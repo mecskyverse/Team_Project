@@ -7,7 +7,7 @@ import Carousal from "@itseasy21/react-elastic-carousel";
 // import img3 from "./images/img3.jpeg";
 // import img4 from "./images/img4.jpeg";
 // import btn from "./images/right-arrow.png"
-
+// import Bubble from "./Bubble";
 import img1 from "../Component/images/img1.png";
 import img2 from "../Component/images/img2.png";
 import img3 from "../Component/images/img3.png";

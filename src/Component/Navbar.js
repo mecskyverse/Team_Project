@@ -35,22 +35,15 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item ml-5">
-                <a
-                  className="btn py-1 px-4 my-nav-btn1 mt-1"
-                  href="/#"
-                  role="button"
-                >
+              <Link to="/signin" className="btn py-1 px-4 my-nav-btn1 mt-1">
                   Signup
-                </a>
+                  </Link>
               </li>
               <li className="nav-item ml-5 mr-5">
-                <a
-                  className="btn py-1 px-4 my-nav-btn2 mt-1"
-                  href="/#"
-                  role="button"
-                >
+              <Link to="/login" className="btn py-1 px-4 my-nav-btn2 mt-1">
                   Login
-                </a>
+                  </Link>
+                
               </li>
             </ul>
           </div>

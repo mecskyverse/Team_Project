@@ -97,8 +97,6 @@ const Home = () => {
 <CaraousalServBottom/>
 
 
-
-
         {/* section5 */}
         <section className="container-fluid my-section-5">
    
@@ -126,7 +124,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      
+        
   {/* Footer */}
  <Footer/>
   {/* Footer */}

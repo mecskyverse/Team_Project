@@ -8,9 +8,12 @@ import { FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
+
     <div>
+      
          <footer className="text-center text-lg-start my-footer bg-body-tertiary ">
     {/* Section: Social media */}
+   
     <section className="d-flex justify-content-center justify-content-lg-between p-3">
       {/* Right */}
     </section>
@@ -74,6 +77,7 @@ const Footer = () => {
         {/* Grid row */}
       </div>
     </section>
+ 
     {/* Section: Links  */}
     {/* Copyright */}
     {/* Copyright */}

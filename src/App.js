@@ -7,7 +7,6 @@ import {
   Route
 } from "react-router-dom"
 import Login from './Component/Login';
-
 import Signin from './Component/Signin';
 import Home from './Component/Home';
 import Services from './Component/Services';
