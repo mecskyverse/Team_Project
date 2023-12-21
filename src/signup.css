@@ -1,25 +1,26 @@
-.LoginForm{
+.LoginForm1{
     display: flex;
   }
   
   
-  .loginimg{
+  .loginimg1{
     
     width: 70vw;
   }
-  .loginimg img{
+  .loginimg1 img{
     width: 100%;
     height: 100vh;
   }
   
-  .loginform{
+  .loginform1{
     
     width: 30vw;
-    margin: 40px;
+    padding: 20px;
+    
   }
-  .loginform .toppara{
+  .loginform1 .toppara1{
   
-    margin-top: 3.5vh;
+    
     color: #000;
   
   text-align: center;
@@ -32,7 +33,7 @@
   letter-spacing: 0.3px;
   }
   
-  .loginform .medpara{
+  .loginform1 .medpara1{
   
     margin-top: 7vh;
     color: var(--black-9001-a-1-a-1-a, #1A1A1A);
@@ -45,9 +46,9 @@
   line-height: 28px; /* 140% */
   }
   
-  .loginform23 input{
+  .loginform231 input{
   width: 100%;
-  height: 50px;
+  height: 40px;
   border-radius: 6px;
   display: flex;
   
@@ -60,8 +61,16 @@
   
   
   }
-  .loginform label p{
+  .loginform1 label p{
     margin: 7px;
+    color: var(--black-800333333, #333);
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Times New Roman;
+font-size: 11px;
+font-style: normal;
+font-weight: 400;
+line-height: 12px; /* 109.091% */
+letter-spacing: 0.3px;
   }
   /* .loginform label button{
     position: absolute;
@@ -73,18 +82,18 @@
     padding: 10px 20px; 
     cursor: pointer; 
   } */
-  .input-wrapper {
+  .input-wrapper1 {
     position: relative;
     display: inline-block;
     width: 100%;
   }
   
-  .input-wrapper input {
+  .input-wrapper1 input {
     padding-right: 30px; /* Adjust padding to accommodate the button */
     width: 100%;
   }
   
-  .input-wrapper button {
+  .input-wrapper1 button {
     position: absolute;
     top: 0;
     right: 0;
@@ -100,20 +109,20 @@
   
   /* ToggleSwitch.css */
   
-  .toggle-switch {
+  .toggle-switch1 {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
   }
   
-  .toggle-switch input {
+  .toggle-switch1 input {
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  .slider {
+  .slider1 {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -126,7 +135,7 @@
     border-radius: 34px;
   }
   
-  .slider:before {
+  .slider1:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -139,29 +148,29 @@
     border-radius: 50%;
   }
   
-  input:checked + .slider {
+  input:checked + .slider1 {
     background-color: #2196F3;
   }
   
-  input:focus + .slider {
+  input:focus + .slider1 {
     box-shadow: 0 0 1px #2196F3;
   }
   
-  input:checked + .slider:before {
+  input:checked + .slider1:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
   
-  .loginform .toggle-switch{
+  .loginform1 .toggle-switch1{
     margin-top: 24px;
     display: block;
   }
-  .loginform .tog_rem_forget{
+  .loginform1 .tog_rem_forget1{
     display: flex;
   }
   
-  .loginform .tog_rem_forget button{
+  .loginform1 .tog_rem_forget1 button{
     background-color: rgba(0, 0, 0, 0); /* Transparent black */
     border: none;
     color: #333; /* Set text color */
@@ -183,7 +192,7 @@
   letter-spacing: 0.3px;
   }
   
-  .loginform .tog_rem_forget h4{
+  .loginform1 .tog_rem_forget1 h4{
   
     margin-top: 29px;
     margin-left: 2px;
@@ -196,7 +205,7 @@
   line-height: 20px; /* 166.667% */
   letter-spacing: 0.3px;
   }
-  .loginform23 .signin_button button{
+  .loginform231 .signin_button1 button{
     border-radius: 6px;
   background: var(--system-blue-007-aff, #007AFF);
   width: 100%;
@@ -206,7 +215,7 @@
   cursor: pointer;
   color: #f7f7f7;
   }
-  .loginform23 .signin_button_with_google button{
+  .loginform231 .signin_button_with_google1 button{
     border-radius: 6px;
   background: var(--black-800333333, #333);
   width: 100%;
@@ -217,7 +226,7 @@
   color: #f7f7f7;
   }
   
-  .loginform23 .signin_button_with_google .flexing_google{
+  .loginform231 .signin_button_with_google1 .flexing_google1{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,16 +234,16 @@
     padding: 10px;
   }
   
-  .loginform23 .signin_button_with_google .flexing_google img{
+  .loginform231 .signin_button_with_google1 .flexing_google1 img{
     margin-right: 10px;
   }
-  .loginform23 .last_para{
+  .loginform231 .last_para1{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 15px;
   }
-  .loginform23 .last_para button{
+  .loginform231 .last_para1 button{
     background-color: rgba(0, 0, 0, 0); /* Transparent black */
     border: none;
     color: var(--system-blue-007-aff, #007AFF);
@@ -252,7 +261,7 @@
   
   
   }
-  .loginform23 .last_para p{
+  .loginform231 .last_para1 p{
     color: var(--black-9001-a-1-a-1-a, #1A1A1A);
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Times New Roman;
@@ -266,21 +275,21 @@
   @media screen and (max-width: 850px) {
   
   
-  .LoginForm{
+  .LoginForm1{
     flex-direction: column;
     
   }
   
-  .loginimg{
+  .loginimg1{
     
     width: 100vw;
   }
-  .loginimg img{
+  .loginimg1 img{
     width: 100%;
     height: 80vh;
   }
   
-  .loginform{
+  .loginform1{
     
     width: 100vw;
     margin: 0;
