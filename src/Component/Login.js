@@ -3,9 +3,11 @@ import "../signin.css";
 import loginimg from "../Component/images/Signup.jpeg";
 import image11 from "../Component/images/eyeimg.png";
 import image12 from "../Component/images/Googleimg.png";
+import axios from "axios";
+
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -29,10 +31,29 @@ const Login = () => {
     setRememberMe((prevRememberMe) => !prevRememberMe);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your login logic here using formData
     console.log("Login submitted:", formData);
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      // Save the token to localStorage or state for future requests
+
+      console.log('Login successful', data);
+      const token = data.token
+      localStorage.setItem("token", token);
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
   const [isChecked, setIsChecked] = useState(false);
 
@@ -61,8 +82,8 @@ const Login = () => {
               <p>Login</p>
               <input
                 type="text"
-                name="username"
-                value={formData.username}
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email or phone number"
               />
@@ -106,7 +127,7 @@ const Login = () => {
           </div>
           <br />
           <div className="signin_button">
-            <button type="button">Sign in</button>
+            <button type="button" onClick={handleSubmit}>Sign in</button>
           </div>
           <br />
           <hr />

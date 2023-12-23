@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import image10 from "../Component/images/login-img.jpeg";
 import image11 from "../Component/images/eyeimg.png";
+import axios from 'axios'
 
 import "../signup.css";
 
@@ -35,7 +36,7 @@ function SignUp() {
     setIsChecked(!isChecked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Add your signup logic here using formData
@@ -43,8 +44,16 @@ function SignUp() {
       alert("Passwords do not match");
       return;
     }
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      console.log("Signup successful:", response.data);
+      // You can handle success, redirect, or any other logic here
+    } catch (error) {
+      console.error("Signup failed:", error.message);
+      // Handle error appropriately, e.g., show an error message to the user
+    }
 
-    console.log("Signup submitted:", formData);
+    // console.log("Signup submitted:", formData);
   };
 
   return (
