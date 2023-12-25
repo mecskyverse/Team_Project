@@ -39,7 +39,7 @@ const Caraousalserv = () => {
       <Carousal
         breakPoints={breakPoints}
         isRTL={false}
-        showArrows={false}
+        showArrows={true}
         pagination={false}
       >
         <Item>

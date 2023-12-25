@@ -40,7 +40,7 @@ const CaraousalBottom = () => {
     <div className="BottomCaraousal">
     <h1>Why Laugh N Laundry?</h1>
     
-      <Carousal breakPoints={breakPoints}  isRTL={false}  showArrows={false} pagination={false}>
+      <Carousal breakPoints={breakPoints}  isRTL={false}  showArrows={true} pagination={false}>
      
        <Item>
         <div className="item">
