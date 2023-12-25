@@ -1,6 +1,7 @@
 
 import './App.css';
 
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,6 +12,7 @@ import Signup from './Component/Signup';
 import Home from './Component/Home';
 import Services from './Component/Services';
 import Contact from './Component/Contact';
+import SchedulePickup from './Component/SchedulePickup';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route exact path="/signup" element={<Signup/>}/>
           <Route exact path="/services" element={<Services/>}/>
           <Route exact path="/contact" element={<Contact/>}/>
+          <Route exact path="/pickup" element={<SchedulePickup/>}/>
+          
       
 
         </Routes>
