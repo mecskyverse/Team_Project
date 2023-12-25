@@ -26,7 +26,11 @@ const Footer = () => {
           {/* Grid column */}
           <div className="col-md-3 col-lg-4  col-xl-3 mx-auto mb-4">
             {/* Content */}
-            <h2 className="text-uppercase  font-weight-bold mb-4">Laundry</h2>
+            <h2 className="text-uppercase  font-weight-bold mb-4">
+            <Link to="/" className="text-reset">
+              Laundry
+              </Link>
+              </h2>
           </div>
           {/* Grid column */}
           {/* Grid column */}
@@ -36,8 +40,8 @@ const Footer = () => {
               Company Address
             </h6>
             <p>
-              <Link href="/#!" className="text-reset">
-                Address of the company
+              <Link target='blank' to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67" className="text-reset">
+              Darpan City, Kharar, Punjab, India 140301
               </Link>
             </p>
           </div>
