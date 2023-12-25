@@ -43,6 +43,9 @@
   /* margin:20px; */
   
 }
+.card-img-benefits{
+  border-radius: 40px;
+}
 
 .BottomCaraousal .item img{
   height: 81%;

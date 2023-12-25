@@ -1,135 +1,151 @@
-import React from 'react'
+import React, { useState } from "react";
 import "../signin.css";
-import loginimg from "../Component/images/login-img.jpeg";
+import loginimg from "../Component/images/Signup.jpeg";
+import image11 from "../Component/images/eyeimg.png";
+import image12 from "../Component/images/Googleimg.png";
+import axios from "axios";
+
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleToggleRememberMe = () => {
+    setRememberMe((prevRememberMe) => !prevRememberMe);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Add your login logic here using formData
+    console.log("Login submitted:", formData);
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      // Save the token to localStorage or state for future requests
+
+      console.log('Login successful', data);
+      const token = data.token
+      localStorage.setItem("token", token);
+    } catch (error) {
+      console.error('Login failed', error);
+    }
+  };
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
-   <>
-   <section className="container-fluid p-0" >
-        <div >
-          <div className="row    ">
-            <div className="col-md-8 vh-100 col-lg-7 col-xl-6">
-              <img className="p-0  my-signup-img" alt="" src={loginimg} style={{ width: "100%", height: "100%" }}/>
-            </div>
-            <div className="col-md-7 px-md-5 mt-3  p-md-0 mx-5 col-lg-5 col-xl-5 offset-xl-1">
-              <h5 className="text-center mt-2 font-weight-bold mb-3">
-                LOGO
-              </h5>
-              <h3 className="font-weight-bold px-md-5 mt-1 mb-3"> Welcome!</h3>
-              <form className="px-md-5">
-                {/* First Name input */}
-                <div className="form-outline mb-3">
-                <label className="form-label " htmlFor="form1">
-                    First Name
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="text"
-                    id="firstname"
-                    className="form-control form-control-lg"
-                    placeholder="Enter your Name"
-                  />
+    <div className="LoginForm">
+      <div className="loginimg">
+        <img src={loginimg} alt=""></img>
+      </div>
 
-                </div>
-                {/* Last Name input */}
-                <div className="form-outline mb-3">
-                <label className="form-label " htmlFor="form1">
-                    Last Name
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="text"
-                    id="lastname"
-                    className="form-control form-control-lg"
-                    placeholder="Enter your Name"
-                  />
+      <div className="loginform">
+        <div className="toppara">
+          <p>LOGO & Name of the company</p>
+        </div>
 
-                </div>
-                {/* Phone number input */}
-                <div className="form-outline mb-3">
-                <label className="form-label " htmlFor="form1">
-                    Phone number
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="tel"
-                    id="phonenumber"
-                    className="form-control form-control-lg"
-                    placeholder="Phone number"
-                  />
+        <div className="medpara">
+          <p>Nice to see you again</p>
+        </div>
+        <br></br>
+        <div className="loginform23">
+          <form onSubmit={handleSubmit}>
+            <label style={{display:"unset"}}>
+              <p>Login</p>
+              <input
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email or phone number"
+              />
+            </label>
 
-                </div>
-                {/* Email input */}
-                <div className="form-outline mb-3">
-                <label className="form-label " htmlFor="form1">
-                    Email address
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="email"
-                    id="email"
-                    className="form-control form-control-lg"
-                    placeholder="Your Email"
-                  />
-
-                </div>
-                
-                {/* Password input */}
-                <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="form1">
-                    Password
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    className="form-control form-control-lg"
-                  />
-
-                </div>
-                 {/* Confirm Password input */}
-                 <div className="form-outline mb-3">
-                 <label className="form-label " htmlFor="form1">
-                  Confirm  Password
-                  </label>
-                  <input style={{ backgroundColor: "#E5E5E5" }}
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    className="form-control form-control-lg"
-                  />
-
-                </div>
-                <div className="d-flex justify-content-between mx-auto  mb-4">
-                  {/* Checkbox */}
-                 
-                    <div className="custom-control custom-switch">
-                      <input
-                        type="checkbox"
-                        className="custom-control-input"
-                        id="customSwitch1"
-                        defaultChecked=""
-                      />
-                      <label
-                        className="custom-control-label"
-                        htmlFor="customSwitch1"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-                 
-
-                </div>
-                {/* Submit button */}
+            <label style={{display:"unset"}}>
+              <p>Password</p>
+              <div className="input-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="Enter password"
+                />
                 <button
-                  type="submit"
-                  className="btn font-weight-bolder btn-primary btn-lg btn-block"
+                  type="button"
+                  className="eye-button"
+                  onClick={handleTogglePassword}
                 >
-                  Sign Up
+                  {showPassword ? (
+                    <img src={image11} alt="Show Password" />
+                  ) : (
+                    <img src={image11} alt="Hide Password" />
+                  )}
                 </button>
-     
-              </form>
-            </div>
+              </div>
+            </label>
+          </form>
+          <div className="tog_rem_forget">
+            <label style={{display:"unset"}} className="toggle-switch">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleToggle}
+              />
+              <span className="slider"></span>
+            </label>
+            <h4>Remember me</h4>
+            <button type="button"> Forgot password?</button>
+          </div>
+          <br />
+          <div className="signin_button">
+            <button type="button" onClick={handleSubmit}>Sign in</button>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <div className="signin_button_with_google">
+            <button type="button" className="flexing_google">
+              <img   src={image12} alt="" /> <p style={{marginBottom: "1px"}}>  Or sign in with Google</p>
+            </button>
+          </div>
+
+          <div className="last_para">
+            <p style={{marginBottom: "0px"}}>Dont have an account?</p>
+            <button type="button">Sign up now</button>
           </div>
         </div>
-      </section>
-   </>
-  )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Login
+export default Login;

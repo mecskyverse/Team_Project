@@ -60,17 +60,20 @@ const Footer = () => {
               Check us out
             </h6>
             <p className='icons'>
-              {/* <i className="fas fa-home me-3" />{" "} */}
-          
+              <Link target='blank' to="" className="text-reset">
               <FaWhatsapp />
-             
+              </Link>
             </p>
             <p className='icons'>
+            <Link target='blank' to="https://www.instagram.com/laughnlaundry?utm_source=qr&igshid=OGU0MmVlOWVjOQ%3D%3D" className="text-reset">
             <FaInstagram />
+              </Link>
             </p>
             <p className='icons'>
+            <Link target='blank' to="" className="text-reset">
             <FaFacebook />
-            </p>
+              </Link>
+              </p>
           </div>
           {/* Grid column */}
         </div>
@@ -86,7 +89,9 @@ const Footer = () => {
     className="text-center p-1 mt-3"
     style={{ backgroundColor: "rgba(254, 254, 254, 0.05)" }}
   >
-    <p className="font-weight-bolder">Design &amp; Developed by Appenius</p>
+    <p className="font-weight-bolder">Design &amp; Developed by  <Link target='blank' to="https://appeniusprivatelimited.com/" className="text-reset">
+            Appenius
+              </Link></p>
   </div>
   
     </div>

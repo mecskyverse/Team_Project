@@ -11,7 +11,9 @@ import Carousal from "@itseasy21/react-elastic-carousel";
 import img1 from "../Component/images/img1.png";
 import img2 from "../Component/images/img2.png";
 import img3 from "../Component/images/img3.png";
-import img4 from "../Component/images/img4.png";
+import img4 from "../Component/images/card4_services.jpeg";
+import img5 from "../Component/images/services_card5.png";
+import img6 from "../Component/images/services_card_6.jpeg";
 
 const Caraousalserv = () => {
   const breakPoints = [
@@ -80,10 +82,19 @@ const Caraousalserv = () => {
 
         <Item>
           <div className="item">
-            <img src={img3} alt="ueis" />
+            <img src={img5} alt="ueis" />
 
             <div id="cont">
-              <p>Iron</p>
+              <p>Blanket Cleaning</p>
+            </div>
+          </div>
+        </Item>
+        <Item>
+          <div className="item">
+            <img src={img6} alt="ueis" />
+
+            <div id="cont">
+              <p>Shoe Cleaning</p>
             </div>
           </div>
         </Item>

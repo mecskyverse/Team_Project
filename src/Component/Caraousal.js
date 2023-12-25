@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react';
 import '../caraousalbottom.css'
 import Item from "./Items";
 import Carousal from "@itseasy21/react-elastic-carousel";
@@ -15,6 +15,9 @@ import img3 from "../Component/images/Rectangle 71.png"
 import img5 from "../Component/images/Component 1.png"
 import img6 from "../Component/images/Component 2.png"
 import img7 from "../Component/images/Component 3.png"
+import img8 from "../Component/images/benefits_card4.jpeg";
+import img9 from "../Component/images/benefits_card5.jpeg";
+// import React, { useRef } from 'react';
 
 const CaraousalBottom = () => {
     const breakPoints = [
@@ -23,12 +26,22 @@ const CaraousalBottom = () => {
         { width: 768, itemsToShow: 2},
         { width: 1200, itemsToShow: 3.1},
       ];
+
+      // const carouselRef = useRef(null);
+
+      // const handlePrevClick = () => {
+      //   carouselRef.current.slidePrev();
+      // };
+    
+      // const handleNextClick = () => {
+      //   carouselRef.current.slideNext();
+      // };
   return (
     <div className="BottomCaraousal">
     <h1>Why Laugh N Laundry?</h1>
     
       <Carousal breakPoints={breakPoints}  isRTL={false}  showArrows={false} pagination={false}>
-      
+     
        <Item>
         <div className="item">
           <img  src={img1} alt="ueis"  />
@@ -72,28 +85,26 @@ const CaraousalBottom = () => {
 
        <Item>
         <div className="item">
-          <img src={img3} alt="ueis"  />
+          <img className='card-img-benefits' src={img8} alt="ueis"  />
           <div id="comp">
           <img  src={img7} alt="ueis"  />
           </div>
           
           <div id="cont">
-          <p>Certified Professional Cleaners</p>
+          <p>100% Satisfaction Guaranteed</p>
           </div>
          
         </div>
        </Item>
-
-
        <Item>
         <div className="item">
-          <img src={img3} alt="ueis"  />
+          <img className='card-img-benefits' src={img9} alt="ueis"  />
           <div id="comp">
           <img  src={img7} alt="ueis"  />
           </div>
           
           <div id="cont">
-          <p>Certified Professional Cleaners</p>
+          <p>Green Certified Detergent</p>
           </div>
          
         </div>
@@ -116,8 +127,16 @@ const CaraousalBottom = () => {
           
         </div> */}
        {/* </Item> */}
-  
+     
       </Carousal>
+      {/* <div className="carousel-buttons">
+        <button className="carousel-button" onClick={handlePrevClick}>
+          Previous
+        </button>
+        <button className="carousel-button" onClick={handleNextClick}>
+          Next
+        </button>
+      </div> */}
     </div>
   )
 }
