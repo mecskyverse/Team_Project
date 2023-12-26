@@ -17,6 +17,7 @@ import green_shirt from "../Component/images/green_shirt-removebg-preview.png";
 import blue_shirt from "../Component/images/bluse_shirt-removebg-preview-removebg-preview.png";
 import green_bed from "../Component/images/green_bed-removebg-preview.png";
 import blue_man from "../Component/images/blue_men-removebg-preview.png";
+import { Link } from 'react-router-dom';
 const Services = () => {
   return (
    <>
@@ -31,7 +32,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
     <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={normal_washing_img} />
-  <button class="btn btn-overlay font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   
   <div
@@ -65,7 +66,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
   <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={premium_washing_img} />
-  <button class="btn btn-overlay font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   <div
     className="mask my-card-main-text  text-light d-flex justify-content-center flex-column  "
@@ -98,7 +99,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
   <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={dry_washing_img} />
-  <button class="btn btn-overlay font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   <div
     className="mask my-card-main-text  text-light d-flex justify-content-center flex-column  "
@@ -131,7 +132,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
   <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={normal_washing_img} />
-  <button class="btn btn-overlay  font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   
   <div
@@ -168,7 +169,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
   <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={shoe_washing_img} />
-  <button class="btn btn-overlay  font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   <div
     className="mask my-card-main-text  text-light d-flex justify-content-center flex-column  "
@@ -195,7 +196,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
  <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={blanket_washing_img} />
-  <button class="btn btn-overlay font-weight-bold">Order Now</button>
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   <div
     className="mask my-card-main-text  text-light d-flex justify-content-center flex-column  "
