@@ -148,3 +148,20 @@ line-height: 100%; 35px */
   line-height: normal;
   text-transform: uppercase;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .BottomServCaraousal #cont p {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 41px;
+   
+  }
+  .BottomServCaraousal h1{
+    font-weight: 600;
+    font-size: 45px;
+    text-align: center;
+    /* width: 80%; */
+    margin-top:35px;
+  }
+}

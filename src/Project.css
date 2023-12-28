@@ -9,11 +9,11 @@
 }
 .my-nav-btn1 {
 background-color: #F9F3CC;
-border-radius: 35%;
+border-radius: 10px;
 }
 .my-nav-btn2 {
   background-color: #DDC630;
-   border-radius: 35%;
+   border-radius: 10px;
 }
 .navbar-toggler-icon{
   color: black !important;

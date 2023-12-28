@@ -1,9 +1,10 @@
 .PickUpForm .backgroundimg {
-    position: fixed;
+    /* position: fixed; */
+    position: absolute;
     top: 0;
     right: 0;
     width: 32%;
-    height: 100vh;
+    height: 150vh;
     background-image: url("./Component/images/background_image_pickup.png");
     background-size: cover;
     background-position: center;
@@ -74,34 +75,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px; /* Adjust the gap as needed */
   }
-  
-
-
-
-
-
-
-
 
   .PickUpForm .content .date-input-container input  {
     color: #666;
   }
   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
   .PickUpForm .content .NameInput {
     margin-top: -25px;
@@ -305,4 +283,31 @@
     .PickUpForm .content .pickup-input-wrapper button{
         width:15%;
     }
+}
+.btn-hom1 {
+  background-color: white;
+  color: #FA8232;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: solid  #FA8232 1px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+ .btn-order1 {
+  background-color: #FA8232;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+
+}
+.modal-body p{
+  color: black;
+}
+.no-underline {
+  text-decoration: none !important; /* Remove underline */
+  border: none !important; /* Remove border */
+  outline: none !important; /* Remove outline */
+  box-shadow: none !important; /* Remove box-shadow */
 }
