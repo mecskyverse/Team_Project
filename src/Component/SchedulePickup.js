@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../schedulepickup.css"
+import { FaHouseUser, FaArrowRight,FaCircleNotch, FaCheckCircle } from 'react-icons/fa';
 import image1 from "../Component/images/truck_img.png"
 import image11 from "../Component/images/google_icon.png"
-
+import { Link } from 'react-router-dom';
 //api
+
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 const libraries = ['places'];
 
 // const center = {
@@ -19,6 +23,13 @@ const SchedulePickup = () => {
     const [selectedOptionTiming, setSelectedOptionTiming] = useState("");
     // long ang lat
     const [userLocation, setUserLocation] = useState(null);
+    const [showMap, setShowMap] = useState(false);
+  // const center = { lat: 0, lng: 0 }; // Set your initial center coordinates
+  
+
+  const handleButtonClick = () => {
+    setShowMap(!showMap); // Toggle the map visibility
+  };
 // api used loc
   //    const { isLoaded, loadError } = useLoadScript({
   // googleMapsApiKey: 'AIzaSyDfMFq8mNzIcYlZRbHlwbTQXJetenNGb_o',
@@ -101,6 +112,9 @@ const SchedulePickup = () => {
 
 
     return (
+      <>
+      <Navbar/>
+      <section className="container-fluid py-5 ">
       <div className="PickUpForm">
         <div className="backgroundimg"></div>
         <div className="content">
@@ -120,15 +134,7 @@ const SchedulePickup = () => {
         </div>
       )}
     </div> */}
-    <div>
-      <GoogleMap
- mapContainerStyle={{ width: '300px', height: '300px' }}
-        zoom={10}
-        center={center}
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    </div>
+   
           <div className="NameInput">
             <p style={{marginBottom: "0px"}}>Name</p>
             <div className="grid-container-pickup">
@@ -241,17 +247,33 @@ const SchedulePickup = () => {
               </div>
             </div>
           </div>
-          
+         
      
           <div>
-            {/* <p style={{marginBottom: "0px"}}>Google location</p> */}
-            <div className="pickup-input-wrapper">
-              <input type="text" placeholder="Google location" />
-              <button type="button" className="pickup-eye-button">
-              <img  src={image11} style={{ height: '20px', width: '20px' }} />
-  
-              </button>
-            </div>
+ 
+
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="pickup-input-wrapper">
+        <input type="text" placeholder="Google location" style={{ marginBottom: '10px' }} />
+        <button type="button" className="pickup-eye-button" onClick={handleButtonClick}>
+          <img className="mb-3" src={image11} style={{ height: '20px', width: '20px' }} alt="Toggle Map" />
+        </button>
+      </div>
+      {showMap && (
+        <div style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+          <GoogleMap
+            mapContainerStyle={{ width: '100%', height: '300px' }}
+            zoom={10}
+            center={center}
+          >
+            <Marker position={center} />
+          </GoogleMap>
+        </div>
+      )}
+    </div>
+
+
+
           </div>
           <div>
             {/* <p style={{marginBottom: "0px"}}>Special Instruction</p> */}
@@ -259,10 +281,65 @@ const SchedulePickup = () => {
           </div>
   
           <div className="Submit_button">
-            <button type="">Submit</button>
+            <button type="" data-toggle="modal"
+    data-target="#exampleModalCenter">Submit</button>
           </div>
+
+{/* popup */}
+<div className="modal w-100 fade container-fluid" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered modal-lg">
+    <div className="modal-content">
+      <div className="modal-header no-underline text-center">
+        <div style={{ display: 'block', margin: 'auto' }}>
+          <h1 style={{ color: 'green', marginBottom: '10px' }}>
+            <FaCheckCircle />
+          </h1>
         </div>
       </div>
+      <div>
+        <h2 className="modal-title font-weight-cold text-center mx-auto" id="exampleModalLongTitle">
+          Your order is successfully placed!
+        </h2>
+      </div>
+
+      <div className="modal-body text-center no-underline">
+        <p className="text-dark">
+          Pellentesque sed lectus nec tortor tristique accumsan quis dictum risus. Donec volutpat mollis nulla non facilisis.
+        </p>
+      </div>
+
+      <div className="modal-footer text-center no-underline justify-content-center">
+        <Link to='/pickup' className="d-inline-block mx-2">
+          <button className="btn btn-hom1 font-weight-bold"><FaHouseUser className="mx-3"/> Home</button>
+        </Link>
+        <Link to='/pickup' className="d-inline-block mx-2">
+          <button className="btn btn-order1 font-weight-bold">View Order <FaArrowRight className="mx-3"/> </button>
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      </section>
+    
+
+      <Footer/>
+      </>
+
     );
 }
 

@@ -9,7 +9,7 @@ const Navbar = () => {
           style={{ background: "#dce9d2" }}
           className="navbar my-nav-bar navbar-expand-lg"
         >
-          <Link className="navbar-brand ml-5 my-links" to="/">
+          <Link className="navbar-brand ml-lg-5 ml-4 my-links" to="/">
             LOGO
           </Link>
           <button
@@ -26,23 +26,34 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item ml-5">
+            <li className="nav-item ml-4">
+                <Link className="nav-link font-weight-bold my-links" to="/">
+                  Home
+                </Link>
+              </li>
+
+              <li className="nav-item ml-4">
                 <Link className="nav-link font-weight-bold my-links" to="/services">
                   Services
                 </Link>
               </li>
-              <li className="nav-item ml-5">
-                <Link className="nav-link font-weight-bold my-links" href="/#">
-                  Contact
+              <li className="nav-item ml-4">
+                <Link className="nav-link font-weight-bold my-links" to="/pickup">
+                  Order Now
                 </Link>
               </li>
-              <li className="nav-item ml-5">
-              <Link to="/signup" className="btn py-1 px-4 my-nav-btn1 mt-1">
+              <li className="nav-item ml-4">
+                <Link className="nav-link font-weight-bold my-links" to="/#">
+                  Contact Us
+                </Link>
+              </li>
+              <li className="nav-item ml-4 mb-lg-1 mb-2">
+              <Link to="/signup" className="btn py-1 px-4 my-nav-btn1 ">
                   Signup
                   </Link>
               </li>
-              <li className="nav-item ml-5 mr-5">
-              <Link to="/login" className="btn py-1 px-4 my-nav-btn2 mt-1">
+              <li className="nav-item ml-4 mr-5 ">
+              <Link to="/login" className="btn py-1 px-4 my-nav-btn2 ">
                   Login
                   </Link>
                 

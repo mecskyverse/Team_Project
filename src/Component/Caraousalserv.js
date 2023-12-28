@@ -26,7 +26,7 @@ const Caraousalserv = () => {
   return (
     <div className="BottomServCaraousal">
       <div className="ourserviceheading">
-        <h1>Our Services</h1>
+        <h1 >Our Services</h1>
       </div>
 
       <div className="ourserviceparagraph">
