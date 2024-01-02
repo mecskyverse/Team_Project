@@ -26,11 +26,11 @@ const Caraousalserv = () => {
   return (
     <div className="BottomServCaraousal">
       <div className="ourserviceheading">
-        <h1 >Our Services</h1>
+        <h1  className="heading1-service">Our Services</h1>
       </div>
 
       <div className="ourserviceparagraph">
-        <p>
+        <p className="sub-headin-service">
           EXPERIENCE SAVINGS, PICKUP AND DELIVERY OPTIONS RECEIVE
           ROUND-THE-CLOCK SUPPORT
         </p>

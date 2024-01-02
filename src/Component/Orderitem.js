@@ -32,15 +32,11 @@ const Orderitem = () => {
             <li className='text-uppercase py-2'>
             order #
             </li>
-            <li className='text-uppercase py-2'>
-            category
-            </li>
+            
             <li className='text-uppercase py-2'>
             Service
             </li>
-            <li className='text-uppercase py-2'>
-            no. Item
-            </li>
+           
         </ul>
       </div>
       <div className='col-lg-3 col-md-4 col-6'>
@@ -49,19 +45,15 @@ const Orderitem = () => {
             408-254656-6512
             </li>
             <li className=' py-2'>
-            Normal Washing
+            Normal Washing <br /> (Wash & Fold)
             </li>
-            <li className=' py-2'>
-            Wash & Fold
-            </li>
-            <li className='text-uppercase py-2'>
-            17
-            </li>
+            
+            
         </ul>
       </div>
       <div className='col-9  col-lg-3 d-flex justify-content-end mt-3'>
       <Link to='/pickup'>
-        <button className="btn border  mt-lg-5 button-pick  px-5 py-2 text-primary font-weight-bold ">Picked</button>
+        <button className="btn border  mt-lg-3 button-pick  px-5 py-2 text-primary font-weight-bold ">Picked</button>
       </Link>
       </div>
     </div>

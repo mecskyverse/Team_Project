@@ -4,8 +4,8 @@ import {Link} from "react-router-dom"
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 // import { FaWhatsapp } from "react-icons/fa";
-
-
+import logo from "../Component/images/logo_tagline-removebg-preview.png";
+import "../Project.css";
 const Footer = () => {
   return (
 
@@ -14,57 +14,69 @@ const Footer = () => {
          <footer className="text-center text-lg-start my-footer bg-body-tertiary ">
     {/* Section: Social media */}
    
-    <section className="d-flex justify-content-center justify-content-lg-between p-3">
-      {/* Right */}
+    <section className="d-flex justify-content-center justify-content-lg-between  p-0">
+     
     </section>
     {/* Section: Social media */}
     {/* Section: Links  */}
-    <section className="">
+    <section className="mb-0">
       <div className="container  text-center text-md-start mt-5">
         {/* Grid row */}
-        <div className="row mt-3">
+        <div className="row ">
           {/* Grid column */}
-          <div className="col-md-3 col-lg-4  col-xl-3 mx-auto mb-4">
+          
+            
+          
+          <div className="col-md-5 col-lg-5  col-xl-3 mx-auto mb-4">
             {/* Content */}
-            <h2 className="text-uppercase  font-weight-bold mb-4">
-            <Link to="/" className="text-reset">
-              Laundry
+            <div className="col-lg-12 col-md-12  col-sm-12">
+            <Link  to="/">
+              <img
+                className="  my-logo-footer"
+                alt=""
+                src={logo}
+              />
               </Link>
-              </h2>
+            </div>
+            {/* <h2 className="text-uppercase  font-weight-bold mb-4">
+            <Link to="/" className="text-reset">
+           Laugh n Laundry 
+              </Link>
+              </h2> */}
           </div>
           {/* Grid column */}
           {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
+          <div className="col-md-4 mt-3 col-lg-3 col-xl-3 mx-auto mb-4">
             {/* Links */}
             <h6 className="text-uppercase font-weight-bolder mb-4">
               Company Address
             </h6>
             <p>
               <Link target='blank' to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67" className="text-reset">
-              Darpan City, Kharar, Punjab, India 140301
+              Show Room no.14,15 <br /> Darpan Residency <br /> Chindsa Colony <br /> Khanpur, Kharar, 140301
               </Link>
             </p>
           </div>
           {/* Grid column */}
           {/* Grid column */}
-          <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <div className="col-md-4 mt-3 col-lg-2 col-xl-2 mx-auto mb-4">
             {/* Links */}
             <h6 className="text-uppercase font-weight-bolder mb-4">
               Operating Hours
             </h6>
-            <p>Mon -Fri: 8am-8pm</p>
-            <p>Saturday: 9am-7pm</p>
-            <p>Sunday: 9am-6pm</p>
+            <p >All Days</p>
+            <p>10 am - 10 pm</p>
+            {/* <p>Sunday: 9am-6pm</p> */}
           </div>
           {/* Grid column */}
           {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <div className="col-md-3 mt-3 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
             {/* Links */}
             <h6 className="text-uppercase font-weight-bolder mb-3">
               Check us out
             </h6>
             <p className='icons'>
-              <Link target='blank' to="" className="text-reset">
+              <Link target='blank' to="https://wa.me/c/917707913579" className="text-reset">
               <FaWhatsapp />
               </Link>
             </p>
@@ -74,7 +86,7 @@ const Footer = () => {
               </Link>
             </p>
             <p className='icons'>
-            <Link target='blank' to="" className="text-reset">
+            <Link target='blank' to="https://www.facebook.com/profile.php?id=61554678826276&mibextid=ZbW" className="text-reset">
             <FaFacebook />
               </Link>
               </p>

@@ -7,6 +7,7 @@ import img4 from "../Component/images/step2.jpeg";
 import img5 from "../Component/images/step3.jpeg";
 import img6 from "../Component/images/step4.jpeg";
 import img7 from "../Component/images/section5.jpeg";
+import heroimg from "../Component/images/Hero-img.png";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Bubble from "./Bubble";
@@ -17,21 +18,17 @@ import CaraousalServBottom from "./Caraousalservbottom";
 const Home = () => {
   return (
     <>
-   
         {/* nav */}
         <Navbar/>
         <Bubble/>
-        
-        
-        
         {/* section1 */}
         <section className="container-fluid my-section-1">
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12">
               {/* <img className="img-smile mt-4 " src="images/smile.png" alt="" /> */}
-              <img className="img-smile mt-5 py-0" alt="" src={img1} />
+              <img className="img-smile  py-0" alt="" src={heroimg} />
               <h1 className="my-main-heading text-center py-0 mt-0">
-                Every Spin <br /> Tells A story
+                Every Spin Tells A <span className="boujee-text">story</span> 
               </h1>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
@@ -47,10 +44,10 @@ const Home = () => {
         <Caraousal/>
         {/* section3 */}
         <section className="container-fluid py-5 my-section-3">
-          <h3 style={{ color: "#D76D6D" }} className="text-center pt-3 ">
+          <h3 style={{ color: "#D76D6D" }} className="text-center section3-heading pt-3 ">
             HOW IT WORKS
           </h3>
-          <h1 className="text-center mb-5 mt-3">Get it done in 4 steps</h1>
+          <h1 className="text-center section3-subheading mb-5 mt-3">Get it done in 4 steps</h1>
           <div className="row">
             <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card ">
@@ -107,9 +104,9 @@ const Home = () => {
               {/* <h1 class="my-main-heading ">Every Spin Tells A story</h1> */}
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
-              <div className="mt-5 py-5 w-75 m-5">
-                <h1 className="font-weight-bold">Laugh n Laundry</h1>
-                <p className="text-uppercase my-para-section5 mt-5">
+              <div className="mt-5 py-lg-5 w-75 m-5">
+                {/* <h1 className="font-weight-bold">Laugh n Laundry</h1> */}
+                <p className="text-uppercase my-para-section5 mt-lg-5">
                 Welcome to Laugh n Laundry, where pristine cleanliness meets unparalleled convenience! We take pride in being your go-to destination for top-notch laundry services, offering a range of solutions tailored to your needs. Whether it's the everyday essentials with our wash and fold service, the deluxe treatment with our premium wash and fold option, meticulous dry cleaning, or the perfect press with our ironing services, we've got you covered. Our commitment extends beyond immaculate laundry; we aim to deliver excellence at pocket-friendly rates, ensuring your garments are pampered without breaking the bank. Experience laundry care like never before with Laugh n Laundry!
                 </p>
               </div>
