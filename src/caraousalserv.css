@@ -18,10 +18,12 @@
   font-weight: 700;
   line-height: 106.5%;
   font-style: normal;
-
-  font-family: Outfit;
+  font-family: 'Caveat Brush', cursive;
   font-size: 70px;
   margin-top: 35px;
+}
+.sub-headin-service{
+  font-family: 'Caveat Brush', cursive;
 }
 
 /* h1 {
@@ -74,9 +76,7 @@
 }
 
 .BottomServCaraousal #cont {
- 
 
- 
   width: 100%;
   height: 105px;
 
@@ -84,12 +84,6 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-
-
-
-
-
-
 }
 
 .BottomServCaraousal p {
@@ -163,5 +157,24 @@ line-height: 100%; 35px */
     text-align: center;
     /* width: 80%; */
     margin-top:35px;
+  }
+  .BottomServCaraousal .item {
+
+    margin-top: 18%;
+    height: 80%;
+    width: 100%;
+    padding: 0;
+ 
+  }
+  
+  .BottomServCaraousal .item img {
+    height: 81%;
+    width: 100%;
+    
+  }
+  .BottomServCaraousal #cont p {
+
+    font-size: 25px;
+
   }
 }

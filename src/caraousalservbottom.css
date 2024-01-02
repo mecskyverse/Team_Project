@@ -1,4 +1,5 @@
 /* Marquee.css */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -7,7 +8,7 @@
 .marquee-content {
   color: #00B6CE;
   text-align: center;
-  font-family: Poppins;
+  font-family: 'Caveat Brush', cursive;
   font-size: 50px;
   font-style: normal;
   font-weight: 500;
