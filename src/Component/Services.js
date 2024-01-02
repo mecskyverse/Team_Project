@@ -146,14 +146,14 @@ const Services = () => {
         <img className="w-25 d-inline-block my-card-main-img" alt="" src={green_iron} />
         <h5 className='d-inline-block mx-1'>Normal Iron per Pair</h5> 
         <h5 className='d-inline-block mx-1'>
-        ₹ 49/-
+        ₹ 15/-
         </h5>
         </li>
         <li className=' list-unstyled'>
         <img className="w-25 d-inline-block my-card-main-img" alt="" src={blue_iron} />
         <h5 className='d-inline-block mx-2'>Steam Iron per Pair</h5> 
         <h5 className='d-inline-block mx-1'>
-        ₹ 59/-
+        ₹ 20/-
         </h5>
         </li>
       </ul>
@@ -182,7 +182,7 @@ const Services = () => {
         <img className="w-25  d-inline-block my-card-main-img" alt="" src={green_shoes} />
         <h5 className='d-inline-block mx-3'>Pair of shoes</h5> 
         <h5 className='d-inline-block mx-2'>
-        ₹ 49/-
+        ₹ 59/-
         </h5>
         </li>
        
