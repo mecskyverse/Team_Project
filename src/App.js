@@ -14,7 +14,8 @@ import Services from './Component/Services';
 import Contact from './Component/Contact';
 import Myorder1 from './Component/Myorder1';
 import SchedulePickup from './Component/SchedulePickup';
-
+import Adminorder from './Component/Orderadmindetails';
+import Userorder from './Component/Orderuserdetails';
 function App() {
   return (
     <Router>
@@ -28,7 +29,8 @@ function App() {
           <Route exact path="/contact" element={<Contact/>}/>
           <Route exact path="/pickup" element={<SchedulePickup/>}/>
           <Route exact path="/myorder1" element={<Myorder1/>}/>
-      
+          <Route exact path="/userorder" element={<Userorder/>}/>
+          <Route exact path="/adminorder" element={<Adminorder/>}/>
 
         </Routes>
       </div>
