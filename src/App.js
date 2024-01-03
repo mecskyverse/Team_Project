@@ -12,6 +12,7 @@ import Signup from './Component/Signup';
 import Home from './Component/Home';
 import Services from './Component/Services';
 import Contact from './Component/Contact';
+import Myorder1 from './Component/Myorder1';
 import SchedulePickup from './Component/SchedulePickup';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
           <Route exact path="/services" element={<Services/>}/>
           <Route exact path="/contact" element={<Contact/>}/>
           <Route exact path="/pickup" element={<SchedulePickup/>}/>
-          
+          <Route exact path="/myorder1" element={<Myorder1/>}/>
       
 
         </Routes>
