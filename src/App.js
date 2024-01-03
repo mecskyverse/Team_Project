@@ -11,12 +11,14 @@ import Login from './Component/Login';
 import Signup from './Component/Signup';
 import Home from './Component/Home';
 import Services from './Component/Services';
+import AdminDashboard from './Component/AdminDashboard';
 import Contact from './Component/Contact';
 import Myorder1 from './Component/Myorder1';
 import SchedulePickup from './Component/SchedulePickup';
 import Adminorder from './Component/Orderadmindetails';
-import Userorder from './Component/Orderuserdetails';
+// import Userorder from './Component/Orderuserdetails';
 import Responses from './Component/Responses';
+
 function App() {
   return (
     <Router>
@@ -30,9 +32,10 @@ function App() {
           <Route exact path="/contact" element={<Contact/>}/>
           <Route exact path="/pickup" element={<SchedulePickup/>}/>
           <Route exact path="/myorder1" element={<Myorder1/>}/>
-          <Route exact path="/userorder" element={<Userorder/>}/>
+          {/* <Route exact path="/userorder" element={<Userorder/>}/> */}
           <Route exact path="/adminorder" element={<Adminorder/>}/>
          <Route exact path="/responses" element={<Responses/>}/>
+         <Route exact path="/admin" element={<AdminDashboard/>}/>
 
         </Routes>
       </div>

@@ -2,10 +2,12 @@ import React from 'react'
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Feedback1 from './Feedback1';
+import AdminNavbar from './AdminNavbar';
 const Responses = () => {
   return (
    <>
    <Navbar/>
+   <AdminNavbar/>
    <section >
 
   <div className="container my-3 py-5">

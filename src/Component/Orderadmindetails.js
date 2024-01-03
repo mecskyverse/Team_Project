@@ -5,11 +5,13 @@ import ColorSelector from './ColorSelector';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
+import AdminNavbar from './AdminNavbar';
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
   return (
     <>
      <Navbar/>
+     <AdminNavbar/>
     <div className="container mt-5">
         <div className="row  mb-5">
             <h1 className='my-head ml-lg-0 ml-5'>Order Details</h1>

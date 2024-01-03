@@ -5,7 +5,7 @@ import { FaBars } from 'react-icons/fa';
 import logo from "../Component/images/nav-logo.png";
 const Navbar = () => {
   return (
-    <div>
+    // <div>
 <nav
           style={{ background: "#dce9d2" }}
           className="navbar my-nav-bar navbar-expand-lg"
@@ -70,7 +70,7 @@ const Navbar = () => {
           </div>
         </nav>
 
-    </div>
+    // </div>
   )
 }
 
