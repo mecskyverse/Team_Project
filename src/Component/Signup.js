@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
+import {Link} from "react-router-dom"
 import image10 from "../Component/images/login-img.jpeg";
 import image11 from "../Component/images/eyeimg.png";
 import axios from 'axios'
-
+import logo from "../Component/images/logo_tagline-removebg-preview.png";
 import "../signup.css";
 
 function SignUp() {
@@ -63,9 +63,14 @@ function SignUp() {
       </div>
 
       <div className="loginform1">
-        <div className="toppara1">
-          <p>LOGO & Name of the company</p>
-        </div>
+          {/* logo */}
+      <div className="col-lg-5 col-md-6 col-sm-12 mx-auto text-center">
+        <Link to="/">
+          <div className="d-inline-block my-logo-container">
+            <img className="my-logo-footer" alt="logo-img" src={logo} />
+          </div>
+        </Link>
+      </div>
 
         <div className="medpara1">
           <p>Welcome!!</p>

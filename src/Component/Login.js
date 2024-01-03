@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../signin.css";
+import {Link} from "react-router-dom"
 import loginimg from "../Component/images/Signup.jpeg";
 import image11 from "../Component/images/eyeimg.png";
 import image12 from "../Component/images/Googleimg.png";
 import axios from "axios";
+import logo from "../Component/images/logo_tagline-removebg-preview.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -68,9 +70,16 @@ const Login = () => {
       </div>
 
       <div className="loginform">
-        <div className="toppara">
-          <p>LOGO & Name of the company</p>
-        </div>
+        {/* logo */}
+      <div className="col-lg-6 col-md-6 col-sm-12 mx-auto text-center">
+        <Link to="/">
+          <div className="d-inline-block my-logo-container">
+            <img className="my-logo-footer" alt="logo-img" src={logo} />
+          </div>
+        </Link>
+      </div>
+
+
 
         <div className="medpara">
           <p>Nice to see you again</p>
@@ -140,7 +149,8 @@ const Login = () => {
 
           <div className="last_para">
             <p style={{marginBottom: "0px"}}>Dont have an account?</p>
-            <button type="button">Sign up now</button>
+            <Link to="/signup"> <button type="button">Sign up now</button></Link>
+           
           </div>
         </div>
       </div>
