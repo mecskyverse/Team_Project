@@ -2,12 +2,15 @@ import React from 'react'
 import "../Orderadmindetail.css";
 import Starating from "./Starrating";
 import ColorSelector from './ColorSelector';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
   return (
     <>
-    <div className="container">
+     <Navbar/>
+    <div className="container mt-5">
         <div className="row  mb-5">
             <h1 className='my-head ml-lg-0 ml-5'>Order Details</h1>
     {/* price */}
@@ -380,7 +383,7 @@ const Orderadmindetails = () => {
 
   </div>
 </div>
-<div className='container mt-5 '>
+<div className='container mt-5 mb-5 '>
   <div className='row py-lg-0 justify-content-start   px-5  py-3'>
    
     {/* shipping details */}
@@ -421,6 +424,7 @@ const Orderadmindetails = () => {
 
 
 
+<Footer/>
     </>
   )
 }
