@@ -389,7 +389,7 @@ const Orderadmindetails = () => {
     {/* shipping details */}
     <div className='col-lg-5  col-md-6 col-sm-12 '>
   <div className='px-lg-2 mt-3'>
-  <h5 className=" mb-3">Shipping Address</h5>
+  <h5 className=" mb-3">Rating</h5>
     <div className="row">
      
     <div className="container">
