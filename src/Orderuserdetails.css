@@ -1,0 +1,62 @@
+.vertical-timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.custom-step {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.custom-step::before {
+    content: '';
+    position: absolute;
+    top: 96%;
+    left: 10%;
+    width: 8px;
+    height: calc(100% - 20px);
+    background-color: #28a745;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.custom-step:last-child::before {
+    height: 50%;
+}
+
+.custom-step-icon-wrap {
+    margin-right: 15px;
+}
+
+.custom-step-icon {
+    background-color: #28a745;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.custom-icons {
+    color: #28a745;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+
+@media only screen and (max-width:1000px){
+    .my-snow-img{
+        display: none;
+    }
+    .custom-step::before {
+    
+        top: 96%;
+        left: 5%;
+        width: 8px;
+        height: calc(100% - 20px);
+        background-color: #28a745;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+}
