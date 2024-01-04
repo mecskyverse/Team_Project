@@ -8,6 +8,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 import image1 from "../Component/images/truck_img.png";
+import img2 from "../Component/images/background_image_pickup.png"
 
 import { Link } from "react-router-dom";
 //api
@@ -39,8 +40,11 @@ const SchedulePickup = () => {
       
 
       <section className="container-fluid py-5 ">
+      <div className="backgroundimg">
+        <img src={img2}/>
+      </div>
         <div className="PickUpForm">
-          <div className="backgroundimg"></div>
+          
           <div className="content">
             <div className="toplogo">
               <h2>Schedule A Pick Up</h2>
@@ -98,10 +102,7 @@ const SchedulePickup = () => {
                       Timing
                     </option>
                     <option value="Timing 1">Timing 1</option>
-                    <option value="Timing 2">Timing 2</option>
-                    <option value="Timing 3">Timing 3</option>
-                    <option value="Timing 4">Timing 4</option>
-                    <option value="Timing 5">Timing 5</option>
+                    
                     {/* Add more options as needed */}
                   </select>
                 </div>

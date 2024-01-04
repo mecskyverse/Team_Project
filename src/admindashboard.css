@@ -380,6 +380,7 @@
     background: #303030;
     /* color: white; */
     margin: 20px;
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -536,6 +537,9 @@
     .App{
       width: 100%;
     }
+    .nav-img-dashboard{
+      display: none;
+    }
   }
   @media screen and (max-width: 620px) {
     .table-head{
@@ -575,7 +579,11 @@
   
   
   
-  
+  @media screen and (max-width: 991px) {
+    .nav-img-dashboard{
+      display: none;
+    }
+  }
   body {
     background: #FAFBFF;
   }
