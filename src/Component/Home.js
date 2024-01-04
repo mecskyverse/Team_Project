@@ -44,16 +44,16 @@ const Home = () => {
         <Caraousal/>
         {/* section3 */}
         <section className="container-fluid py-5 my-section-3">
-          <h3 style={{ color: "#D76D6D" }} className="text-center section3-heading pt-3 ">
+          <h3 style={{ color: "#D76D6D" }} className="text-center  section3-heading pt-3 ">
             HOW IT WORKS
           </h3>
-          <h1 className="text-center section3-subheading mb-5 mt-3">Get it done in 4 steps</h1>
+          <h1 className="text-center section3-subheading text-dark mb-5 mt-3">Get it done in 4 steps</h1>
           <div className="row">
             <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card ">
                 <div className="card-body ">
-                  <h4 className="text-center text-uppercase my-step">Step 1</h4>
-                  <h3 className="text-center my-sub-heading">Pick Up</h3>
+                  <h4 className="text-center text-dark text-uppercase my-step">Step 1</h4>
+                  <h3 className="text-center text-dark my-sub-heading">Pick Up</h3>
                   {/* <img className="img-step-1" src="images/step1.jpeg" alt="" /> */}
                   <img className="img-step-1" alt="" src={img3} />
                 </div>
@@ -62,8 +62,8 @@ const Home = () => {
             <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card  mb-sm-4 mb-md-4 ">
                 <div className="card-body ">
-                  <h4 className="text-center text-uppercase my-step">Step 2</h4>
-                  <h3 className="text-center my-sub-heading">Wash &amp; Dry</h3>
+                  <h4 className="text-center text-dark text-uppercase my-step">Step 2</h4>
+                  <h3 className="text-center text-dark my-sub-heading">Wash &amp; Dry</h3>
                   <img className="img-step-1" alt="" src={img4} />
                 </div>
               </div>
@@ -71,8 +71,8 @@ const Home = () => {
             <div className="col-lg-3 mb-5 mt-sm-5   mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card  mb-sm-5 mb-md-5">
                 <div className="card-body ">
-                  <h4 className="text-center text-uppercase my-step">Step 3</h4>
-                  <h3 className="text-center my-sub-heading">Fold</h3>
+                  <h4 className="text-center text-dark text-uppercase my-step">Step 3</h4>
+                  <h3 className="text-center text-dark my-sub-heading">Fold</h3>
                   <img className="img-step-1" alt="" src={img5} />
                 </div>
               </div>
@@ -80,8 +80,8 @@ const Home = () => {
             <div className="col-lg-3 mb-5 mt-sm-5 mt-md-5 col-md-4 col-sm-5">
               <div className="card my-card ">
                 <div className="card-body ">
-                  <h4 className="text-center text-uppercase my-step">Step 4</h4>
-                  <h3 className="text-center my-sub-heading">Delivery</h3>
+                  <h4 className="text-center text-dark text-uppercase my-step">Step 4</h4>
+                  <h3 className="text-center text-dark my-sub-heading">Delivery</h3>
                   <img className="img-step-1" alt="" src={img6} />
                 </div>
               </div>

@@ -14,20 +14,20 @@ const Footer = () => {
          <footer className="text-center text-lg-start my-footer bg-body-tertiary ">
     {/* Section: Social media */}
    
-    <section className="d-flex justify-content-center justify-content-lg-between  p-0">
+    <section className="d-flex  justify-content-center justify-content-lg-between  p-0">
      
     </section>
     {/* Section: Social media */}
     {/* Section: Links  */}
-    <section className="mb-0">
-      <div className="container  text-center text-md-start mt-5">
+    <section className="mb-2">
+      <div className="container  text-dark text-center text-md-start mt-5">
         {/* Grid row */}
-        <div className="row ">
+        <div className="row  ">
           {/* Grid column */}
           
             
           
-          <div className="col-md-5 col-lg-5  col-xl-3 mx-auto mb-4">
+          <div className="col-md-5 col-lg-5   col-xl-3 mx-auto mb-5">
             {/* Content */}
             <div className="col-lg-12 col-md-12  col-sm-12">
             <Link  to="/">
@@ -102,7 +102,7 @@ const Footer = () => {
     {/* Copyright */}
   </footer>
   <div
-    className="text-center p-1 mt-3"
+    className="text-center p-1 mb-3 mt-3"
     style={{ backgroundColor: "rgba(254, 254, 254, 0.05)" }}
   >
     <p className="font-weight-bolder">Design &amp; Developed by  <Link target='blank' to="https://appeniusprivatelimited.com/" className="text-reset">
