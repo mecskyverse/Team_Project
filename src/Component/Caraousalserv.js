@@ -30,8 +30,8 @@ const Caraousalserv = () => {
       </div>
 
       <div className="ourserviceparagraph">
-        <p className="sub-headin-service">
-          EXPERIENCE SAVINGS, PICKUP AND DELIVERY OPTIONS RECEIVE
+        <p className="sub-headin-service p-3 ">
+          EXPERIENCE SAVINGS, PICKUP AND DELIVERY OPTIONS, RECEIVE
           ROUND-THE-CLOCK SUPPORT
         </p>
       </div>

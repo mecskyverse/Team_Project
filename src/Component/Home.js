@@ -27,9 +27,9 @@ const Home = () => {
             <div className="col-lg-6 col-md-6 col-sm-12">
               {/* <img className="img-smile mt-4 " src="images/smile.png" alt="" /> */}
               <img className="img-smile  py-0" alt="" src={heroimg} />
-              <h1 className="my-main-heading text-center py-0 mt-0">
+              <p className="my-main-heading text-center py-0 mt-0">
                 Every Spin Tells A <span className="boujee-text">story</span> 
-              </h1>
+              </p>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
               <img
@@ -106,7 +106,7 @@ const Home = () => {
             <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="mt-5 py-lg-5 w-75 m-5">
                 {/* <h1 className="font-weight-bold">Laugh n Laundry</h1> */}
-                <p className="text-uppercase my-para-section5 mt-lg-5">
+                <p className=" my-para-section5 mt-lg-2">
                 Welcome to Laugh n Laundry, where pristine cleanliness meets unparalleled convenience! We take pride in being your go-to destination for top-notch laundry services, offering a range of solutions tailored to your needs. Whether it's the everyday essentials with our wash and fold service, the deluxe treatment with our premium wash and fold option, meticulous dry cleaning, or the perfect press with our ironing services, we've got you covered. Our commitment extends beyond immaculate laundry; we aim to deliver excellence at pocket-friendly rates, ensuring your garments are pampered without breaking the bank. Experience laundry care like never before with Laugh n Laundry!
                 </p>
               </div>

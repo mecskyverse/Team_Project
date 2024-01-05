@@ -3,7 +3,7 @@ import "../Orderuserdetails.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import snowflake from "../Component/images/snowflakes.png";
-import deliveryman from "../Component/images/delivery.jpeg";
+import deliveryman from "../Component/images/delivery_man1.png";
 import Starating from "./Starrating";
 import ColorSelector from './ColorSelector';
 // import {Fastar } from "react-icons/fa";
@@ -18,7 +18,7 @@ const Orderuserdetails = () => {
     <div className='col-lg-4 mt-lg-5'>
 
   {/* Customer Details Partition */}
-  <div className='px-lg-1 mt-3 ml-5'>
+  <div className='px-lg-1 mt-lg-0 mt-5 ml-5'>
     <div className="row">
       <div className="col-md-4 col-lg-4 col-sm-5">
         <ul className='list-unstyled'>
@@ -42,7 +42,7 @@ const Orderuserdetails = () => {
           </li>
         </ul>
       </div>
-      <div className="col-md-8 col-lg-8 col-sm-6">
+      <div className="col-md-4 col-lg-8 col-sm-4">
         <ul className='list-unstyled'>
           <li className='text-muted py-2'>
           408-254656-6512
@@ -69,12 +69,12 @@ const Orderuserdetails = () => {
 {/* shipping details */}
   <div className='px-lg-1 mt-5 ml-5'>
   <h5 className=" mb-3">Shipping Address</h5>
-    <div className="row">
-        <p className='font-weight-bold ml-3'>Rohan Sharma</p>
-        <p className='text-muted ml-3'>
-        125, Road No. 13/x, Morden valley, Kharar, Punjab, India.
+  <p className='font-weight-bold'>Rohan Sharma</p>
+        <p className='text-muted '>125, Road No. 13/x, Morden valley, Kharar, Punjab, India.
         </p>
-      <div className="col-md-4">
+    <div className="row">
+        
+      <div className="col-md-2">
         <ul className='list-unstyled'>
           <li className=' py-2'>
           Phone:
@@ -84,9 +84,9 @@ const Orderuserdetails = () => {
           </li>  
         </ul>
       </div>
-      <div className="col-md-8">
+      <div className="col-md-6 ">
         <ul className='list-unstyled'>
-        <li className='text-muted py-2'>
+        <li className='text-muted  py-2'>
         +91- 7245-124632
           </li>
           <li className='text-muted py-2'>
@@ -117,7 +117,8 @@ const Orderuserdetails = () => {
 <div className='container mt-3 mb-5'>
   <h3 className='px-3 ml-3'>Feedback</h3>
 <div className='row py-lg-3 mt-2 justify-content-start   px-5  py-3'>
-      <textarea
+      <textarea 
+      className='my-feedback-area p-3'
         id='feedback'
         name="postContent"
         rows={4}
@@ -127,88 +128,80 @@ const Orderuserdetails = () => {
 </div>
 <div className='px-4 ml-2 justify-content-start  py-3'>
 <button
-      type="submit" 
-      style={{
-        backgroundColor: '#FA8232', // Orange background color
-        color: '#fff',             // White text color
-        padding: '10px 20px',      // Adjust padding as needed
-        border: 'none',            // Remove border
-        borderRadius: '5px',       // Add border radius for rounded corners
-        cursor: 'pointer',         // Show pointer cursor on hover
-        fontWeight: 'bold',
-      }}
-    >
-      Submit Review
-    </button>
+  type="submit"
+  style={{
+    backgroundColor: '#FA8232',
+    color: '#fff',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s', // Add a smooth transition effect
+  }}
+  onMouseOver={(e) => e.target.style.backgroundColor = '#F57C1E'} // Darker orange on hover
+  onMouseOut={(e) => e.target.style.backgroundColor = '#FA8239'} // Return to original color on mouse out
+>
+  Submit Review
+</button>
+
 </div>
 
 </div>
  
 
     </div>
-    <div className='col-lg-3'>
-    <img className="w-75 d-inline-block my-card-main-img" alt="" src={deliveryman} />
+    <div className='col-lg-2'>
+    <img className="w-100  mt-2 d-inline-block my-card-main-img" alt="" src={deliveryman} />
     </div>
-    <div className='col-lg-2 col-sm-12'>
-    <div className="card-body">
-    <div className="vertical-timeline custom-timeline">
-      <div className="custom-step completed">
-        <div className="custom-step-icon-wrap">
-          <div className="custom-step-icon text-white">
-          <FaCheck/>
-          </div>
-        </div>
-        <div>
-          <p className="h6 custom-icons active mt-3 mb-1"><FaBook /></p>
-          <p className="h6 mt-2 mb-0 mb-lg-0">Order Placed</p>
-        </div>
-      </div>
-      <div className="custom-step completed">
-        <div className="custom-step-icon-wrap">
-          <div className="custom-step-icon text-white">
-            <FaCheck/>
-          </div>
-        </div>
-        <div>
-          <p className="h6 custom-icons mt-3 mb-1"><FaCube /></p>
-          <p className="h6 mt-2 mb-0 mb-lg-0">Pickup</p>
-        </div>
-      </div>
-      <div className="custom-step completed">
-        <div className="custom-step-icon-wrap">
-          <div className="custom-step-icon text-white">
-            <FaCheck/>
-          </div>
-        </div>
-        <div className='text-muted'>
-          <p className="h6 custom-icons mt-3 mb-1"><FaArrowCircleUp /></p>
-          <p className="h6 mt-2 mb-0 mb-lg-0">Processing</p>
-        </div>
-      </div>
-      <div className="custom-step">
-        <div className="custom-step-icon-wrap">
-          <div className="custom-step-icon text-white">
-            <FaCheck/>
-          </div>
-        </div>
-        <div className='text-muted'>
-          <p className="h6 custom-icons mt-3 mb-1"><FaTruck /></p>
-          <p className="h6 mt-2  mb-0 mb-lg-0">Out for Delivery</p>
-        </div>
-      </div>
-      <div className="custom-step">
-        <div className="custom-step-icon-wrap">
-          <div className="custom-step-icon text-white">
-            <FaCheck/>
-          </div>
-        </div>
-        <div className='text-muted'>
-          <p className="h6 custom-icons mt-3 mb-1"><FaHandshake /></p>
-          <p className="h6 mt-2 mb-0 mb-lg-0">Delivered</p>
-        </div>
-      </div>
-    </div>
+    {/* timeline */}
+    <div className='col-lg-3  col-sm-12'>
+    {/* <div className="card-body"> */}
+    <div class="container py-0">
+    <div class="page-header mt-0">
+   
   </div>
+  <ul class="timeline">
+    <li class="timeline-inverted">
+      <div class="timeline-badge">1</div>
+      <div class="timeline-panel">
+          <p className="h6 mt-4 font-weight-bold text-success mb-0 mb-lg-0">Order Placed</p>
+          <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
+      </div>
+    </li>
+    <li class="timeline-inverted">
+      <div class="timeline-badge">2</div>
+      <div class="timeline-panel">
+      <p className="h6 mt-4 font-weight-bold text-success mb-0 mb-lg-0">Picked</p>
+          <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
+      </div>
+    </li>
+    <li class="timeline-inverted">
+      <div class="timeline-badge">3</div>
+      <div class="timeline-panel">
+      <p className="h6 mt-4   mb-0 mb-lg-0">Processing</p>
+          <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
+      </div>
+    </li>
+    <li class="timeline-inverted">
+      <div class="timeline-badge">4</div>
+      <div class="timeline-panel">
+      <p className="h6 mt-4 mb-0 mb-lg-0">Out for Delivery</p>
+          <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
+      </div>
+    </li>
+    <li class="timeline-inverted">
+      <div class="timeline-badge">5</div>
+      <div class="timeline-panel">
+      <p className="h6 mt-4   mb-0 mb-lg-0">Delivered</p>
+          <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
+      </div>
+    </li>
+  
+  </ul>
+</div>
+
+  {/* </div> */}
     </div>
     <div className='col-lg-3 my-snow-img'>
     <img className="w-100 my-snow-img  d-inline-block " alt="" src={snowflake} />
