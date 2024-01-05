@@ -318,7 +318,12 @@
 @media only screen and (max-width: 500px) and (min-width: 200px) {
   .PickUpForm .content .pickup-input-wrapper button {
     width: 15%;
+
   }
+  /* popup */
+.modal-title{
+  font-size: 20px;
+}
 }
 .btn-hom1 {
   background-color: white;
