@@ -14,7 +14,7 @@ export default function AdminNavbar() {
   return (
     // <div>
         <nav className="navbar navbar-expand-lg admindash-navbar">
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -24,7 +24,7 @@ export default function AdminNavbar() {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <div className="nav-img-dashboard">
             <Link className="nav-img" to="/">
               <img src={house} />

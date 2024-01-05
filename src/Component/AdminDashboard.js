@@ -1,20 +1,105 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Component/Navbar";
 import "../admindashboard.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import { document } from "postcss";
 
 import { useState } from "react";
-
+import userdata from "./Data";
 import Table from "./Table";
 import AdminNavbar from "./AdminNavbar";
+import AdminNavbar2 from "./AdminNavbar2";
+import Responsesadmin from "./Response2";
 const AdminDashboard = () => {
+
+  const [today, settoday] = useState(0);
+  const [pickup, setpickup] = useState(0);
+  const [drop, setdrop] = useState(0);
+  const [data, setdata] = useState(userdata);
+  const [data2,setdata2] = useState([]);
+  const [copydata2,setcopydata2] = useState([]);
+  const [searchValue,setsearchValue] = useState("");
+  const [copydata, setcopydata] = useState(userdata);
+  const [currentindex,setcurrentindex] = useState(0);
+  const [display,setdisplay] = useState(1);
   
+  useEffect(() => {
+    console.log(searchValue);
+    const d = data2.filter((element) => {
+      return element[2].toLowerCase().substring(0,searchValue.length) === searchValue.toLowerCase();
+    });
+    setcopydata2(d);
+  }, [searchValue,data2])
+  
+  let componentsArr = [];
+  for (let i = 1; i <= Math.ceil(copydata.length / 6); i++) {
+    componentsArr.push(<Link key={i} onClick={()=>setcurrentindex(i-1)}>{i}</Link>);
+  }
+
+  const showtable = (e) => {
+    e.target.style.background = "#4f89fc";
+    
+    setdisplay(1);
+    setdata(copydata);
+  };
+
+  const handleChange = (x) => {
+    const d = copydata.filter((element) => {
+      return element[3] === getFormattedDate() && element[8] === x;
+    });
+    setdata(d);
+    setcurrentindex(0);
+  };
+
+  useEffect(() => {
+    setdata2(data.slice(currentindex*6,(currentindex+1)*6));
+    setcopydata2(data.slice(currentindex*6,(currentindex+1)*6));
+  }, [data,currentindex])
+  
+
+
+  function getFormattedDate() {
+    const today = new Date();
+
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = today.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
+  useEffect(() => {
+    if (data.length) {
+      settoday(
+        data.reduce((acc, element) => {
+          return (
+            acc +
+            (element[3] === getFormattedDate() && element[8] === "order-placed")
+          );
+        }, 0)
+      );
+      setpickup(
+        data.reduce((acc, element) => {
+          return (
+            acc + (element[3] === getFormattedDate() && element[8] === "picked")
+          );
+        }, 0)
+      );
+      setdrop(
+        data.reduce((acc, element) => {
+          return (
+            acc +
+            (element[3] === getFormattedDate() && element[8] === "delivered")
+          );
+        }, 0)
+      );
+    }
+  }, [copydata]);
+
   return (
     <>
-      <Navbar />
-      <AdminNavbar/>
+      <AdminNavbar2/>
+      <AdminNavbar />
 
       <p className="dash-heading">Dashboard</p>
 
@@ -24,8 +109,9 @@ const AdminDashboard = () => {
             <input
               className="form-control-searchbar  me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Enter Customer Name"
               aria-label="Search"
+              onChange={(e)=>setsearchValue(e.target.value)}
             />
             <div className="btnn-container">
               <button className="search-btn" style={{ padding: "0px 0px" }}>
@@ -52,111 +138,138 @@ const AdminDashboard = () => {
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button className="orderbtn">ORDERS</button>
-        <button className="responsebtn">RESPONSES</button>
+        <button className="orderbtn" style={{backgroundColor:(display)?"#4f89fc":"white",color:(display)?"white":"#4f89fc"}} onClick={showtable}>
+          ORDERS
+        </button>
+        <button className="responsebtn" style={{backgroundColor:(!display)?"#4f89fc":"white",color:(!display)?"white":"#4f89fc"}} onClick={()=>setdisplay(0)}>RESPONSES</button>
       </div>
-
-      <div className="cards" style={{ display: "flex" }}>
-        <div className="card">
-          <div className="card-body">
-            <p className="card-title prices">220</p>
-            <p className="card-subtitle mb-2 today-order">Today's Orders</p>
-          </div>
-          <div className="card-msg">
-            <svg
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      {(display)?
+        <>
+        <div className="cards" style={{ display: "flex" }}>
+          <div
+            className="card"
+            name="order-placed"
+            onClick={() => handleChange("order-placed")}
+          >
+            <div
+              className="card-body"
+              onClick={() => handleChange("order-placed")}
             >
-              <rect
+              <p className="card-title prices">{today}</p>
+              <p
+                className="card-subtitle mb-2 today-order"
+                onClick={() => handleChange("order-placed")}
+              >
+                Today's Orders
+              </p>
+            </div>
+            <div
+              className="card-msg"
+              onClick={() => handleChange("order-placed")}
+            >
+              <svg
                 width="64"
                 height="64"
-                rx="32"
-                fill="#F2994A"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
-                fill="#F39C12"
-              />
-            </svg>
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  width="64"
+                  height="64"
+                  rx="32"
+                  fill="#F2994A"
+                  fill-opacity="0.2"
+                />
+                <path
+                  d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
+                  fill="#F39C12"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="card">
-          <div className="card-body">
-            <p className="card-title prices">100</p>
-            <p className="card-subtitle mb-2 today-order">Today's Pickup</p>
-          </div>
-          <div className="card-msg">
-            <svg
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
+          <div
+            className="card"
+            name="picked"
+            onClick={() => handleChange("picked")}
+          >
+            <div className="card-body" onClick={() => handleChange("picked")}>
+              <p className="card-title prices">{pickup}</p>
+              <p
+                className="card-subtitle mb-2 today-order"
+                onClick={() => handleChange("picked")}
+              >
+                Today's Pickup
+              </p>
+            </div>
+            <div className="card-msg" onClick={() => handleChange("picked")}>
+              <svg
                 width="64"
                 height="64"
-                rx="32"
-                fill="#F2994A"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
-                fill="#F39C12"
-              />
-            </svg>
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  width="64"
+                  height="64"
+                  rx="32"
+                  fill="#F2994A"
+                  fill-opacity="0.2"
+                />
+                <path
+                  d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
+                  fill="#F39C12"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="card">
-          <div className="card-body">
-            <p className="card-title prices">120</p>
-            <p className="card-subtitle mb-2 today-order">Today's Drop Off</p>
-          </div>
-          <div className="card-msg">
-            <svg
-              width="64"
-              height="64"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
+          <div
+            className="card"
+            name="delivered"
+            onClick={() => handleChange("delivered")}
+          >
+            <div className="card-body" onClick={() => handleChange("delivered")}>
+              <p className="card-title prices">{drop}</p>
+              <p
+                className="card-subtitle mb-2 today-order"
+                onClick={() => handleChange("delivered")}
+              >
+                Today's Drop Off
+              </p>
+            </div>
+            <div className="card-msg" onClick={() => handleChange("delivered")}>
+              <svg
                 width="64"
                 height="64"
-                rx="32"
-                fill="#F2994A"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
-                fill="#F39C12"
-              />
-            </svg>
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  width="64"
+                  height="64"
+                  rx="32"
+                  fill="#F2994A"
+                  fill-opacity="0.2"
+                />
+                <path
+                  d="M44 17H20C18.35 17 17 18.35 17 20V47L23 41H44C45.65 41 47 39.65 47 38V20C47 18.35 45.65 17 44 17ZM44 38H21.8L20 39.8V20H44V38Z"
+                  fill="#F39C12"
+                />
+              </svg>
+            </div>
           </div>
         </div>
-
-
-
-
-
-
-      </div>
-
-      <Table/>
-
-      <div className="page">
-        <div class="pagination">
-        <Link to="#/">&laquo;</Link>
-        <Link to="#/">1</Link>
-        <Link to="#/">2</Link>
-        <Link to="#/">3</Link>
-        <Link to="#/">&raquo;</Link>
+  
+        <Table data={copydata2} setdata={setdata} />
+  
+        <div className="page">
+          <div class="pagination">{componentsArr}</div>
         </div>
-      </div>
+        </>:<Responsesadmin/>
+      }
+      
     </>
   );
 };

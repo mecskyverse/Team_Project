@@ -1,17 +1,25 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 export default function Tablerow(props) {
-  const [selectedValue, setSelectedValue] = useState(
-    "admin-dashboard-dropdown-status"
-  );
-
+  
+  
+  const [id, Order_No, Customer_Name, Date, Time, Service, Weight, Amount,status] =props.data;
+  const [selectedValue, setSelectedValue] = useState(status);
   const handleChange = (event) => {
     event.preventDefault();
+    const prevvalue = selectedValue;
     const newValue = event.target.value;
     setSelectedValue(newValue);
   };
+
+  useEffect(() => {
+    setSelectedValue(status);
+  }, [status])
   
-  const [id, Order_No, Customer_Name, Date, Time, Service, Weight, Amount] =props.data;
+
+  
+  // const [selectedValue, setSelectedValue] = useState(status);
   return (
     <tr>
       <th className="srid" scope="row">{id}</th>
@@ -24,9 +32,9 @@ export default function Tablerow(props) {
       <td className="td-style-maxi">{Amount}</td>
       <td>
         <select
-          value={selectedValue}
           onChange={handleChange}
           className={selectedValue}
+          value={selectedValue}
         >
           <option value="order-placed" className="order-placed">
             Order Placed
