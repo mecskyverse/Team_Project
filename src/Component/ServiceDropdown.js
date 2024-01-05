@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import Dropdown from 'rsuite/Dropdown';
 import 'rsuite/dist/rsuite.min.css';
 
-const ServiceDropdown = () => {
+const ServiceDropdown = ({handleChangeService}) => {
   const [selectedOptionServices, setSelectedOptionServices] = useState("");
 
   const handleSelectChangeServices = (eventKey, event) => {
     // Use eventKey to get the selected value
     setSelectedOptionServices(eventKey);
+    console.log(eventKey)
+    handleChangeService(eventKey)
   };
 
   return (

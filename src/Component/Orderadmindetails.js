@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState,useEffect} from 'react'
 import "../Orderadmindetail.css";
 import Starating from "./Starrating";
 import ColorSelector from './ColorSelector';
@@ -8,6 +8,26 @@ import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} 
 import AdminNavbar from './AdminNavbar';
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/order/6596c5d0ea212e8ac62a2a1a');
+        if (response.ok) {
+          const data = await response.json();
+          setOrders(data);
+          console.log('Order:', data);
+        } else {
+          console.error('Error fetching orders:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error.message);
+      }
+    };
+
+    fetchOrders();
+  }, [])
   return (
     <>
      <Navbar/>

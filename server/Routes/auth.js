@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken library
 const User = require("../Models/User.js");
+const { sendEmail } = require("../Middleware/sendEmail");
+const getOTPByEmail = require("../Controllers/OtpFetch.js");
 
 // Your secret key for signing JWTs
 const secretKey = "SAMPLE_SECRET_KEY";
@@ -42,7 +44,7 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
       // Find the user by email
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).select('-createdAt -updatedAt');
   
       // If user not found or password is incorrect, send an error response
       if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -53,12 +55,15 @@ router.post("/login", async (req, res) => {
       const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: "1d" });
   
       // Send the token and a success response
-      res.json({ token, message: "Login successful!" });
+      res.json({ token, message: "Login successful!" , user});
     } catch (error) {
       console.error("Login failed:", error.message);
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
 
-  
+
+router.post("/sendEmail", sendEmail);
+
+router.post("/verify" , getOTPByEmail)
 module.exports = router;
