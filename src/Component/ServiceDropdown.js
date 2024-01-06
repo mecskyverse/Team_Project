@@ -6,17 +6,17 @@ const ServiceDropdown = ({handleChangeService}) => {
   const [selectedOptionServices, setSelectedOptionServices] = useState("");
 
 
-
-  const [selectedItem, setSelectedItem] = useState('');
+  
   const [numberOfShoes, setNumberOfShoes] = useState(0);
 
-  const handleSelect = (eventKey) => {
-    setSelectedItem(eventKey);
-  };
+ 
 
   const handleInputChange = (e) => {
     setNumberOfShoes(e.target.value);
   };
+
+
+ 
 
 
 
@@ -75,11 +75,45 @@ const ServiceDropdown = ({handleChangeService}) => {
 
 
             #shoes-pair-input-id{
-              width:40px;
+              width:53px;
               height:30px;
 
             }
                
+
+            @media only screen and (max-width: 800px )   {
+              .rs-dropdown-item-submenu.rs-dropdown-item>.rs-dropdown-menu {
+                position: absolute;
+                top: -6px;
+                margin-left: -70px;
+                z-index:1;
+            }
+            }
+
+
+
+
+
+            @media only screen and (max-width: 800px )   {
+            .rs-dropdown-item.rs-dropdown-item-active{
+              margin-left: -90px;
+
+            }
+
+          }
+
+          @media only screen and (max-width: 372px )   {
+            rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn{
+              
+              overflow:scroll;
+
+            }
+
+          }
+
+
+          
+
             `
         }
       </style>
@@ -121,10 +155,11 @@ const ServiceDropdown = ({handleChangeService}) => {
         </Dropdown.Menu>
 
 
-        <Dropdown.Menu title="Shoes Washing">
-          <Dropdown.Item   eventKey="Shoes Washing (Pair Of Shoes)">Pair Of Shoes  <input type="number" id="shoes-pair-input-id"></input></Dropdown.Item>
-        
-        </Dropdown.Menu>
+        <Dropdown.Menu title="Shoes Washing" >
+      <Dropdown.Item eventKey={`Shoes Washing (Pair Of Shoes - ${numberOfShoes})`}>
+        Pair Of Shoes <input id="shoes-pair-input-id" type="number" value={numberOfShoes} onChange={handleInputChange} />
+      </Dropdown.Item>
+    </Dropdown.Menu>
 
         <Dropdown.Menu title="Blanket Washing">
           <Dropdown.Item   eventKey="Blanket Washing (Light Weight)">Light Weight</Dropdown.Item>
