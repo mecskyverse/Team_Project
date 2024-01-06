@@ -69,9 +69,9 @@ const Login = () => {
         <img src={loginimg} alt=""></img>
       </div>
 
-      <div className="loginform">
+      <div className="loginform px-4 px-lg-0">
         {/* logo */}
-      <div className="col-lg-6 col-md-6 col-sm-12 mx-auto text-center">
+      <div className="col-lg-6  col-md-6 col-sm-12 mx-auto text-center">
         <Link to="/">
           <div className="d-inline-block my-logo-container">
             <img className="my-logo-footer" alt="logo-img" src={logo} />
@@ -122,7 +122,7 @@ const Login = () => {
               </div>
             </label>
           </form>
-          <div className="tog_rem_forget">
+          <div className="tog_rem_forget ">
             <label style={{display:"unset"}} className="toggle-switch">
               <input
                 type="checkbox"
@@ -132,10 +132,10 @@ const Login = () => {
               <span className="slider"></span>
             </label>
             <h4>Remember me</h4>
-            <button type="button"> Forgot password?</button>
+            <button type="button frgt-btn mt-0"> Forgot password?</button>
           </div>
           <br />
-          <div className="signin_button">
+          <div className="signin_button font-weight-bold">
             <button type="button" onClick={handleSubmit}>Sign in</button>
           </div>
           <br />
@@ -148,7 +148,7 @@ const Login = () => {
           </div>
 
           <div className="last_para">
-            <p style={{marginBottom: "0px"}}>Dont have an account?</p>
+            <p style={{marginBottom: "0px"}}>Don't have an account?</p>
             <Link to="/signup"> <button type="button">Sign up now</button></Link>
            
           </div>

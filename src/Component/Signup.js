@@ -59,7 +59,7 @@ function SignUp() {
   return (
     <div className="LoginForm1">
       <div className="loginimg1">
-        <img src={image10} alt="" />
+        <img className="signup-img" src={image10} alt="" />
       </div>
 
       <div className="loginform1">
@@ -101,7 +101,7 @@ function SignUp() {
             <label style={{display:"unset"}}>
               <p>Phone number</p>
               <input
-                type="number"
+                type="tel"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
@@ -170,8 +170,8 @@ function SignUp() {
               <h4>Remember me</h4>
             </div>
             <br />
-            <div className="signin_button1">
-              <button type="submit">Sign Up</button>
+            <div className="signin_button1 font-weight-bold">
+              <button type="submit font-weight-bold">Sign Up</button>
             </div>
           </form>
         </div>
