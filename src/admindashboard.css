@@ -14,7 +14,10 @@
     box-shadow: 0px 4px 14px 0px #e5e5e5;
     /* box-shadow: 0px 4px 14px 0px #E5E5E5; */
   }
-  
+  /* .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+} */
   .td-style-maxi{
     color: #4D4D4D;
     /* color: red; */
@@ -390,7 +393,8 @@
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 8px 0 #f39d1270, 0 6px 20px 0 #f39d125b;
+    box-shadow: 0 4px 8px 0 #f39d122e, 0 6px 20px 0 #f39d1233;
+    padding-right: 23px;
   }
   .cards .card .card-body .prices {
     background: #303030;
@@ -408,7 +412,7 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.03em;
     text-align: left;
   
     /* color: beige;
@@ -584,6 +588,10 @@
       display: none;
     }
   }
+
+
+
+
   body {
     background: #FAFBFF;
   }
