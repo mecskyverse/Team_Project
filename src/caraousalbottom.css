@@ -13,6 +13,8 @@
   margin-bottom: 0%;
   box-sizing: border-box;
 }
+
+
 .BottomCaraousal h1{
   text-align: center;
   color: #D76D6D;
@@ -49,12 +51,42 @@
   border-radius: 40px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .BottomCaraousal .item img{
   height: 81%;
   width: 100%;
  transition: 0.3s ease-in;
+ border-radius: 40px;
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .BottomCaraousal .content{
     font-size: 1.5rem;
