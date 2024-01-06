@@ -23,7 +23,8 @@ const CaraousalBottom = () => {
     const breakPoints = [
         { width: 1, itemsToShow: 1},
         { width: 550, itemsToShow: 1 },
-        { width: 768, itemsToShow: 2},
+        { width: 800, itemsToShow: 2},
+      
         { width: 1200, itemsToShow: 3.1},
       ];
 
@@ -36,10 +37,30 @@ const CaraousalBottom = () => {
       // const handleNextClick = () => {
       //   carouselRef.current.slideNext();
       // };
+
+
+
   return (
+
+<div>
+    <style>
+{
+
+`
+.irYXhU:hover:enabled, .irYXhU:focus:enabled {
+  color: rgb(51, 51, 51);
+  background-color: rgb(103, 58, 183,0.1);
+  box-shadow: rgb(51, 51, 51) 0px 0px 2px 0px;
+}
+
+`
+
+
+}
+    </style>
     <div className="BottomCaraousal">
     <h1>Why Laugh n Laundry?</h1>
-    
+   
       <Carousal breakPoints={breakPoints}  isRTL={false}  showArrows={true} pagination={false}>
      
        <Item>
@@ -104,6 +125,8 @@ const CaraousalBottom = () => {
           </div>
           
           <div id="cont">
+
+   
           <p>Green Certified Detergent</p>
           </div>
          
@@ -127,7 +150,7 @@ const CaraousalBottom = () => {
           
         </div> */}
        {/* </Item> */}
-     
+      
       </Carousal>
       {/* <div className="carousel-buttons">
         <button className="carousel-button" onClick={handlePrevClick}>
@@ -137,6 +160,7 @@ const CaraousalBottom = () => {
           Next
         </button>
       </div> */}
+    </div>
     </div>
   )
 }

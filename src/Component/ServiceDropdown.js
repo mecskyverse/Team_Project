@@ -5,6 +5,21 @@ import 'rsuite/dist/rsuite.min.css';
 const ServiceDropdown = ({handleChangeService}) => {
   const [selectedOptionServices, setSelectedOptionServices] = useState("");
 
+
+
+  const [selectedItem, setSelectedItem] = useState('');
+  const [numberOfShoes, setNumberOfShoes] = useState(0);
+
+  const handleSelect = (eventKey) => {
+    setSelectedItem(eventKey);
+  };
+
+  const handleInputChange = (e) => {
+    setNumberOfShoes(e.target.value);
+  };
+
+
+
   const handleSelectChangeServices = (eventKey, event) => {
     // Use eventKey to get the selected value
     setSelectedOptionServices(eventKey);
@@ -30,6 +45,22 @@ const ServiceDropdown = ({handleChangeService}) => {
         {
 
             `
+
+            .rs-dropdown-toggle-caret {
+              -ms-flex-align: center;
+              align-items: center;
+              display: -ms-flexbox;
+              display: flex;
+              font-size: 12px;
+              height: 20px;
+              margin-left: 2px;
+              position: absolute;
+              right: 3px;
+              top: 8px;
+              margin-top: 8px;
+          }
+
+
             .rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
                 display: inline-block;
                 padding-right: 32px;
@@ -38,7 +69,18 @@ const ServiceDropdown = ({handleChangeService}) => {
                 width: 100%;
                 height:50px;
                 text-align: left;
-                background: white;`
+                background: white;
+                padding-left: 8px;
+            }
+
+
+            #shoes-pair-input-id{
+              width:40px;
+              height:30px;
+
+            }
+               
+            `
         }
       </style>
 
@@ -80,7 +122,7 @@ const ServiceDropdown = ({handleChangeService}) => {
 
 
         <Dropdown.Menu title="Shoes Washing">
-          <Dropdown.Item   eventKey="Shoes Washing (Pair Of Shoes)">Pair Of Shoes</Dropdown.Item>
+          <Dropdown.Item   eventKey="Shoes Washing (Pair Of Shoes)">Pair Of Shoes  <input type="number" id="shoes-pair-input-id"></input></Dropdown.Item>
         
         </Dropdown.Menu>
 
