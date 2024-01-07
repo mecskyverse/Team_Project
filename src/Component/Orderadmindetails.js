@@ -87,8 +87,8 @@ const handleStatusChange = (newStatus) => {
     <div className="container mt-5">
         <div className="row  mb-5">
             <h1 className='my-head ml-lg-0 ml-5'>Order Details</h1>
-    {/* price */}
-    <div className="col-xl-12 m-4  mt-4 col-lg-12 my-first-container">
+   {/* price */}
+<div className="col-xl-12 m-4  mt-4 col-lg-12 my-first-container">
   <div className="row ">
     <div className="col-lg-8 align-items-start col-md-4 col-sm-12">
       <ul className="mt-3 align-items-start text-start list-unstyled">
@@ -97,10 +97,11 @@ const handleStatusChange = (newStatus) => {
       </ul>
     </div>
     <div className="col-lg-4 col-md-8 col-sm-12 d-flex align-items-center justify-content-end">
-      <p className="my-price mt-2 mr-5 font-weight-bold">₹485.00</p>
+      <p className="my-price mt-2 mr-5 font-weight-bold">₹{totalAmount}</p>
     </div>
   </div>
-  </div>
+</div>
+
   </div>
   {/* timeline optional */}
   {/* <div className="row py-5 mt-5">
