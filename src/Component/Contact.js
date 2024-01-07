@@ -25,21 +25,29 @@ const Contact = () => {
         <div className="col-md-3 mb-5 text-start">
   <div className="d-flex flex-column align-items-center">
     <ul className="list-unstyled px-3 mb-0 text-center">
+      <Link className='text-decoration-none' target='blank' to='https://maps.app.goo.gl/UN4CCqPbg4dnBaz67'>
       <li className='mb-3'>
-        <img className="my-logo-contact mb-2" alt="" src={location} />
-        <p>Show Room no.14,15 Darpan Residency Chindsa Colony Khanpur, Kharar, 140301</p>
+        <img className="my-logo-contact mb-2 text-decoration-none" alt="" src={location} />
+        <p className='text-decoration-none text-dark'>Show Room no.14,15 Darpan Residency Chindsa Colony Khanpur, Kharar, 140301</p>
       </li>
+      </Link>
+      
       <hr />
-
-      <li className='mb-3'>
-        <img className="my-logo-contact mb-2" alt="" src={mail} />
-        <p>laughnlaundary@gmail.com</p>
+<Link className='text-decoration-none' target='blank' to='mailto:laughnlaundary@gmail.com'>
+<li className='mb-3'>
+        <img className="my-logo-contact text-decoration-none mb-2" alt="" src={mail} />
+        <p className='text-dark text-decoration-none'>laughnlaundary@gmail.com</p>
       </li>
+</Link>
+      
       <hr />
+      <Link className='text-decoration-none ' to='tel:+9177079-13579'>
       <li className='mb-3'>
-        <img className="my-logo-contact mb-2" alt="" src={phone} />
-        <p>77079-13579</p>
+        <img className="my-logo-contact text-decoration-none text-dark mb-2" alt="" src={phone} />
+        <p className='text-decoration-none text-dark'>77079-13579</p>
       </li>
+      </Link>
+      
     </ul>
   </div>
 </div>
@@ -143,8 +151,27 @@ const Contact = () => {
     
     </div>
   </section>
+
+
+
+  
   </div>
+ <div className='container-fluid p-0'>
+  <Link to='https://maps.app.goo.gl/UN4CCqPbg4dnBaz67'>
+  <div id="map-container-google-1" className="z-depth-1-half map-container" style={{ height: '400px' }}>
+ <iframe
+    width="600"
+    height="450"
+   
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14324.907342859346!2d76.5935137201742!3d30.723829101383275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391afbd7c5be547f%3A0xd0b6013c1e16a839!2sShow%20Room%20no.14%2C15%20Darpan%20Residency%20Chindsa%20Colony%20Khanpur%2C%20Kharar%2C%20140301!5e0!3m2!1sen!2sin!4v1641492096615!5m2!1sen!2sin"
+  ></iframe>
+</div>
+  </Link>
  
+
+ </div>
   {/*Section: Contact v.2*/}
   <Footer/>
 </>
