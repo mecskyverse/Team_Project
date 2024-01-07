@@ -32,34 +32,9 @@ border-radius: 10px;
   background-color: #E7A9A999;
 }
 .boujee-text {
-  --bg-size: 400%;
-  --color-one: #8ce5f1;
-  --color-two: hsl(169, 45%, 42%);
-  --color-three: hsl(181, 99%, 28%);
-  --color-four: rgba(114, 207, 219, 0.70);
-  /* font-size: clamp(3rem, 25vmin, 8rem); */
-  background: linear-gradient(90deg,
-          var(--color-one),
-          var(--color-two),
-          var(--color-three),
-          var(--color-four),
-          var(--color-one)) 0 0 / var(--bg-size) 100%;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: move-bg 10s infinite linear;
+  color: #45b9e3;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .boujee-text-1 {
-      animation: move-bg 10s linear infinite;
-  }
 
-  @keyframes move-bg {
-      to {
-          background-position: var(--bg-size) 0;
-      }
-  }
-}
 .img-smile{
   height: 30%;
   width: 80%;

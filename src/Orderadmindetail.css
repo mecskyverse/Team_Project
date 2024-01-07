@@ -20,7 +20,10 @@
 border: 1px solid var(--Gray-100, #E4E7E9);
 background: var(--Gray-00, #FFF);
 }
-
+.input-ad-wt{
+    border: 1px solid #E4E7E9;
+    border-radius: 8px;
+}
 /* optional timeline */
 /* .card-stepper {
     z-index: 0
