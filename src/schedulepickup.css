@@ -49,6 +49,7 @@
   width: 100%;
 padding-left: 3px;
   color: #666;
+  border: 0.5px solid var(--Foundation-Dark-Lighter, #b6b6b6);
 }
 
 .PickUpForm .content .toplogo {
