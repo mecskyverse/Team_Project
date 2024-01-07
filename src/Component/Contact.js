@@ -156,7 +156,7 @@ const Contact = () => {
 
   
   </div>
- <div className='container-fluid p-0'>
+ <div className='container-fluid mb-5 p-0'>
   <Link to='https://maps.app.goo.gl/UN4CCqPbg4dnBaz67'>
   <div id="map-container-google-1" className="z-depth-1-half map-container" style={{ height: '400px' }}>
  <iframe
