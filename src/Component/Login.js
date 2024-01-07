@@ -64,9 +64,9 @@ const Login = () => {
   };
 
   return (
-    <div className="LoginForm">
-      <div className="loginimg">
-        <img src={loginimg} alt=""></img>
+    <div className="LoginForm py-lg-0 py-4">
+      <div className="loginimg mt-lg-0">
+        <img className="mt-4 mt-lg-0" src={loginimg} alt=""></img>
       </div>
 
       <div className="loginform px-4 px-lg-0">

@@ -6,9 +6,14 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
 import AdminNavbar from './AdminNavbar';
+
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
   const [orders, setOrders] = useState([]);
+  const [weight, setWeight] = useState(0);
+  const [items, setItems] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [selectedStatus, setSelectedStatus] = useState('Order Placed'); // Default status
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -28,6 +33,20 @@ const Orderadmindetails = () => {
 
     fetchOrders();
   }, [])
+  // calculate amount
+  useEffect(() => {
+    // Recalculate total amount whenever weight or items change
+    const result = weight * items;
+    setTotalAmount(result);
+  }, [weight, items]);
+// timeline
+
+
+const handleStatusChange = (status) => {
+  setSelectedStatus(status);
+};
+
+  
   return (
     <>
      <Navbar/>
@@ -36,8 +55,8 @@ const Orderadmindetails = () => {
         <div className="row  mb-5">
             <h1 className='my-head ml-lg-0 ml-5'>Order Details</h1>
     {/* price */}
-    <div className="col-xl-12 mt-4 col-lg-12 my-first-container">
-  <div className="row">
+    <div className="col-xl-12 m-4  mt-4 col-lg-12 my-first-container">
+  <div className="row ">
     <div className="col-lg-8 align-items-start col-md-4 col-sm-12">
       <ul className="mt-3 align-items-start text-start list-unstyled">
         <li className="text-uppercase text-start py-1">#408-254656-6512</li>
@@ -129,7 +148,25 @@ const Orderadmindetails = () => {
   </div> */}
   </div>
 {/* timeline */}
-<div className="container padding-bottom-3x mb-1">
+<div className="steps mb-5 px-5 d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+        {['Order Placed', 'Pickup', 'Processing', 'Out for Delivery', 'Delivered'].map((status, index) => (
+          <div className={`step ${status === selectedStatus ? 'completed' : ''}`} key={index}>
+            <div className="step-icon-wrap">
+              <div className="step-icon text-white">
+                <FaCheck />
+              </div>
+            </div>
+            <div>
+              <p className="h6 my-icons mt-3 mb-1">{getIconForStatus(status)}</p>
+              <p className={`h6 mt-2 mb-0 mb-lg-0 ${status === selectedStatus ? 'text-dark font-weight-bold' : 'text-muted'}`}>
+                {status}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+{/* <div className="container padding-bottom-3x mb-1">
     <div className="card-body">
       <div className="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
         <div className="step completed">
@@ -139,7 +176,7 @@ const Orderadmindetails = () => {
             </div>
           </div>
           <div >
-          <p className="h6 my-icons active mt-3 mb-1"><FaBook /></p>
+          <p className="h6 my-icons  mt-3 mb-1"><FaBook /></p>
             <p className="h6 mt-2 mb-0 mb-lg-0">Order Placed</p>
           </div>
         </div>
@@ -190,7 +227,7 @@ const Orderadmindetails = () => {
       </div>
     </div>
 
-</div>
+</div> */}
 {/* customer details and pickup details */}
 <div className='container'>
   <div className='row py-lg-0 justify-content-between  px-5  py-3'>
@@ -199,108 +236,113 @@ const Orderadmindetails = () => {
   <div className='px-lg-2 mt-3'>
     <h5 className=" mb-3">Customer Details</h5>
     <div className="row">
-      <div className="col-md-4">
+      <div className="col-md-12">
         <ul className='list-unstyled'>
-          <li className='font-weight-bold py-2'>
-            Name:
+        <li className='font-weight-bold py-2'>
+          Name: <span className='ml-2 text-muted font-weight-light'> Rohan Sharma</span> 
+          </li>
+        <li className='font-weight-bold py-2'>
+          Phone: <span className='ml-2 text-muted font-weight-light'> +91- 7245-124632</span> 
           </li>
           <li className='font-weight-bold py-2'>
-            Phone:
+          Email: <span className='ml-2 text-muted font-weight-light'> rohan.sharma@gmail.com</span> 
           </li>
           <li className='font-weight-bold py-2'>
-            Email:
+          Service: <span className='ml-2 text-muted font-weight-light'> Normal Washing (Wash & Fold)</span> 
           </li>
-          <li className='font-weight-bold py-2'>
-            Service:
-          </li>
+         
         </ul>
       </div>
-      <div className="col-md-8">
-        <ul className='list-unstyled'>
-          <li className='text-muted py-2'>
-          Rohan Sharma
-          </li>
-          <li className='text-muted py-2'>
-          +91- 7245-124632
-          </li>
-          <li className='text-muted py-2'>
-          rohan.sharma@gmail.com
-          </li>
-          <li className='text-muted py-2'>
-          Normal Washing (Wash & Fold)
-          </li>
-        </ul>
-      </div>
+ 
     </div>
   </div>
 </div>
     {/* Pickup Details Partition */}
-    <div className='col-lg-5 container-pick-deatils col-md-6 col-sm-12 col-12'>
+    <div className='col-lg-5 mt-lg-0 mt-3 container-pick-deatils col-md-6 col-sm-12 col-12'>
   <div className='px-lg-2 mt-3'>
     <h5 className=" mb-3">PickUp Details</h5>
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-12">
         <ul className='list-unstyled'>
+         
           <li className='text-uppercase font-weight-bold pick-text py-2'>
-          Pickup Date:
+          Pickup Date: <span className='ml-2 text-dark font-weight-light'> 03 Oct 2023</span> 
           </li>
           <li className='text-uppercase font-weight-bold pick-text py-2'>
-          Pickup Time:
+          Pickup Time: <span className='ml-2 text-muted font-weight-light'>01:23 PM</span> 
           </li>
+          
         </ul>
       </div>
-      <div className="col-md-6">
-        <ul className='list-unstyled'>
-          <li className='text-uppercase py-2'>
-          03 Oct 2023
-          </li>
-          <li className='text-uppercase py-2'>
-          01:23 PM
-          </li>
-        
-        </ul>
-      </div>
+    
     </div>
   </div>
 </div>
 
   </div>
 </div>
-<div className='container mt-5'>
+<div className='container mt-lg-5'>
   <div className='row py-lg-0 justify-content-between  px-5  py-3'>
     {/* order weight and price */}
     <div className='col-lg-6 container-customer-deatils  col-md-6 col-sm-12 col-12'>
   <div className='px-lg-2 mt-3'>
    
     <div className="row">
-      <div className="col-md-4">
+      <div className="col-md-12">
         <ul className='list-unstyled'>
           <li className=' py-2'>
-          Total Weight:
+          Total Weight: <span className='ml-5 mr-2'>
+         
+              <input className='input-ad-wt px-2 py-1'
+              id='myweight'
+                type="number"
+                name="weight"
+                placeholder="Enter Weight"
+                onChange={(e) => setWeight(e.target.value)}
+              />
+           
+          </span>
+          KG
           </li>
           <li className=' py-2'>
-          Total Items:
+          Total Items: <span className='ml-5 px-2 mr-2'>
+          <label  style={{display:"unset"}}>
+              <input className='input-ad-wt px-2 py-1'
+              id='myitems'
+                type="number"
+                name="items"
+                placeholder=" Number of Items"
+                onChange={(e) => setItems(e.target.value)}
+              />
+            </label>
+          </span>
+        
           </li>
-          <li className='py-2'>
-          Total Amount:
+          <li className=' py-2' >
+          Total Amount:  ₹<span className='ml-5 text-success font-weight-bold' id='result'> {totalAmount}
+          </span>
+          
           </li>
+         
           
         </ul>
       </div>
-      <div className="col-md-8">
-        <ul className='list-unstyled'>
-          <li className='text-success font-weight-bold py-2'>
-          8.00 <span className='text-muted'>KG</span>
-          </li>
-          <li className='text-success font-weight-bold py-2'>
-          33
-          </li>
-          <li className='text-success font-weight-bold py-2'>
-          ₹485.00
-          </li>
-         
-        </ul>
-      </div>
+      {/* <div className='ml-5 col-5 mb-2 text-center'>
+                <button
+                  type="button"
+                  onClick={calculateTotalAmount}
+                  style={{
+                    backgroundColor: '#FFF',
+                    color: '#FA8232',
+                    border: '1px solid #FA8232',
+                    borderRadius: '43px',
+                    padding: '8px 16px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Save
+                </button>
+              </div> */}
       <div className='ml-5 col-5 mb-2 text-center'>
       <button
       type="submit"
@@ -321,12 +363,12 @@ const Orderadmindetails = () => {
   </div>
 </div>
     {/* Change status */}
-    <div className='col-lg-5 container-pick-deatils col-md-6 col-sm-12 col-12'>
+    <div className='col-lg-5 mt-lg-0 mt-3 py-3 container-pick-deatils col-md-6 col-sm-12 col-12'>
   <div className='px-lg-2 mt-3'>
     <h5 className=" mb-3">Change Status</h5>
     <div className="row ml-2">
         <div>
-        <ColorSelector/>
+        <ColorSelector onStatusChange={handleStatusChange}/>
         </div>
         <div className='ml-4'>
         <button
@@ -365,28 +407,20 @@ const Orderadmindetails = () => {
         <p className='text-muted ml-3'>
         125, Road No. 13/x, Morden valley, Kharar, Punjab, India.
         </p>
-      <div className="col-md-4">
+      <div className="col-md-12">
         <ul className='list-unstyled'>
-          <li className=' py-2'>
-          Total Weight:
+          
+          <li className=' font-weight-bold  py-2'>
+          Phone number: <span className='ml-2 text-muted font-weight-light'>+91 32453 43445</span> 
           </li>
-          <li className=' py-2'>
-          Total Items:
-          </li>  
+          <li className=' font-weight-bold  py-2'>
+          Email: <span className='ml-2 text-muted font-weight-light'>xyz@gmail.com</span> 
+          </li>
+          
+        
         </ul>
       </div>
-      <div className="col-md-8">
-        <ul className='list-unstyled'>
-        <li className='text-muted py-2'>
-          Rohan Sharma
-          </li>
-          <li className='text-muted py-2'>
-          +91- 7245-124632
-          </li>
-         
-         
-        </ul>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -448,7 +482,27 @@ const Orderadmindetails = () => {
 
 <Footer/>
     </>
+    
   )
+  // Helper function to get the corresponding icon for each status
+  function getIconForStatus(status) {
+    switch (status) {
+      case 'Order Placed':
+        return <FaBook />;
+      case 'Pickup':
+        return <FaCube />;
+      case 'Processing':
+        return <FaArrowCircleUp />;
+      case 'Out for Delivery':
+        return <FaTruck />;
+      case 'Delivered':
+        return <FaHandshake />;
+      default:
+        return null;
+    }
+  }
+  
 }
+
 
 export default Orderadmindetails

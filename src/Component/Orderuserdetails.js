@@ -15,11 +15,60 @@ const Orderuserdetails = () => {
 <div className="container-fluid padding-bottom-3x py-5 mb-1">
   <h2 className='text-center'>Order Details</h2>
   <div className='row mt-lg-5'>
-    <div className='col-lg-4 mt-lg-5'>
+    <div className='col-lg-3 mt-5 mt-lg-5'>
 
   {/* Customer Details Partition */}
-  <div className='px-lg-1 mt-lg-0 mt-5 ml-5'>
-    <div className="row">
+  <div className='px-lg-1 ml-lg-5 ml-4'>
+  <div className='row  py-lg-0 '>
+      <div className='col-lg-12   col-md-12 col-12'>
+      <ul className='  px-0 list-unstyled'>
+      <li className='font-weight-bold py-2'>
+          Order No.: <span className='ml-3 text-muted font-weight-light'> 408-254656-6512</span> 
+          </li>
+          <li className='font-weight-bold py-2'>
+          Order Placed: <span className='ml-3 text-muted font-weight-light'> 03\12\23 - 01:23 PM</span> 
+          </li>
+          <li className='font-weight-bold py-2'>
+          Service: <span className='ml-3 text-muted font-weight-light'> Normal Washing (Wash & Fold)</span> 
+          </li>
+          <li className='font-weight-bold py-2'>
+          Total Item: <span className='ml-3 text-muted font-weight-light'> 17</span> 
+          </li>
+          <li className='font-weight-bold py-2'>
+          Total Weight: <span className='ml-3 text-muted font-weight-light'> 33KG</span> 
+          </li>
+          <li className='font-weight-bold py-2'>
+          Total Amount: <span className='ml-3 text-muted font-weight-light'> ₹39.00</span> 
+          </li>
+        </ul>
+      </div>
+      {/* <div className='col-lg-6 px-0 col-md-6 col-6'>
+      <ul className=' mt-3 text-danger px-0 list-unstyled'>
+            <li className='text-muted py-2'>
+          408-254656-6512
+          </li>
+          <li className='text-muted py-2'>
+          03\12\23  -  01:23 PM
+          </li>
+          <li className='text-muted py-2'>
+          Normal Washing (Wash & Fold)
+          </li>
+          <li className='text-muted py-2'>
+          17
+          </li>
+          <li className='text-muted py-2'>
+          33KG
+          </li>
+          <li className='text-muted py-2'>
+          ₹39.00
+          </li>
+            
+            
+        </ul>
+      </div> */}
+     
+    </div>
+    {/* <div className="row">
       <div className="col-md-4 col-lg-4 col-sm-5">
         <ul className='list-unstyled'>
           <li className='font-weight-bold py-2'>
@@ -64,38 +113,28 @@ const Orderuserdetails = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </div> */}
   </div>
 {/* shipping details */}
-  <div className='px-lg-1 mt-5 ml-5'>
+  <div className='px-lg-1 ml-lg-5 mt-5 ml-4'>
   <h5 className=" mb-3">Shipping Address</h5>
   <p className='font-weight-bold'>Rohan Sharma</p>
         <p className='text-muted '>125, Road No. 13/x, Morden valley, Kharar, Punjab, India.
         </p>
     <div className="row">
         
-      <div className="col-md-2">
+      <div className="col-md-12">
         <ul className='list-unstyled'>
-          <li className=' py-2'>
-          Phone:
+          <li className='font-weight-bold py-2'>
+          Phone: <span className='ml-3 text-muted font-weight-light'> +91- 7245-124632</span> 
           </li>
-          <li className=' py-2'>
-          Email:
-          </li>  
-        </ul>
-      </div>
-      <div className="col-md-6 ">
-        <ul className='list-unstyled'>
-        <li className='text-muted  py-2'>
-        +91- 7245-124632
+          <li className='font-weight-bold py-2'>
+          Email: <span className='ml-3 text-muted font-weight-light'> xyz@gmail.com</span> 
           </li>
-          <li className='text-muted py-2'>
-          xyz@gmail.com
-          </li>
-         
          
         </ul>
       </div>
+    
     </div>
   </div>
 
@@ -115,8 +154,8 @@ const Orderuserdetails = () => {
   </div>
 </div>
 <div className='container mt-3 mb-5'>
-  <h3 className='px-3 ml-3'>Feedback</h3>
-<div className='row py-lg-3 mt-2 justify-content-start   px-5  py-3'>
+  <h3 className='px-3 ml-lg-3'>Feedback</h3>
+<div className='row py-lg-3 mt-2 justify-content-start   px-lg-5  py-3'>
       <textarea 
       className='my-feedback-area p-3'
         id='feedback'
@@ -151,8 +190,8 @@ const Orderuserdetails = () => {
  
 
     </div>
-    <div className='col-lg-2'>
-    <img className="w-100  mt-2 d-inline-block my-card-main-img" alt="" src={deliveryman} />
+    <div className='col-lg-3'>
+    <img className="w-100  mt-4 d-inline-block my-card-main-img" alt="" src={deliveryman} />
     </div>
     {/* timeline */}
     <div className='col-lg-3  col-sm-12'>
@@ -165,35 +204,35 @@ const Orderuserdetails = () => {
     <li class="timeline-inverted">
       <div class="timeline-badge">1</div>
       <div class="timeline-panel">
-          <p className="h6 mt-4 font-weight-bold text-success mb-0 mb-lg-0">Order Placed</p>
+          <p className="h6 mt-4 font-weight-bold  mb-0 mb-lg-0">Order Placed</p>
           <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
       </div>
     </li>
     <li class="timeline-inverted">
       <div class="timeline-badge">2</div>
       <div class="timeline-panel">
-      <p className="h6 mt-4 font-weight-bold text-success mb-0 mb-lg-0">Picked</p>
+      <p className="h6 mt-4 font-weight-bold  mb-0 mb-lg-0">Picked</p>
           <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
       </div>
     </li>
     <li class="timeline-inverted">
       <div class="timeline-badge">3</div>
       <div class="timeline-panel">
-      <p className="h6 mt-4   mb-0 mb-lg-0">Processing</p>
+      <p className="h6 mt-4  font-weight-bold mb-0 mb-lg-0">Processing</p>
           <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
       </div>
     </li>
     <li class="timeline-inverted">
       <div class="timeline-badge">4</div>
       <div class="timeline-panel">
-      <p className="h6 mt-4 mb-0 mb-lg-0">Out for Delivery</p>
+      <p className="h6 mt-4 font-weight-bold mb-0 mb-lg-0">Out for Delivery</p>
           <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
       </div>
     </li>
     <li class="timeline-inverted">
       <div class="timeline-badge">5</div>
       <div class="timeline-panel">
-      <p className="h6 mt-4   mb-0 mb-lg-0">Delivered</p>
+      <p className="h6 mt-4  font-weight-bold mb-0 mb-lg-0">Delivered</p>
           <p className='date-time text-muted' >21/12/23 - 01:00 PM</p>
       </div>
     </li>

@@ -17,11 +17,11 @@ const Orderitem = () => {
       <div className='col-lg-3 col-md-4 col-6'>
         <ul className='px-lg-2 mt-3 px-0 list-unstyled'>
           <li className='text-uppercase py-1'>total</li>
-          <li className=' py-1'>$485.00</li>
+          <li className=' py-1'>₹485.00</li>
         </ul>
       </div>
       <div className='col-9  col-lg-3 d-flex justify-content-end mt-3'>
-        <Link to='/pickup'>
+        <Link to='/userorder'>
           <button className="btn  border btn-overlay">View order details</button>
         </Link>
       </div>

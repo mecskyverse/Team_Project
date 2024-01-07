@@ -28,7 +28,7 @@ const Home = () => {
               {/* <img className="img-smile mt-4 " src="images/smile.png" alt="" /> */}
               <img className="img-smile  py-0" alt="" src={heroimg} />
               <p className="my-main-heading text-center py-0 mt-0">
-                Every Spin Tells A <span className="boujee-text">story</span> 
+                Every Spin Tells a <span className="boujee-text">Story</span> 
               </p>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
@@ -106,8 +106,10 @@ const Home = () => {
             <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="mt-5 py-lg-5 w-75 m-5">
                 {/* <h1 className="font-weight-bold">Laugh n Laundry</h1> */}
-                <p className=" my-para-section5 mt-lg-2">
-                Welcome to Laugh n Laundry, where pristine cleanliness meets unparalleled convenience! We take pride in being your go-to destination for top-notch laundry services, offering a range of solutions tailored to your needs. Whether it's the everyday essentials with our wash and fold service, the deluxe treatment with our premium wash and fold option, meticulous dry cleaning, or the perfect press with our ironing services, we've got you covered. Our commitment extends beyond immaculate laundry; we aim to deliver excellence at pocket-friendly rates, ensuring your garments are pampered without breaking the bank. Experience laundry care like never before with Laugh n Laundry!
+                <p className=" my-para-section5  mt-lg-2">
+                Welcome to Laugh n' Laundry – Your Trusted Laundry Partner!
+<br/> <br/>
+At Laugh n' Laundry, we're more than just a laundry service; we're your go-to destination for quality and convenience. With a commitment to exceptional garment care, modern facilities, and a touch of humor, we're here to make your laundry experience stress-free. Whether you prefer our self-service laundromat, trust us with delicate dry cleaning, or enjoy the ease of pickup and delivery, Laugh n' Laundry is dedicated to making your clothes shine and your day a little brighter. Join us on a laundry journey where smiles meet freshness – Laugh n' Laundry, your laundry, our joy! 🧺✨
                 </p>
               </div>
             </div>
