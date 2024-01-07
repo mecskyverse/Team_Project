@@ -208,3 +208,17 @@ line-height: 100%; /* 35px */
 
 }
 }
+
+
+@media screen and (max-width: 403px) {
+
+
+  .BottomCaraousal .item img {
+    height: 81%;
+    width: 100%;
+    transition: 0.3s ease-in;
+    border-radius: 40px;
+    margin-left: 0px;
+    padding: 3px;
+  }
+  }
