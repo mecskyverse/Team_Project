@@ -7,13 +7,17 @@ import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
 import AdminNavbar from './AdminNavbar';
 
+
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
   const [orders, setOrders] = useState([]);
   const [weight, setWeight] = useState(0);
   const [items, setItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [selectedStatus, setSelectedStatus] = useState('Order Placed'); // Default status
+// 
+const [selectedStatus, setSelectedStatus] = useState(''); // Default status
+const [timelineData, setTimelineData] = useState([]);
+const [completedIndex, setCompletedIndex] = useState(-1);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -39,14 +43,43 @@ const Orderadmindetails = () => {
     const result = weight * items;
     setTotalAmount(result);
   }, [weight, items]);
+
+
+
+
 // timeline
+useEffect(() => {
+  // Initialize timeline data
+  const initialTimelineData = [
+    { status: 'Order Placed', icon: <FaBook /> },
+    { status: 'Pickup', icon: <FaCube /> },
+    { status: 'Processing', icon: <FaArrowCircleUp /> },
+    { status: 'Out for Delivery', icon: <FaTruck /> },
+    { status: 'Delivered', icon: <FaHandshake /> },
+  ];
+  setTimelineData(initialTimelineData);
+}, []);
 
 
-const handleStatusChange = (status) => {
-  setSelectedStatus(status);
+const handleStatusChange = (newStatus) => {
+  // Update the selectedStatus when the dropdown value changes
+  setSelectedStatus(newStatus);
+
+  // Find the index of the selected status in the timeline
+  const selectedIndex = timelineData.findIndex((item) => item.status === newStatus);
+
+  // Update the completed index
+  setCompletedIndex(selectedIndex);
 };
 
-  
+
+// const handleStatusChange = (newStatus) => {
+//   // Update the selectedStatus when the dropdown value changes
+//   setSelectedStatus(newStatus);
+// };
+
+
+
   return (
     <>
      <Navbar/>
@@ -149,85 +182,24 @@ const handleStatusChange = (status) => {
   </div>
 {/* timeline */}
 <div className="steps mb-5 px-5 d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-        {['Order Placed', 'Pickup', 'Processing', 'Out for Delivery', 'Delivered'].map((status, index) => (
-          <div className={`step ${status === selectedStatus ? 'completed' : ''}`} key={index}>
+        {timelineData.map((item, index) => (
+          <div className={`step ${index <= completedIndex ? 'completed' : ''}`} key={index}>
             <div className="step-icon-wrap">
               <div className="step-icon text-white">
                 <FaCheck />
               </div>
             </div>
             <div>
-              <p className="h6 my-icons mt-3 mb-1">{getIconForStatus(status)}</p>
-              <p className={`h6 mt-2 mb-0 mb-lg-0 ${status === selectedStatus ? 'text-dark font-weight-bold' : 'text-muted'}`}>
-                {status}
+              <p className="h6 my-icons mt-3 mb-1">{item.icon}</p>
+              <p className={`h6 mt-2 mb-0 mb-lg-0 ${index === completedIndex ? 'text-dark font-weight-bold' : 'text-muted'}`}>
+                {item.status}
               </p>
             </div>
           </div>
         ))}
       </div>
-      
-{/* <div className="container padding-bottom-3x mb-1">
-    <div className="card-body">
-      <div className="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-        <div className="step completed">
-          <div className="step-icon-wrap">
-          <div className="step-icon text-white">
-             <FaCheck/>
-            </div>
-          </div>
-          <div >
-          <p className="h6 my-icons  mt-3 mb-1"><FaBook /></p>
-            <p className="h6 mt-2 mb-0 mb-lg-0">Order Placed</p>
-          </div>
-        </div>
-        <div className="step completed">
-          <div className="step-icon-wrap">
-          <div className="step-icon text-white">
-             <FaCheck/>
-            </div>
-          </div>
-          <div >
-          <p className="h6 my-icons mt-3 mb-1"><FaCube /></p>
-            <p className="h6 mt-2 mb-0 mb-lg-0">Pickup</p>
-          </div>
-        </div>
-        <div className="step completed">
-          <div className="step-icon-wrap">
-          <div className="step-icon text-white">
-             <FaCheck/>
-            </div>
-          </div>
-          <div className='text-muted'>
-          <p className="h6 my-icons mt-3 mb-1"><FaArrowCircleUp /></p>
-            <p className="h6 mt-2 mb-0 mb-lg-0">Processing</p>
-          </div>
-        </div>
-        <div className="step">
-          <div className="step-icon-wrap">
-          <div className="step-icon text-white">
-             <FaCheck/>
-            </div>
-          </div>
-          <div className='text-muted'>
-          <p className="h6 my-icons mt-3 mb-1"><FaTruck /></p>
-            <p className="h6 mt-2  mb-0 mb-lg-0">Out for Delivery</p>
-          </div>
-        </div>
-        <div className="step">
-          <div className="step-icon-wrap">
-            <div className="step-icon text-white">
-             <FaCheck/>
-            </div>
-          </div>
-          <div className='text-muted'>
-          <p className="h6 my-icons mt-3 mb-1"><FaHandshake /></p>
-            <p className="h6 mt-2 mb-0 mb-lg-0">Delivered</p>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
-</div> */}
 {/* customer details and pickup details */}
 <div className='container'>
   <div className='row py-lg-0 justify-content-between  px-5  py-3'>
@@ -283,54 +255,101 @@ const handleStatusChange = (status) => {
 </div>
 <div className='container mt-lg-5'>
   <div className='row py-lg-0 justify-content-between  px-5  py-3'>
-    {/* order weight and price */}
-    <div className='col-lg-6 container-customer-deatils  col-md-6 col-sm-12 col-12'>
+  
+{/* order weight and price */}
+<div className='col-lg-6 container-customer-deatils  col-md-6 col-sm-12 col-12'>
   <div className='px-lg-2 mt-3'>
-   
     <div className="row">
       <div className="col-md-12">
         <ul className='list-unstyled'>
           <li className=' py-2'>
-          Total Weight: <span className='ml-5 mr-2'>
-         
+            Total Weight: <span className='ml-5 mr-2'>
               <input className='input-ad-wt px-2 py-1'
-              id='myweight'
+                id='myweight'
                 type="number"
                 name="weight"
                 placeholder="Enter Weight"
                 onChange={(e) => setWeight(e.target.value)}
               />
-           
-          </span>
-          KG
+            </span>
+            KG
           </li>
           <li className=' py-2'>
-          Total Items: <span className='ml-5 px-2 mr-2'>
-          <label  style={{display:"unset"}}>
-              <input className='input-ad-wt px-2 py-1'
-              id='myitems'
+            Total Items: <span className='ml-5 px-2 mr-2'>
+              <label  style={{display:"unset"}}>
+                <input className='input-ad-wt px-2 py-1'
+                  id='myitems'
+                  type="number"
+                  name="items"
+                  placeholder="Number of Items"
+                  onChange={(e) => setItems(e.target.value)}
+                />
+              </label>
+            </span>
+          </li>
+          <li className=' py-2'>
+            Total Amount: ₹<span className='ml-5' id='result'>
+              <input
+                className='input-ad-wt px-2 py-1 text-success font-weight-bold'
                 type="number"
-                name="items"
-                placeholder=" Number of Items"
-                onChange={(e) => setItems(e.target.value)}
+                name="totalAmount"
+                id="totalAmount"
+                value={totalAmount} // Display the initial value
+                onChange={(e) => setTotalAmount(e.target.value)} // Update state on change
               />
-            </label>
-          </span>
-        
+            </span>
           </li>
-          <li className=' py-2' >
-          Total Amount:  ₹<span className='ml-5 text-success font-weight-bold' id='result'> {totalAmount}
-          </span>
-          
-          </li>
-         
-          
         </ul>
       </div>
-      {/* <div className='ml-5 col-5 mb-2 text-center'>
+      <div className='ml-5 col-5 mb-2 text-center'>
+        <button
+          type="submit"
+          style={{
+            backgroundColor: '#FFF',
+            color: '#FA8232',
+            border: '1px solid #FA8232',
+            borderRadius: '43px',
+            padding: '8px 16px',
+            cursor: 'pointer',
+          }}
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {/* Change status */}
+    <div className='col-lg-5 mt-lg-0 mt-3 py-3 container-pick-deatils col-md-6 col-sm-12 col-12'>
+          <div className='px-lg-2 mt-3'>
+            <h5 className=" mb-3">Change Status</h5>
+            <div className="row ml-2">
+              <div>
+                {/* Integrate ColorSelector component here */}
+                <select
+                  id="colorSelector"
+                  onChange={(e) => handleStatusChange(e.target.value)}
+                  value={selectedStatus}
+                  style={{
+                    backgroundColor: '#FFF',
+                    color: '#FA8232',
+                    border: '1px solid #FA8232',
+                    borderRadius: '43px',
+                    padding: '8px 16px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {['Order Placed', 'Pickup', 'Processing', 'Out for Delivery', 'Delivered'].map((status, index) => (
+                    <option key={index} value={status}>
+                      {status}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className='ml-4'>
                 <button
-                  type="button"
-                  onClick={calculateTotalAmount}
+                  type="submit"
                   style={{
                     backgroundColor: '#FFF',
                     color: '#FA8232',
@@ -342,56 +361,11 @@ const handleStatusChange = (status) => {
                 >
                   Save
                 </button>
-              </div> */}
-      <div className='ml-5 col-5 mb-2 text-center'>
-      <button
-      type="submit"
-    
-      style={{
-        backgroundColor: '#FFF',
-        color: '#FA8232', 
-        border: '1px solid #FA8232', 
-        borderRadius: '43px', 
-        padding: '8px 16px', 
-        cursor: 'pointer', 
-      }}
-    >
-      Save
-    </button>
-      </div>
+              </div>
+            </div>
+          </div>
     </div>
-  </div>
-</div>
-    {/* Change status */}
-    <div className='col-lg-5 mt-lg-0 mt-3 py-3 container-pick-deatils col-md-6 col-sm-12 col-12'>
-  <div className='px-lg-2 mt-3'>
-    <h5 className=" mb-3">Change Status</h5>
-    <div className="row ml-2">
-        <div>
-        <ColorSelector onStatusChange={handleStatusChange}/>
-        </div>
-        <div className='ml-4'>
-        <button
-      type="submit"
-    
-      style={{
-        backgroundColor: '#FFF',
-        color: '#FA8232', 
-        border: '1px solid #FA8232', 
-        borderRadius: '43px', 
-        padding: '8px 16px', 
-        cursor: 'pointer', 
-      }}
-    >
-      Save
-    </button>
-        </div>
-      
-    </div>
-
-  </div>
-</div>
-
+  
   </div>
 </div>
 

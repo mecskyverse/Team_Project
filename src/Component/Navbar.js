@@ -90,12 +90,17 @@ const Navbar = () => {
               </li>
               </div>
               ): 
-               (<li className="nav-item ml-2 mr-lg-5 ">
-               <Link to="/login" className="btn py-1 px-4 btn-primary ">
-                  Profile
-                  </Link>
+               (
+                <div className='d-flex'>
+                <li className="nav-item ml-2">
+                <Link className="nav-link font-weight-bold my-links" to="/myorder1">
+                  My Order
+                </Link>
+              </li>
                 
-             </li>)
+                </div>
+           
+             )
               }
             </ul>
           </div>
