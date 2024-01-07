@@ -71,6 +71,7 @@ const ServiceDropdown = ({handleChangeService}) => {
                 text-align: left;
                 background: white;
                 padding-left: 8px;
+                border: 0.5px solid var(--Foundation-Dark-Lighter, #b6b6b6);
             }
 
 
