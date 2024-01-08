@@ -1,4 +1,5 @@
 import React , {useState,useEffect} from 'react'
+import { useSearchParams } from 'react-router-dom';
 import "../Orderadmindetail.css";
 import Starating from "./Starrating";
 import ColorSelector from './ColorSelector';
@@ -7,6 +8,8 @@ import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
 import AdminNavbar from './AdminNavbar';
 import AdminNavbar2 from './AdminNavbar2';
+import userdata from './Data';
+
 
 
 function getIconForStatus(status) {
@@ -27,6 +30,9 @@ function getIconForStatus(status) {
 }
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
+
+
+
   const [orders, setOrders] = useState([]);
   const [weight, setWeight] = useState(0);
   const [items, setItems] = useState(0);
@@ -35,6 +41,24 @@ const Orderadmindetails = () => {
 const [selectedStatus, setSelectedStatus] = useState(''); // Default status
 const [timelineData, setTimelineData] = useState([]);
 const [completedIndex, setCompletedIndex] = useState(-1);
+
+
+
+
+// const params=urlString.split
+// const urlquery=new URLSearchParams(params);
+const [queryParameters] = useSearchParams();
+const orderid=queryParameters.get("id");
+// console.log(queryParameters.get("id"));
+
+const[order,setorder]=useState(userdata[orderid-1]);
+console.log(orderid);
+console.log(order);
+
+
+
+
+
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -100,7 +124,7 @@ const handleStatusChange = (newStatus) => {
   return (
     <>
      <AdminNavbar2/>
-     <AdminNavbar/>
+     <AdminNavbar  order={true}  response={false} />
     <div className="container mt-5">
         <div className="row  mb-5">
             <h1 className='my-head ml-lg-0 ml-5'>Order Details</h1>
@@ -109,8 +133,8 @@ const handleStatusChange = (newStatus) => {
   <div className="row ">
     <div className="col-lg-8 align-items-start col-md-4 col-sm-12">
       <ul className="mt-3 align-items-start text-start list-unstyled">
-        <li className="text-uppercase text-start py-1">#408-254656-6512</li>
-        <li className="text-uppercase text-start py-1">Normal Washing: Order Placed in 03 Oct, 2023 at 01:23PM</li>
+        <li className="text-uppercase text-start py-1">{order.user._id}</li>
+        <li className="text-uppercase text-start py-1">{order.services}: Order Placed in {order.date} at {order.timing}</li>
       </ul>
     </div>
     <div className="col-lg-4 col-md-8 col-sm-12 d-flex align-items-center justify-content-end">
@@ -229,16 +253,16 @@ const handleStatusChange = (newStatus) => {
       <div className="col-md-12">
         <ul className='list-unstyled'>
         <li className='font-weight-bold py-2'>
-          Name: <span className='ml-2 text-muted font-weight-light'> Rohan Sharma</span> 
+          Name: <span className='ml-2 text-muted font-weight-light'> {order.user.firstName} {order.user.lastName}</span> 
           </li>
         <li className='font-weight-bold py-2'>
-          Phone: <span className='ml-2 text-muted font-weight-light'> +91- 7245-124632</span> 
+          Phone: <span className='ml-2 text-muted font-weight-light'> {order.user.phoneNumber}</span> 
           </li>
           <li className='font-weight-bold py-2'>
-          Email: <span className='ml-2 text-muted font-weight-light'> rohan.sharma@gmail.com</span> 
+          Email: <span className='ml-2 text-muted font-weight-light'> {order.user.email}</span> 
           </li>
           <li className='font-weight-bold py-2'>
-          Service: <span className='ml-2 text-muted font-weight-light'> Normal Washing (Wash & Fold)</span> 
+          Service: <span className='ml-2 text-muted font-weight-light'> {order.services}</span> 
           </li>
          
         </ul>
@@ -256,10 +280,10 @@ const handleStatusChange = (newStatus) => {
         <ul className='list-unstyled'>
          
           <li className='text-uppercase font-weight-bold pick-text py-2'>
-          Pickup Date: <span className='ml-2 text-dark font-weight-light'> 03 Oct 2023</span> 
+          Pickup Date: <span className='ml-2 text-dark font-weight-light'>{order.date}</span> 
           </li>
           <li className='text-uppercase font-weight-bold pick-text py-2'>
-          Pickup Time: <span className='ml-2 text-muted font-weight-light'>01:23 PM</span> 
+          Pickup Time: <span className='ml-2 text-muted font-weight-light'>{order.timing}</span> 
           </li>
           
         </ul>

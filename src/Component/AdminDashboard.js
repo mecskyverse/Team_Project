@@ -23,11 +23,15 @@ const AdminDashboard = () => {
   const [copydata, setcopydata] = useState(userdata);
   const [currentindex,setcurrentindex] = useState(0);
   const [display,setdisplay] = useState(1);
+
+
+  const [order,setorder] = useState(false);
+  const [response,setresponse] = useState(false);
   
   useEffect(() => {
     console.log(searchValue);
     const d = data2.filter((element) => {
-      return element[2].toLowerCase().substring(0,searchValue.length) === searchValue.toLowerCase();
+      return element.name.toLowerCase().substring(0,searchValue.length) === searchValue.toLowerCase();
     });
     setcopydata2(d);
   }, [searchValue,data2])
@@ -46,7 +50,7 @@ const AdminDashboard = () => {
 
   const handleChange = (x) => {
     const d = copydata.filter((element) => {
-      return element[3] === getFormattedDate() && element[8] === x;
+      return element.date === getFormattedDate() && element.status === x;
     });
     setdata(d);
     setcurrentindex(0);
@@ -74,14 +78,14 @@ const AdminDashboard = () => {
         data.reduce((acc, element) => {
           return (
             acc +
-            (element[3] === getFormattedDate() && element[8] === "order-placed")
+            (element.date === getFormattedDate() && element.status === "order-placed")
           );
         }, 0)
       );
       setpickup(
         data.reduce((acc, element) => {
           return (
-            acc + (element[3] === getFormattedDate() && element[8] === "picked")
+            acc + (element.date === getFormattedDate() && element.status === "picked")
           );
         }, 0)
       );
@@ -89,7 +93,7 @@ const AdminDashboard = () => {
         data.reduce((acc, element) => {
           return (
             acc +
-            (element[3] === getFormattedDate() && element[8] === "delivered")
+            (element.date === getFormattedDate() && element.status === "delivered")
           );
         }, 0)
       );
@@ -99,7 +103,7 @@ const AdminDashboard = () => {
   return (
     <>
       <AdminNavbar2/>
-      <AdminNavbar />
+      <AdminNavbar  order={order} setorder={setorder} response={response} setresponse={setresponse}/>
 
       <p className="dash-heading">Dashboard</p>
 
@@ -114,7 +118,7 @@ const AdminDashboard = () => {
               onChange={(e)=>setsearchValue(e.target.value)}
             />
             <div className="btnn-container">
-              <button className="search-btn" style={{ padding: "0px 0px" }}>
+              <button className="search-btn" style={{ padding: "0px 2px" }}>
                 Search
               </button>
             </div>
@@ -141,7 +145,9 @@ const AdminDashboard = () => {
         <button className="orderbtn" style={{backgroundColor:(display)?"#4f89fc":"white",color:(display)?"white":"#4f89fc"}} onClick={showtable}>
           ORDERS
         </button>
-        <button className="responsebtn" style={{backgroundColor:(!display)?"#4f89fc":"white",color:(!display)?"white":"#4f89fc"}} onClick={()=>setdisplay(0)}>RESPONSES</button>
+        <button className="responsebtn" style={{backgroundColor:(!display)?"#4f89fc":"white",color:(!display)?"white":"#4f89fc"}} onClick={()=>{setdisplay(0)
+        ;
+        setresponse(true)}}>RESPONSES</button>
       </div>
       {(display)?
         <>

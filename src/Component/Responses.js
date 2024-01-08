@@ -9,7 +9,7 @@ const Responses = () => {
   return (
    <>
    <AdminNavbar2/>
-   <AdminNavbar/>
+   <AdminNavbar order={false}  response={true} />
    <section >
 
   <div className="container my-3 py-5">

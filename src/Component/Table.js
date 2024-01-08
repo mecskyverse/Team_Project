@@ -49,15 +49,15 @@ export default function Table({data}) {
             </tr>
           </thead>
           <tbody>
-            {data.map((e) => {
-              let parts = e[3].split("/");
+            {data.map((e,i) => {
+              let parts = e.date.split("/");
               let date = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]);
               if (
                 startdate === "01/01/1970" ||
                 enddate === "01/01/1970" ||
                 (date >= from && date <= to)
               )
-                return <TableRow data={e}/>;
+                return <TableRow data={e} sno={i+1}/>;
             })}
             
           </tbody>

@@ -28,6 +28,7 @@ const SchedulePickup = () => {
         _id : "6596c30cabab474ae8448833"},
     address: "",
     specialInstruction: "",
+    status:"order-placed"
   });
 
   const [selectedOptionTiming, setSelectedOptionTiming] = useState("");
