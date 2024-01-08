@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const MONGODB_URI = "mongodb+srv://admin:admin@cluster0.3apuxzg.mongodb.net/Appenius";
 // const MONGODB_URI = "mongodb+srv://admin:admin@cluster0.3apuxzg.mongodb.net/?retryWrites=true&w=majority/Appenius";
-
+// const MONGODB_URI = "mongodb+srv://satyampandeyhcc:satyam123@cluster0.sxi79ii.mongodb.net/satyampandeyhcc?retryWrites=true&w=majority";
 mongoose.connect(MONGODB_URI, {
 });
 
