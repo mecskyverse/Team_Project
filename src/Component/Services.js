@@ -196,7 +196,7 @@ const Services = () => {
   <div className="bg-image my-card-main-img " >
  <div className='bg-img-container'>
     <img className="w-100 my-card-main-img" alt="" src={blanket_washing_img} />
-    <Link to='/myorder1'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
+    <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   <div
     className="mask my-card-main-text  text-light d-flex justify-content-center flex-column  "

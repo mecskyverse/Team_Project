@@ -52,7 +52,7 @@ const Orderitem = () => {
         </ul>
       </div>
       <div className='col-9  col-lg-3 d-flex justify-content-end mt-3'>
-      <Link to='/pickup'>
+      <Link >
         <button className="btn border  mt-lg-3 button-pick  px-5 py-2 text-primary font-weight-bold ">Picked</button>
       </Link>
       </div>
