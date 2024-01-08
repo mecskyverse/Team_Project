@@ -3,10 +3,12 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Feedback1 from './Feedback1';
 import AdminNavbar from './AdminNavbar';
+import AdminNavbar2 from './AdminNavbar2';
+
 const Responses = () => {
   return (
    <>
-   <Navbar/>
+   <AdminNavbar2/>
    <AdminNavbar/>
    <section >
 

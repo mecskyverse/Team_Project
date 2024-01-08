@@ -6,8 +6,25 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { FaBook, FaCube, FaArrowCircleUp, FaTruck, FaHandshake,FaCheck, FaStar} from 'react-icons/fa';
 import AdminNavbar from './AdminNavbar';
+import AdminNavbar2 from './AdminNavbar2';
 
 
+function getIconForStatus(status) {
+  switch (status) {
+    case 'Order Placed':
+      return <FaBook />;
+    case 'Pickup':
+      return <FaCube />;
+    case 'Processing':
+      return <FaArrowCircleUp />;
+    case 'Out for Delivery':
+      return <FaTruck />;
+    case 'Delivered':
+      return <FaHandshake />;
+    default:
+      return null;
+  }
+}
 {/* <FontAwesomeIcon icon="fa-solid fa-book" /> */}
 const Orderadmindetails = () => {
   const [orders, setOrders] = useState([]);
@@ -82,7 +99,7 @@ const handleStatusChange = (newStatus) => {
 
   return (
     <>
-     <Navbar/>
+     <AdminNavbar2/>
      <AdminNavbar/>
     <div className="container mt-5">
         <div className="row  mb-5">
@@ -263,9 +280,8 @@ const handleStatusChange = (newStatus) => {
     <div className="row">
       <div className="col-md-12">
         <ul className='list-unstyled'>
-          <li className=' py-2'>
-            Total Weight: <span className='ml-5 mr-2'>
-              <input className='input-ad-wt px-2 py-1'
+          <li className='  px-0 py-2'>Total Weight:   &nbsp;<span className='ml-lg-5 mr-2'>
+              <input className='input-ad-wt w-50  px-lg-2 py-1'
                 id='myweight'
                 type="number"
                 name="weight"
@@ -276,9 +292,9 @@ const handleStatusChange = (newStatus) => {
             KG
           </li>
           <li className=' py-2'>
-            Total Items: <span className='ml-5 px-2 mr-2'>
+            Total Items:   &nbsp; <span className='ml-lg-5 px-lg-2 mr-lg-3'>
               <label  style={{display:"unset"}}>
-                <input className='input-ad-wt px-2 py-1'
+                <input className='input-ad-wt w-50 px-lg-2 py-1'
                   id='myitems'
                   type="number"
                   name="items"
@@ -289,9 +305,9 @@ const handleStatusChange = (newStatus) => {
             </span>
           </li>
           <li className=' py-2'>
-            Total Amount: ₹<span className='ml-5' id='result'>
+            Total Amount:    &nbsp;₹<span className='ml-lg-4 px-lg-3' id='result'>
               <input
-                className='input-ad-wt px-2 py-1 text-success font-weight-bold'
+                className='input-ad-wt w-50 px-lg-2 py-1 text-success font-weight-bold'
                 type="number"
                 name="totalAmount"
                 id="totalAmount"
@@ -478,6 +494,13 @@ const handleStatusChange = (newStatus) => {
   }
   
 }
-
+// Export timelineData
+export const timelineData = [
+  { status: 'Order Placed', icon: getIconForStatus('Order Placed') },
+  { status: 'Pickup', icon: getIconForStatus('Pickup') },
+  { status: 'Processing', icon: getIconForStatus('Processing') },
+  { status: 'Out for Delivery', icon: getIconForStatus('Out for Delivery') },
+  { status: 'Delivered', icon: getIconForStatus('Delivered') },
+];
 
 export default Orderadmindetails
