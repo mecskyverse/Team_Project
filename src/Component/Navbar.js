@@ -1,17 +1,47 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "../Project.css";
 import logo from "../Component/images/nav-logo.png";
 import { FaBars, FaTimes } from 'react-icons/fa';
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const token = localStorage.getItem("token");
+  const navigate=useNavigate();
+  const handleLogout = (e) => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
   return (
+
+
+
+
     <div>
+
+<style>
+  {
+    `
+    
+    @media screen and (max-width: 991px) {
+
+
+      .navbar-logout {
+        direction:flex;
+        flex-direction:column;
+      }
+      }
+      .my-nav-btn2:hover {
+        text-decoration: none;
+      }
+      
+      `
+   
+  }
+  </style>
 <nav
           style={{ background: "#dce9d2" }}
           className="navbar my-nav-bar navbar-expand-lg"
@@ -74,7 +104,7 @@ const Navbar = () => {
                 </Link>
               </li>
               
-              {token ?
+              {!token ?
                (
                <div className='d-flex'>
               <li className="nav-item  ml-2  mb-lg-1 mb-2">
@@ -91,11 +121,18 @@ const Navbar = () => {
               </div>
               ): 
                (
-                <div className='d-flex'>
+                <div className='d-flex navbar-logout' >
                 <li className="nav-item ml-2">
                 <Link className="nav-link font-weight-bold my-links" to="/myorder1">
                   My Order
                 </Link>
+              </li>
+
+              <li className="nav-item ml-2   mr-lg-5 ">
+              <Link to="/" className="btn py-1   px-4 my-nav-btn2 "  onClick={handleLogout} >
+              &nbsp;Logout&nbsp;
+                  </Link>
+                
               </li>
                 
                 </div>
