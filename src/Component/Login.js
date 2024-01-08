@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../signin.css";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import loginimg from "../Component/images/Signup.jpeg";
 import image11 from "../Component/images/eyeimg.png";
 import image12 from "../Component/images/Googleimg.png";
@@ -8,6 +8,7 @@ import axios from "axios";
 import logo from "../Component/images/logo_tagline-removebg-preview.png";
 
 const Login = () => {
+  let navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -53,6 +54,7 @@ const Login = () => {
       console.log('Login successful', data);
       const token = data.token
       localStorage.setItem("token", token);
+      navigate("/");
     } catch (error) {
       console.error('Login failed', error);
     }

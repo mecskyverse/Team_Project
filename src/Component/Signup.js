@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link , useNavigate} from "react-router-dom"
 import image10 from "../Component/images/login-img.jpeg";
 import image11 from "../Component/images/eyeimg.png";
 import axios from 'axios'
@@ -7,6 +7,7 @@ import logo from "../Component/images/logo_tagline-removebg-preview.png";
 import "../signup.css";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -46,10 +47,15 @@ function SignUp() {
     }
     try {
       const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+
+
+
       console.log("Signup successful:", response.data);
+      navigate("/login");
       // You can handle success, redirect, or any other logic here
     } catch (error) {
       console.error("Signup failed:", error.message);
+      alert("Enter valid credentials!!");
       // Handle error appropriately, e.g., show an error message to the user
     }
 

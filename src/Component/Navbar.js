@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import "../Project.css";
 import logo from "../Component/images/nav-logo.png";
 import { FaBars, FaTimes } from 'react-icons/fa';
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
+  };
+
+
+  const handleLogout = (e) => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
   return (
     <div>
@@ -57,24 +64,48 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
+             
+
+
+
+              
 
               <li className="nav-item ml-2">
                 <Link className="nav-link font-weight-bold my-links" to="/services">
                   Services
                 </Link>
               </li>
+
+
+              {
+                !token?(
+                  <li className="nav-item ml-2">
+                  <Link className="nav-link font-weight-bold my-links" to="/login">
+                    Order Now
+                  </Link>
+                </li>
+
+                ):(
+                  <li className="nav-item ml-2">
+                  <Link className="nav-link font-weight-bold my-links" to="/pickup">
+                    Order Now
+                  </Link>
+                </li>
+
+                )
+                
+                }
+
+
+
+             
               <li className="nav-item ml-2">
-                <Link className="nav-link font-weight-bold my-links" to="/pickup">
-                  Order Now
-                </Link>
-              </li>
-              <li className="nav-item ml-2">
-                <Link className="nav-link font-weight-bold my-links" to="/#">
+                <Link className="nav-link font-weight-bold my-links" to="/contact">
                   Contact Us
                 </Link>
               </li>
               
-              {token ?
+              {!token ?
                (
                <div className='d-flex'>
               <li className="nav-item  ml-2  mb-lg-1 mb-2">
@@ -96,6 +127,12 @@ const Navbar = () => {
                 <Link className="nav-link font-weight-bold my-links" to="/myorder1">
                   My Order
                 </Link>
+              </li>
+              <li className="nav-item ml-2   mr-lg-5 ">
+              <Link to="/" className="btn py-1   px-4 my-nav-btn2 "  onClick={handleLogout}>
+              &nbsp;Logout&nbsp;
+                  </Link>
+                
               </li>
                 
                 </div>
