@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from 'react';
+
 import "../Project.css";
 import img1 from "../Component/images/smile.png";
 import img2 from "../Component/images/Washing Maching.png";
@@ -14,13 +15,37 @@ import Bubble from "./Bubble";
 import Caraousal from "./Caraousal"
 import Caraousalserv from "./Caraousalserv"
 import CaraousalServBottom from "./Caraousalservbottom";
+import Loader from "./Loader";
+
 
 const Home = () => {
+  const loaderRef = useRef();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      // Perform any initial data fetching or setup here
+
+      // Simulate a 3-second delay for demonstration purposes
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Update loading state after the delay
+      setLoading(false);
+      loaderRef.current.stopLoading();
+    };
+
+    fetchInitialData();
+  }, []);
+  
   return (
     <>
         {/* nav */}
+        {loading ? (
+        <Loader ref={loaderRef} />
+      ) : (
+        <>
         <Navbar/>
-        <Bubble/>
+
         {/* section1 */}
         <section className="container-fluid my-section-1">
           <div className="row">
@@ -119,7 +144,9 @@ At Laugh n' Laundry, we're more than just a laundry service; we're your go-to de
   {/* Footer */}
  <Footer/>
   {/* Footer */}
-
+  </>
+        )
+}
       </>
  
   );
