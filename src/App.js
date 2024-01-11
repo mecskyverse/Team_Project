@@ -18,7 +18,7 @@ import SchedulePickup from './Component/SchedulePickup';
 import Adminorder from './Component/Orderadmindetails';
 import Userorder from './Component/Orderuserdetails';
 import Responses from './Component/Responses';
-
+import Offerpopup from './Component/Offerpopup';
 function App() {
   return (
     <Router>
@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/adminorder" element={<Adminorder/>}/>
          <Route exact path="/responses" element={<Responses/>}/>
          <Route exact path="/admin" element={<AdminDashboard/>}/>
-
+         <Route exact path="/offerpopup" element={<Offerpopup/>}/>
         </Routes>
       </div>
     </Router>
