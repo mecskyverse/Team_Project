@@ -7,7 +7,6 @@ const { sendEmail } = require("../Middleware/sendEmail");
 const getOTPByEmail = require("../Controllers/OtpFetch.js");
 const connection = require("../Database/connection.js")
 
-// Your secret key for signing JWTs
 const secretKey = "SAMPLE_SECRET_KEY";
 
 router.post('/signup', async (req, res) => {
@@ -65,14 +64,13 @@ router.post('/login', async (req, res) => {
       const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1d' });
 
       // Send the token, user details, and a success response
-      res.json({ token, message: 'Login successful!', user: { id: user.id, email: user.email } });
+      res.json({ token, message: 'Login successful!', user: { id: user.id, email: user.email , role : user.role} });
     });
   } catch (error) {
     console.error('Login failed:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 router.post("/sendEmail", sendEmail);
 

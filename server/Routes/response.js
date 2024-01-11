@@ -36,16 +36,16 @@ router.get("/", async (req, res) => {
 router.post('/', async (req, res) => {
 try {
     // Extract data from the request body
-    const { user, subject, feedback, rating } = req.body;
+    const { name, subject, feedback, contact } = req.body;
 
     // Prepare the SQL query
     const query = `
-    INSERT INTO responses (user, subject, feedback, rating)
+    INSERT INTO responses (name, subject, feedback, contact)
     VALUES (?, ?, ?, ?)
     `;
 
     // Execute the SQL query with parameters
-    connection.query(query, [user, subject, feedback, rating], (err, results) => {
+    connection.query(query, [name , subject, feedback, contact], (err, results) => {
     if (err) {
         console.error('Error adding response:', err);
         return res.status(500).json({ error: 'Internal Server Error' });
