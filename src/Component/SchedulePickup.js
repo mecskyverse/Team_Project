@@ -21,7 +21,11 @@ const SchedulePickup = () => {
     services: "",
     date: "",
     timing: "",
-    user :1,
+    user : {email : "dhiraj@gmail.com",
+        firstName : "Dhiraj ",
+        lastName : "Sahu",
+        phoneNumber : "937298739",
+        _id : "6596c30cabab474ae8448833"},
     address: "",
     specialInstruction: "",
     status:"order-placed"
@@ -205,9 +209,8 @@ const SchedulePickup = () => {
                   }}
                   className="write-text-pickup"
                 >
-                  1. Morbi porttitor ligula in nunc varius sagittis. Proin dui
-                  nisi, laoreet ut tempor ac, cursus vitae eros. Cras quis
-                  ultricies elit.
+                  1. Premium garments are recommended to be laundered using premium washing services. <br/>
+2. Free deliveries are available for orders weighing 5kg or above.
                 </p>
               </div>
 
