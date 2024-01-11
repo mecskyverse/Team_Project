@@ -29,7 +29,7 @@ const AdminDashboard = () => {
   const [response,setresponse] = useState(false);
   
   useEffect(() => {
-    console.log(searchValue);
+
     const d = data2.filter((element) => {
       return element.name.toLowerCase().substring(0,searchValue.length) === searchValue.toLowerCase();
     });
@@ -46,6 +46,8 @@ const AdminDashboard = () => {
     
     setdisplay(1);
     setdata(copydata);
+    setresponse(false);
+    console.log(response);
   };
 
   const handleChange = (x) => {
@@ -54,6 +56,7 @@ const AdminDashboard = () => {
     });
     setdata(d);
     setcurrentindex(0);
+
   };
 
   useEffect(() => {
@@ -155,7 +158,10 @@ const AdminDashboard = () => {
           <div
             className="card"
             name="order-placed"
-            onClick={() => handleChange("order-placed")}
+            onClick={() => {handleChange("order-placed");
+          
+          }
+        }
           >
             <div
               className="card-body"

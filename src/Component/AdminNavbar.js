@@ -1,40 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import house from "../Component/images/House.png";
+import { FaBars, FaTimes } from 'react-icons/fa';
+
+
 export default function AdminNavbar( {order,setorder,response,setresponse}) {
 
- console.log(order);
 
-  // useEffect(() => {
-  //   const currentURL = window.location.href;
-  //   const currentpath = currentURL.split("/").reverse()[0];
-  //   const x = document.getElementById(currentpath);
-  //   if (x !== undefined)
-  //     document.getElementById(currentpath).style.color = "blue";
-  // }, []);
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+ 
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
+
+ console.log(response);
+
+  useEffect(() => {
+    const currentURL = window.location.href;
+    const newURL=currentURL.split("?")[0];
+    const currentpath = newURL.split("/").reverse()[0];
+    const x = document.getElementById(currentpath);
+    if (x !== undefined)
+      document.getElementById(currentpath).style.color = "blue";
+  }, []);
 
   return (
     // <div>
 
-    <nav className="navbar navbar-expand-lg admindash-navbar">
-      {/* <button
+    <nav className="navbar my-nav-bar navbar-expand-lg admindash-navbar">
+      <button
             className="navbar-toggler"
             type="button"
+            onClick={toggleNavbar}
             data-toggle="collapse"
-            data-target="#/navbarNav"
+            data-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
+            {isNavbarOpen ? <FaTimes /> : <FaBars />}
+            
+          </button>
       <div className="nav-img-dashboard">
         <Link className="nav-img" to="/">
           <img src={house} />
         </Link>
       </div>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <div  className={`collapse navbar-collapse ${isNavbarOpen ? 'show' : ''}`} id="navbarNav2">
         <ul className="navbar-nav">
           <li className="nav-item active">
             <Link className="nav-link   nav-dash-bar" to="/">
@@ -149,7 +164,7 @@ export default function AdminNavbar( {order,setorder,response,setresponse}) {
   </Link>
 </li>
 
-: <p></p>
+:<p></p>
 
 }
           
