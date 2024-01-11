@@ -21,11 +21,7 @@ const SchedulePickup = () => {
     services: "",
     date: "",
     timing: "",
-    user : {email : "dhiraj@gmail.com",
-        firstName : "Dhiraj ",
-        lastName : "Sahu",
-        phoneNumber : "937298739",
-        _id : "6596c30cabab474ae8448833"},
+    user :1,
     address: "",
     specialInstruction: "",
     status:"order-placed"

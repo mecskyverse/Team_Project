@@ -1,7 +1,7 @@
 // app.js or server.js
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("./Database/connection.js"); // Include the database connection
+// const mongoose = require("./Database/connection.js"); // Include the database connection
 const authRoutes = require("./Routes/auth.js");
 const orderRoutes = require('./Routes/order.js')
 const responseRoute = require('./Routes/response.js')
@@ -10,6 +10,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors())
 const port = 5000;
+
 
 app.use(bodyParser.json());
 
