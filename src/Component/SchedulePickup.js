@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "../schedulepickup.css";
 import {
@@ -15,32 +14,33 @@ import Navbar from "./Navbar";
 import ServiceDropdown from "./ServiceDropdown";
 
 const SchedulePickup = () => {
+const id=localStorage.getItem("id");
+const email=localStorage.getItem("email");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    email : email,
     services: "",
     date: "",
+
+    user: id ,
+
     timing: "",
-    user : {email : "dhiraj@gmail.com",
-        firstName : "Dhiraj ",
-        lastName : "Sahu",
-        phoneNumber : "937298739",
-        _id : "6596c30cabab474ae8448833"},
     address: "",
     specialInstruction: "",
-    status:"order-placed"
+    status: "order-placed",
   });
 
   const [selectedOptionTiming, setSelectedOptionTiming] = useState("");
 
   const handleSelectChangeTiming = (event) => {
     setSelectedOptionTiming(event.target.value);
-    setFormData({...formData ,timing : event.target.value })
+    setFormData({ ...formData, timing: event.target.value });
   };
 
-  const handleChangeService = (value) =>{
-    setFormData({...formData , services : value})
-  }
+  const handleChangeService = (value) => {
+    setFormData({ ...formData, services: value });
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,31 +56,38 @@ const SchedulePickup = () => {
     // You can make an API call to submit the data to the server
     // Example:
     try {
-      const response = await fetch('http://localhost:5000/api/order', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/api/order", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         const responseData = await response.json();
-        console.log('Data saved successfully:', responseData);
-        alert('Pickup successful!');
+        console.log("Data saved successfully:", responseData);
+        alert("Pickup successful!");
       } else {
         const errorData = await response.json();
-        console.error('Error saving data:', errorData);
-        throw new Error('Failed to save data');
+        console.error("Error saving data:", errorData);
+        // throw new Error('Failed to save data');
       }
     } catch (error) {
-      console.error('Error saving data:', error);
+      console.error("Error saving data:", error);
       throw error;
     }
   };
 
   return (
     <>
+
+
+
+
+
+
+
       <Navbar />
       <section className="container-fluid py-5 ">
         <div className="backgroundimg">
@@ -123,7 +130,10 @@ const SchedulePickup = () => {
                   <ServiceDropdown
                     selectedOption={formData.services}
                     onChange={(value) =>
-                      setFormData((prevData) => ({ ...prevData, services: value }))
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        services: value,
+                      }))
                     }
                     handleChangeService={handleChangeService}
                   />
@@ -209,8 +219,10 @@ const SchedulePickup = () => {
                   }}
                   className="write-text-pickup"
                 >
-                  1. Premium garments are recommended to be laundered using premium washing services. <br/>
-2. Free deliveries are available for orders weighing 5kg or above.
+                  1. Premium garments are recommended to be laundered using
+                  premium washing services. <br />
+                  2. Free deliveries are available for orders weighing 5kg or
+                  above.
                 </p>
               </div>
 
@@ -253,12 +265,12 @@ const SchedulePickup = () => {
                   </div>
 
                   <div className="modal-footer text-center no-underline justify-content-center">
-                    <Link  to="/pickup" className="d-inline-block mx-2">
+                    <Link to="/pickup" className="d-inline-block mx-2">
                       <button className="btn btn-hom1 px-5 w-100 font-weight-bold">
                         <FaHouseUser className="mx-0 mb-1" /> Home
                       </button>
                     </Link>
-                    <Link  to="/pickup" className="d-inline-block mx-2">
+                    <Link to="/pickup" className="d-inline-block mx-2">
                       <button className="btn btn-order1 px-4  w-100 font-weight-bold">
                         View Order <FaArrowRight className="mx-1 mb-1" />{" "}
                       </button>
@@ -297,19 +309,11 @@ export default SchedulePickup;
 // import Footer from "./Footer";
 // import Navbar from "./Navbar";
 
-
 // import ServiceDropdown from "./ServiceDropdown";
 
-
 // const SchedulePickup = () => {
- 
-
 
 //   const [selectedOptionTiming, setSelectedOptionTiming] = useState("");
-
-
-
-
 
 //   const handleSelectChangeTiming = (event) => {
 //     setSelectedOptionTiming(event.target.value);
@@ -318,21 +322,19 @@ export default SchedulePickup;
 //   return (
 //     <>
 //       <Navbar />
-      
 
 //       <section className="container-fluid py-5 ">
 //       <div className="backgroundimg">
 //         <img src={img2}/>
 //       </div>
 //         <div className="PickUpForm">
-          
+
 //           <div className="content">
 //             <div className="toplogo">
 //               <h2>Schedule A Pick Up</h2>
 //               <img src={image1} alt="" />
 //             </div>
 
-           
 //               <div className="grid-container-pickup">
 //                 <div>
 //                   <p style={{ marginBottom: "0px" }}>Name</p>
@@ -340,8 +342,7 @@ export default SchedulePickup;
 //                     type="text"
 //                     name="name"
 //                     placeholder="Name"
-                   
-                   
+
 //                   />
 //                 </div>
 //                 <div>
@@ -350,7 +351,7 @@ export default SchedulePickup;
 //                     type="number"
 //                     placeholder="+91"
 //                     name="phone"
-                    
+
 //                   />
 //                 </div>
 //               </div>
@@ -358,12 +359,9 @@ export default SchedulePickup;
 //               <div className="items_input">
 //                 <p style={{ marginBottom: "0px" }}>Services</p>
 
-                
 //                 <div>
 //                <ServiceDropdown/>
 //                 </div>
-
-
 
 //               </div>
 //               <div className="grid-container-pickup">
@@ -383,7 +381,7 @@ export default SchedulePickup;
 //                       Timing
 //                     </option>
 //                     <option value="Timing 1">Timing 1</option>
-                    
+
 //                     {/* Add more options as needed */}
 //                   </select>
 //                 </div>
@@ -419,10 +417,9 @@ export default SchedulePickup;
 //                 </p>
 //                 <p    style={{
 
-
 // width: '100%',
 //     flexShrink: 0,
- 
+
 //     background: 'rgb(220, 203, 186)',
 //     color: 'var(--Gray-Scale-Gray-600, #666)',
 //     fontFamily: 'Poppins',
@@ -432,8 +429,6 @@ export default SchedulePickup;
 //     lineHeight: '150%',
 //     border: '0px solid red',
 //     textAlign: "left",
-
-    
 
 //                 }}className="write-text-pickup">
 //                   1. Morbi porttitor ligula in nunc varius sagittis. Proin dui
@@ -447,12 +442,11 @@ export default SchedulePickup;
 //                   type=""
 //                   data-toggle="modal"
 //                   data-target="#exampleModalCenter"
-                 
+
 //                 >
 //                   Submit
 //                 </button>
 //               </div>
-            
 
 //             {/* popup */}
 //             <div
@@ -512,4 +506,3 @@ export default SchedulePickup;
 // };
 
 // export default SchedulePickup;
-

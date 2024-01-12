@@ -37,7 +37,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your login logic here using formData
-    console.log("Login submitted:", formData);
+    // console.log("Login submitted:", formData);
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
@@ -48,10 +48,16 @@ const Login = () => {
       });
 
       const data = await response.json();
+console.log(data);
+    
 
       // Save the token to localStorage or state for future requests
 
       console.log('Login successful', data);
+      const email=data.user.email;
+      const id =data.user.id;
+      localStorage.setItem("id",id);
+      localStorage.setItem("email", email);
       const token = data.token
       localStorage.setItem("token", token);
       navigate("/");

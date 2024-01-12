@@ -130,7 +130,84 @@
 //   specialInstruction: "",
 // });
 
+
 const userdata=[
+  // Example fetch for orders
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/order');
+
+  //   const data = await response.json();
+  //   console.log(data);
+
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  // Example fetch for orders by id
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/order/' + orderId);
+
+  //   const data = await response.json();
+  //   console.log(data);
+
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  // Example fetch for User orders
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/order/user/' + userId);
+
+  //   const data = await response.json();
+  //   console.log(data);
+
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  // Example Update for orders
+  // formData = {
+  //   "name": "Dhiraj Sahu",
+  //   "phone": "124321",
+  //   "services": "dnibfweubf",
+  //   "date": "ncbsidbi",
+  //   "timing": "bxidbciwe",
+  //   "user" : 2,
+  //   "address": "cbdisbscs",
+  //   "specialInstruction": "sndkjbchs"
+  // }
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/order/' + orderId,{
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+
+  // Example Post responses
+  // formData = {"name" : "Dhiraj Sahu"
+  // , "subject" : "Hello Bolra tha ", "feedback" : "Badhiya kaamm", "contact" : "9324211798"}
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/response/',{
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+
+
+  // Example fetch for All responses
+  // try {
+  //   const response = await fetch('http://localhost:5000/api/response/');
+
+  //   const data = await response.json();
+  //   console.log(data);
+
+  // } catch (error) {
+  //   console.error(error);
+  // }
   {
     _id:"10x03byu37",
   name: "Rohan",

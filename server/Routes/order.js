@@ -6,18 +6,19 @@ const connection = require("../Database/connection.js")
 // Define a route to save pickup data
 router.post('/', async (req, res) => {
   const formData = req.body;
-
+  console.log(formData)
   try {
     // Prepare the SQL query
     const query = `
-      INSERT INTO orders (name, phone, services, date, user, timing, address, specialInstruction, totalWeight, status, totalItems, costPerItem, totalAmount)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO orders (name, phone, email ,services, date, user, timing, address, specialInstruction, totalWeight, status, totalItems, costPerItem, totalAmount)
+      VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     // Extract values from formData
     const values = [
       formData.name,
       formData.phone,
+      formData.email,
       formData.services,
       formData.date,
       formData.user,

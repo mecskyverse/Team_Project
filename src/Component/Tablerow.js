@@ -1,14 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Tablerow(props) {
-  
-const data=props.data;
-
-
-
+  const data = props.data;
 
   const [selectedValue, setSelectedValue] = useState(data.status);
   const handleChange = (event) => {
@@ -24,22 +20,22 @@ const data=props.data;
 
   // const [selectedValue, setSelectedValue] = useState(status);
 
-
-
   return (
     <tr>
       <th className="srid" scope="row">
         {props.sno}
       </th>
       <td className="td-red">
-        <Link to={`/adminorder?id=${props.sno}`}  style={{color:"#D97474"}}>{data.user._id}</Link>
+        <Link to={`/adminorder?id=${props.sno}`} style={{ color: "#D97474" }}>
+          {data.id}
+        </Link>
       </td>
-      <td className="td-style-maxi">{data.user.firstName} {data.user.lastName}</td>
+      <td className="td-style-maxi">{data.name} </td>
       <td className="td-style-maxi">{data.date}</td>
       <td className="td-style-maxi">{data.timing}</td>
       <td className="td-style-service">{data.services}</td>
       <td className="td-style-maxi">{data.totalWeight} Kg</td>
-      <td className="td-style-maxi">${data.totalAmount}</td>
+      <td className="td-style-maxi">₹{data.totalAmount}</td>
       <td>
         <select
           onChange={handleChange}

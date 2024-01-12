@@ -7,11 +7,12 @@ import orderimg from "../Component/images/order.jpeg"
 
 const Myorder1 = () => {
   const [orders, setOrders] = useState([]);
+  const userId = localStorage.getItem('id')
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/order/user/6596c30cabab474ae8448833');
+        const response = await fetch('http://localhost:5000/api/order/user/' + userId);
         if (response.ok) {
           const data = await response.json();
           setOrders(data);
@@ -34,9 +35,12 @@ const Myorder1 = () => {
     </div>
     {/* <button onClick={()=>getUserOrders()}>HelloHelloHelloHello</button> */}
     <div className='container'>
-    <Orderitem/>
-   <Orderitem/>
-   <Orderitem/>
+      {orders.map((order)=>(
+        <Orderitem order={order}/>
+      ))
+    }
+   {/* <Orderitem/>
+   <Orderitem/> */}
     </div>
    
     <Footer/>

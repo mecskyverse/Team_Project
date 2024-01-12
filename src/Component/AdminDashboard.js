@@ -29,12 +29,46 @@ const AdminDashboard = () => {
   const [response,setresponse] = useState(false);
   
   useEffect(() => {
-
+    console.log(searchValue);
     const d = data2.filter((element) => {
       return element.name.toLowerCase().substring(0,searchValue.length) === searchValue.toLowerCase();
     });
     setcopydata2(d);
   }, [searchValue,data2])
+
+
+
+
+
+  const orderdata = async ( )=>{
+    try {
+      const response = await fetch('http://localhost:5000/api/order');
+  
+      const data = await response.json();
+      // console.log(data);
+  setcopydata2(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+useEffect(() => {
+
+  orderdata();
+  
+
+  
+}, [])
+
+
+
+
+
+
+
+
+
+
   
   let componentsArr = [];
   for (let i = 1; i <= Math.ceil(copydata.length / 6); i++) {
@@ -43,12 +77,15 @@ const AdminDashboard = () => {
 
   const showtable = (e) => {
     e.target.style.background = "#4f89fc";
-    
+    setresponse(false);
     setdisplay(1);
     setdata(copydata);
-    setresponse(false);
-    console.log(response);
   };
+
+
+
+
+
 
   const handleChange = (x) => {
     const d = copydata.filter((element) => {
@@ -56,7 +93,6 @@ const AdminDashboard = () => {
     });
     setdata(d);
     setcurrentindex(0);
-
   };
 
   useEffect(() => {
@@ -68,6 +104,7 @@ const AdminDashboard = () => {
 
   function getFormattedDate() {
     const today = new Date();
+    console.log(today);
 
     const day = String(today.getDate()).padStart(2, "0");
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based
@@ -158,10 +195,7 @@ const AdminDashboard = () => {
           <div
             className="card"
             name="order-placed"
-            onClick={() => {handleChange("order-placed");
-          
-          }
-        }
+            onClick={() => handleChange("order-placed")}
           >
             <div
               className="card-body"
