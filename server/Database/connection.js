@@ -19,10 +19,10 @@
 
 const mysql = require('mysql2');
 const connection =  mysql.createConnection({
-  host: 'laughnlaundry.in',
+  host: '193.203.184.37',
+  database: 'u548717484_Laundry',
   user: 'u548717484_Laundry',
   password : "Laundry$13716",
-  database: 'u548717484_Laundry',
 });
 
 connection.connect((error)=>{
