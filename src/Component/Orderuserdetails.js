@@ -30,7 +30,7 @@ const Orderuserdetails = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/order/" + orderid
+        "https://laughnlaundry.onrender.com/api/order/" + orderid
       );
 
       const data = await response.json();

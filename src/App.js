@@ -1,7 +1,6 @@
 
 import './App.css';
-
-
+import React, {useEffect} from 'react'
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +18,32 @@ import Adminorder from './Component/Orderadmindetails';
 import Userorder from './Component/Orderuserdetails';
 import Responses from './Component/Responses';
 import Offerpopup from './Component/Offerpopup';
+
+
 function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Make a GET request to the server
+        const response = await fetch('https://laughnlaundry.onrender.com/'); // Adjust the URL and port accordingly
+
+        // Check if the response status is OK (200)
+        if (response.ok) {
+          // Parse the response JSON or text
+          const data = await response.json(); // If the response is JSON
+          console.log(data)
+        } else {
+          console.error('Failed to fetch server data');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []);
+
   return (
     <Router>
       <div>

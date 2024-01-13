@@ -56,7 +56,7 @@ const email=localStorage.getItem("email");
     // You can make an API call to submit the data to the server
     // Example:
     try {
-      const response = await fetch("http://localhost:5000/api/order", {
+      const response = await fetch("https://laughnlaundry.onrender.com/api/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
