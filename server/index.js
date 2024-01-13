@@ -17,7 +17,9 @@ app.use(bodyParser.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/response", responseRoute);
-
+app.get('/',(req, res) => {
+res.send('Server is live')
+})
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
