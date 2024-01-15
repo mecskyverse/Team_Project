@@ -279,6 +279,14 @@ background: var(--Gray-00, #FFF);
     background-color: #FA8232;
 }
 
+.steps .step.completeds .step-icon-wrap::before,
+.steps .step.completeds .step-icon-wrap::after {
+    background-color: #00B207;
+}
+
+
+
+
 .steps .step.completed .step-icon {
     border-color: #FA8232;
     background-color:#FA8232;
@@ -316,3 +324,4 @@ background: var(--Gray-00, #FFF);
 .bg-faded, .bg-secondary {
     background-color: #f5f5f5 !important;
 }
+

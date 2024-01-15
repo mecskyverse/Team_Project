@@ -101,3 +101,64 @@ margin-top: 100px;
     margin: -64px;
     margin-left: 133px;
 }
+
+
+
+
+@media screen and (max-width: 800px) and (min-width:600px) {
+
+
+    .popup-start { 
+      margin-top:200px;
+    }
+    }
+
+
+
+    
+@media screen and (max-width: 599px) and (min-width:400px) {
+
+
+    .popup-start { 
+      margin-top:400px;
+    }
+    }
+
+
+    @media screen and (max-width: 399px) and (min-width:351px) {
+
+
+        .popup-start { 
+          margin-top:500px;
+        }
+        }
+
+
+        @media screen and (max-width: 350px) and (min-width:316px) {
+
+
+            .popup-start { 
+              margin-top:500px;
+              width: 1300px;
+            }
+            }
+
+
+            @media screen and (max-width: 315px) and (min-width:250px) {
+
+
+                .popup-start { 
+                  margin-top:500px;
+                  width: 1000px;
+                  height: 1228px;
+
+                }
+
+
+                /* .imagename {
+                    width: 450px;
+                    height: 706px;
+                    flex-shrink: 0;
+                    
+                } */
+                }

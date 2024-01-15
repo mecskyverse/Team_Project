@@ -20,15 +20,15 @@ import userdata from "./Data";
 
 function getIconForStatus(status) {
   switch (status) {
-    case "Order Placed":
+    case "order-placed":
       return <FaBook />;
-    case "Pickup":
+    case "picked":
       return <FaCube />;
-    case "Processing":
+    case "processing":
       return <FaArrowCircleUp />;
-    case "Out for Delivery":
+    case "out-for-delivery":
       return <FaTruck />;
-    case "Delivered":
+    case "delivered":
       return <FaHandshake />;
     default:
       return null;
@@ -40,12 +40,13 @@ function getIconForStatus(status) {
 const Orderadmindetails = () => {
   const [orders, setOrders] = useState([]);
   const [weight, setWeight] = useState(0);
+  const [order, setorder] = useState({}); //userdata[orderid-1]
   const [items, setItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   //
   const [selectedStatus, setSelectedStatus] = useState(""); // Default status
   const [timelineData, setTimelineData] = useState([]);
-  const [completedIndex, setCompletedIndex] = useState(-1);
+  const [completedIndex, setCompletedIndex] = useState(0);
 
   // const params=urlString.split
   // const urlquery=new URLSearchParams(params);
@@ -53,9 +54,29 @@ const Orderadmindetails = () => {
   const orderid = queryParameters.get("id");
   // console.log(queryParameters.get("id"));
 
-  const [order, setorder] = useState({}); //userdata[orderid-1]
   console.log(orderid);
   console.log(order);
+
+
+  const handleStatusChange = (newStatus) => {
+    // alert(newStatus);
+    // Update the selectedStatus when the dropdown value changes
+    setSelectedStatus(newStatus);
+
+
+    // Find the index of the selected status in the timeline
+    const selectedIndex = timelineData.findIndex(
+      (item) => item.status === newStatus
+    );
+
+    // alert(selectedIndex);
+
+    // Update the completed index
+    setCompletedIndex(selectedIndex);
+
+  
+  };
+
 
   const fetchOrders = async () => {
     try {
@@ -63,9 +84,20 @@ const Orderadmindetails = () => {
         "http://localhost:5000/api/order/" + orderid
       );
 
-      const data = await response.json();
-      console.log(data);
-      setorder(data);
+      const data = await response.json() .then((res)=>{
+        setorder(res);
+        console.log(res);
+        setTotalAmount(res.totalAmount);
+        setWeight(res.totalWeight);
+        setItems(res.totalItems);
+        setSelectedStatus(res.status);
+     
+
+      });
+      // console.log(data);
+
+    
+
     } catch (error) {
       console.error(error);
     }
@@ -83,49 +115,51 @@ const Orderadmindetails = () => {
   
   }, [weight, items]);
 
+  useEffect(() => {
+  setSelectedStatus(order.status);
+  
+    
+  }, [order])
+
+    useEffect(() => {
+
+  handleStatusChange(selectedStatus);
+    
+  }, [selectedStatus])
+  
+  
+
   // const email=localStorage.getItem("email");
 
   // timeline
   useEffect(() => {
     // Initialize timeline data
     const initialTimelineData = [
-      { status: "Order Placed", icon: <FaBook /> },
-      { status: "Pickup", icon: <FaCube /> },
-      { status: "Processing", icon: <FaArrowCircleUp /> },
-      { status: "Out for Delivery", icon: <FaTruck /> },
-      { status: "Delivered", icon: <FaHandshake /> },
+      { status: "order-placed", icon: <FaBook /> },
+      { status: "picked", icon: <FaCube /> },
+      { status: "processing", icon: <FaArrowCircleUp /> },
+      { status: "out-for-delivery", icon: <FaTruck /> },
+      { status: "delivered", icon: <FaHandshake /> },
     ];
     setTimelineData(initialTimelineData);
   }, []);
 
-  const handleStatusChange = (newStatus) => {
-    // Update the selectedStatus when the dropdown value changes
-    setSelectedStatus(newStatus);
-
-    // Find the index of the selected status in the timeline
-    const selectedIndex = timelineData.findIndex(
-      (item) => item.status === newStatus
-    );
-
-    // Update the completed index
-    setCompletedIndex(selectedIndex);
-
   
-  };
-
   const formData = {
     totalWeight: weight,
     totalItems: items,
     totalAmount: totalAmount,
-    status: selectedStatus,
+    
   };
 
-  const handleAmountSave =async () =>{
-    console.log(formData)
-    UpdateOrders()
+
+  const formData2={
+    status: selectedStatus,
   }
 
-  const UpdateOrders = async () => {
+
+
+  const UpdateOrders = async (type) => {
     try {
       const response = await fetch(
         "http://localhost:5000/api/order/" + orderid,
@@ -134,9 +168,14 @@ const Orderadmindetails = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(type===0?formData :formData2),
         }
-      );
+      ).then(()=>{
+        alert("Order Updated")
+      })
+      
+      
+      ;
     } catch (error) {
       console.error(error);
     }
@@ -277,7 +316,7 @@ const Orderadmindetails = () => {
                     : "text-muted"
                 }`}
               >
-                {item.status}
+                {item.status.toUpperCase()}
               </p>
             </div>
           </div>
@@ -369,7 +408,7 @@ const Orderadmindetails = () => {
                           id="myweight"
                           type="number"
                           name="weight"
-                          placeholder="Enter Weight"
+                          placeholder={weight}
                           onChange={(e) => setWeight(e.target.value)}
                         />
                       </span>
@@ -384,7 +423,7 @@ const Orderadmindetails = () => {
                             id="myitems"
                             type="number"
                             name="items"
-                            placeholder="Number of Items"
+                            placeholder={items}
                             onChange={(e) => setItems(e.target.value)}
                           />
                         </label>
@@ -408,7 +447,7 @@ const Orderadmindetails = () => {
                 <div className="ml-5 col-5 mb-2 text-center">
                   <button
                     type="submit"
-                    onClick={() => handleAmountSave()}
+                    onClick={() => UpdateOrders(0)}
                     style={{
                       backgroundColor: "#FFF",
                       color: "#FA8232",
@@ -446,11 +485,11 @@ const Orderadmindetails = () => {
                     }}
                   >
                     {[
-                      "Order Placed",
-                      "Pickup",
-                      "Processing",
-                      "Out for Delivery",
-                      "Delivered",
+                      "order-placed",
+                      "picked",
+                      "processing",
+                      "out-for-delivery",
+                      "delivered",
                     ].map((status, index) => (
                       <option key={index} value={status}>
                         {status}
@@ -461,7 +500,7 @@ const Orderadmindetails = () => {
                 <div className="ml-4">
                   <button
                     type="submit"
-                    onClick={() => handleAmountSave()}
+                    onClick={() =>UpdateOrders(1)}
                     style={{
                       backgroundColor: "#FFF",
                       color: "#FA8232",
@@ -529,7 +568,7 @@ const Orderadmindetails = () => {
               <h5 className=" mb-3">Rating</h5>
               <div className="row">
                 <div className="container">
-                  <Starating />
+                  <Starating rate={parseInt(order.rating)} isadmin={true} />
                 </div>
               </div>
             </div>
@@ -539,9 +578,7 @@ const Orderadmindetails = () => {
             <div className="px-lg-2 mt-3">
               <h5 className=" mb-3">Feedback</h5>
               <p className="text-muted">
-                Donec ac vehicula turpis. Aenean sagittis est eu arcu ornare,
-                eget venenatis purus lobortis. Aliquam erat volutpat. Aliquam
-                magna odio.
+                {order.feedback}
               </p>
             </div>
           </div>
@@ -561,15 +598,15 @@ const Orderadmindetails = () => {
   // Helper function to get the corresponding icon for each status
   function getIconForStatus(status) {
     switch (status) {
-      case "Order Placed":
+      case "order-placed":
         return <FaBook />;
-      case "Pickup":
+      case "picked":
         return <FaCube />;
-      case "Processing":
+      case "processing":
         return <FaArrowCircleUp />;
-      case "Out for Delivery":
+      case "out-for-delivery":
         return <FaTruck />;
-      case "Delivered":
+      case "delivered":
         return <FaHandshake />;
       default:
         return null;
@@ -578,11 +615,11 @@ const Orderadmindetails = () => {
 };
 // Export timelineData
 export const timelineData = [
-  { status: "Order Placed", icon: getIconForStatus("Order Placed") },
-  { status: "Pickup", icon: getIconForStatus("Pickup") },
-  { status: "Processing", icon: getIconForStatus("Processing") },
-  { status: "Out for Delivery", icon: getIconForStatus("Out for Delivery") },
-  { status: "Delivered", icon: getIconForStatus("Delivered") },
+  { status: "order-placed", icon: getIconForStatus("order-placed") },
+  { status: "picked", icon: getIconForStatus("picked") },
+  { status: "processing", icon: getIconForStatus("processing") },
+  { status: "out-for-delivery", icon: getIconForStatus("out-for-delivery") },
+  { status: "delivered", icon: getIconForStatus("delivered") },
 ];
 
 export default Orderadmindetails;

@@ -14,6 +14,8 @@ const OrderSchema = new mongoose.Schema({
   totalItems: { type: Number, default: 0 },
   costPerItem: { type: Number, default: 0 },
   totalAmount: { type: Number, default: 0 },
+  feedback:{type: String},
+  rating:{type:Number},
 }, { timestamps: true });
 
 const Order = mongoose.model('Order', OrderSchema);

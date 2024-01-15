@@ -26,7 +26,7 @@ export default function Tablerow(props) {
         {props.sno}
       </th>
       <td className="td-red">
-        <Link to={`/adminorder?id=${props.sno}`} style={{ color: "#D97474" }}>
+        <Link to={`/adminorder?id=${data.id}`} style={{ color: "#D97474" }}>
           {data.id}
         </Link>
       </td>

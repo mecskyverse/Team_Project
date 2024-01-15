@@ -31,6 +31,7 @@ const Home = () => {
 
       // Update loading state after the delay
       setLoading(false);
+      if(loaderRef.current)
       loaderRef.current.stopLoading();
     };
 
@@ -45,6 +46,7 @@ const Home = () => {
       ) : (
         <>
         <Navbar/>
+        <Bubble/>
 
         {/* section1 */}
         <section className="container-fluid my-section-1">

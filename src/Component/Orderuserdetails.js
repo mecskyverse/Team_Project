@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Orderuserdetails.css";
+// import { FaStar } from "react-icons/fa";
+import { Container, Radio, Rating } from "./Ratingstyles";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -22,10 +24,34 @@ import { useSearchParams } from "react-router-dom";
 
 const Orderuserdetails = () => {
   const [order, setorder] = useState({}); //userdata[orderid-1]
+  const [formdata, setFormdata] = useState({
+    feedback: "",
+  });
+  const [rate, setrate] = useState(0);
+  const [selectedStatus, setSelectedStatus] = useState(""); // Default status
+  const [timelineData, setTimelineData] = useState([]);
+  const [completedIndex, setCompletedIndex] = useState(0);
+
   const [queryParameters] = useSearchParams();
-  const orderid = queryParameters.get("id");
+  let orderid = queryParameters.get("id");
 
   console.log(orderid);
+
+  const handleStatusChange = (newStatus) => {
+    // alert(newStatus);
+    // Update the selectedStatus when the dropdown value changes
+    setSelectedStatus(newStatus);
+
+    // Find the index of the selected status in the timeline
+    const selectedIndex = timelineData.findIndex(
+      (item) => item.status === newStatus
+    );
+
+    // alert(selectedIndex);
+
+    // Update the completed index
+    setCompletedIndex(selectedIndex);
+  };
 
   const fetchOrders = async () => {
     try {
@@ -44,6 +70,78 @@ const Orderuserdetails = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  // const formData1 = {
+  //   rating: weight,
+
+  // };
+
+  // const formData2={
+  //   feedback: selectedStatus,
+  // }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormdata((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  //   const formData = {
+  //     rating: rate,
+
+  //   };
+
+  //   const formData2={
+  //     feedback: feedback,
+  //   }
+  // console.log(feedback);
+  const formdata1 = {
+    feedback: formdata.feedback,
+  };
+  console.log(rate);
+  const formdata2 = {
+    rating: rate,
+  };
+
+  useEffect(() => {
+    setSelectedStatus(order.status);
+  }, [order]);
+
+  useEffect(() => {
+    handleStatusChange(selectedStatus);
+  }, [selectedStatus]);
+
+  useEffect(() => {
+    // Initialize timeline data
+    const initialTimelineData = [
+      { status: "order-placed", icon: <FaBook /> },
+      { status: "picked", icon: <FaCube /> },
+      { status: "processing", icon: <FaArrowCircleUp /> },
+      { status: "out-for-delivery", icon: <FaTruck /> },
+      { status: "delivered", icon: <FaHandshake /> },
+    ];
+    setTimelineData(initialTimelineData);
+  }, []);
+
+  // console.log(feedback);
+  const UpdateOrders = async (type) => {
+    console.log("Form data submitted:", formdata);
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/order/" + orderid,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(type === 0 ? formdata1 : { rating: type }),
+        }
+      ).then(() => {
+        alert("Order Updated");
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -78,27 +176,34 @@ const Orderuserdetails = () => {
                         {order.services}
                       </span>
                     </li>
-                    <li className="font-weight-bold py-2">
-                      Total Item:{" "}
-                      <span className="ml-3 text-muted font-weight-light">
-                        {" "}
-                        {order.totalItems}
-                      </span>
-                    </li>
-                    <li className="font-weight-bold py-2">
-                      Total Weight:{" "}
-                      <span className="ml-3 text-muted font-weight-light">
-                        {" "}
-                        {order.totalWeight}
-                      </span>
-                    </li>
-                    <li className="font-weight-bold py-2">
-                      Total Amount:{" "}
-                      <span className="ml-3 text-muted font-weight-light">
-                        {" "}
-                        ₹{order.totalAmount}
-                      </span>
-                    </li>
+
+                    {order.totalAmount ? (
+                      <div>
+                        <li className="font-weight-bold py-2">
+                          Total Item:{" "}
+                          <span className="ml-3 text-muted font-weight-light">
+                            {" "}
+                            {order.totalItems}
+                          </span>
+                        </li>
+                        <li className="font-weight-bold py-2">
+                          Total Weight:{" "}
+                          <span className="ml-3 text-muted font-weight-light">
+                            {" "}
+                            {order.totalWeight}
+                          </span>
+                        </li>
+                        <li className="font-weight-bold py-2">
+                          Total Amount:{" "}
+                          <span className="ml-3 text-muted font-weight-light">
+                            {" "}
+                            ₹{order.totalAmount}
+                          </span>
+                        </li>
+                      </div>
+                    ) : (
+                      <p></p>
+                    )}
                   </ul>
                 </div>
                 {/* <div className='col-lg-6 px-0 col-md-6 col-6'>
@@ -207,27 +312,37 @@ const Orderuserdetails = () => {
                   <div className="px-lg-2 mt-3">
                     <div className="d-inline">
                       <h5 className=" d-inline mb-3">Rating</h5>
-                      <Starating />
+
+                      <Starating
+                        rate={rate}
+                        setrate={setrate}
+                        isadmin={false}
+                        UpdateOrders={UpdateOrders}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="container mt-3 mb-5">
               <h3 className="px-3 ml-lg-3">Feedback</h3>
               <div className="row py-lg-3 mt-2 justify-content-start   px-lg-5  py-3">
                 <textarea
                   className="my-feedback-area p-3"
                   id="feedback"
-                  name="postContent"
+                  name="feedback"
+                  value={formdata.feedback}
                   rows={4}
                   cols={40}
                   placeholder="Write down your feedback about our product & services"
+                  onChange={handleChange}
                 />
               </div>
               <div className="px-4 ml-2 justify-content-start  py-3">
                 <button
                   type="submit"
+                  onClick={() => UpdateOrders(0)}
                   style={{
                     backgroundColor: "#FA8232",
                     color: "#fff",
@@ -258,8 +373,10 @@ const Orderuserdetails = () => {
             />
           </div>
           {/* timeline */}
+
+          {/* 
           <div className="col-lg-3  col-sm-12">
-            {/* <div className="card-body"> */}
+       
             <div class="container py-0">
               <div class="page-header mt-0"></div>
               <ul class="timeline">
@@ -313,9 +430,63 @@ const Orderuserdetails = () => {
               </ul>
             </div>
 
-            {/* </div> */}
+          
+          </div> */}
+
+          <div className="  steps mb-5 px-5   flex-row  justify-content-between padding-top-2x padding-bottom-1x">
+            {timelineData.map((item, index) => (
+              <div
+                className={` timeline-inverted flex-col step ${
+                  index <= completedIndex ? "completeds" : ""
+                }`}
+                key={index}
+              >
+                <div
+                  className="step-icon-wrap "
+                  style={{
+                    transform: "rotate(90deg)",
+                    zIndex: -1,
+                  }}
+                >
+                  <div
+                    className="step-icon text-white line"
+                    style={{
+                      transform: "rotate(-90deg)",
+
+                      borderColor: "#00B207",
+                      backgroundColor: `${
+                        index <= completedIndex ? "#00B207" : "white"
+                      }`,
+                    }}
+                  >
+                    <FaCheck
+                      style={{
+                        color: `${
+                          index <= completedIndex ? "white" : "#00B207"
+                        }`,
+                      }}
+                    />
+                  </div>
+                </div>
+                <div
+                  style={{
+                    zIndex: 100,
+                    background: "white",
+                  }}
+                >
+                  <p className="h6 my-icons mt-3 mb-1" style={{color:"green"}} >{item.icon}</p>
+                  <p  style={{color:"green"}}
+                    className={`h6 mt-2 mb-0 mb-lg-0 `}
+                  >
+                    {item.status.toUpperCase()}
+                  </p>
+                  <p className="date-time  " style={{color:"green"}}>21/12/23 - 01:00 PM</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="col-lg-3 my-snow-img">
+
+          <div className="col-lg-3 my-snow-img" >
             <img
               className="w-100 my-snow-img  d-inline-block "
               alt=""

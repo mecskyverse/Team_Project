@@ -19,6 +19,7 @@ border-radius: 10px;
 .my-nav-btn2 {
   background-color: #DDC630;
    border-radius: 10px;
+   text-decoration: none;
 }
 .navbar-toggler-icon{
   color: black !important;

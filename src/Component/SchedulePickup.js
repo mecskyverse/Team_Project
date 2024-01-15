@@ -221,7 +221,7 @@ const email=localStorage.getItem("email");
                 >
                   1. Premium garments are recommended to be laundered using
                   premium washing services. <br />
-                  2. Free deliveries are available for orders weighing 5kg or
+                  2. Free deliveries are available for orders weighing 8kg or
                   above.
                 </p>
               </div>

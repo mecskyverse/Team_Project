@@ -93,11 +93,24 @@ const Navbar = () => {
                   Services
                 </Link>
               </li>
-              <li className="nav-item ml-2">
-                <Link className="nav-link font-weight-bold my-links" to="/pickup">
-                  Order Now
-                </Link>
-              </li>
+              {
+                !token?(
+                  <li className="nav-item ml-2">
+                  <Link className="nav-link font-weight-bold my-links" to="/login">
+                    Order Now
+                  </Link>
+                </li>
+
+                ):(
+                  <li className="nav-item ml-2">
+                  <Link className="nav-link font-weight-bold my-links" to="/pickup">
+                    Order Now
+                  </Link>
+                </li>
+
+                )
+                
+                }
               <li className="nav-item ml-2">
                 <Link className="nav-link font-weight-bold my-links" to="/contact">
                   Contact Us

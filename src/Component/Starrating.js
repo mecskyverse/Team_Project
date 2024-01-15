@@ -2,8 +2,17 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { Container, Radio, Rating } from "./Ratingstyles";
-const Starrating = () => {
-    const [rate, setRate] = useState(0);
+const Starrating = ({rate,setrate,isadmin,UpdateOrders}) => {
+
+    
+
+console.log(rate);
+
+
+
+
+
+
   return (
     <Container>
     {[...Array(5)].map((item, index) => {
@@ -12,13 +21,18 @@ const Starrating = () => {
             <label>
                 <Radio
                     type="radio"
-                    value={givenRating}
+                    value={givenRating || (isadmin && rate)}
                     onClick={() => {
-                        setRate(givenRating);
+                        if(isadmin) return;
+                        setrate(givenRating);
+                  
                         alert(
                             `Are you sure you want to give 
                             ${givenRating} stars ?`
                         );
+                        console.log(rate);
+                        UpdateOrders(givenRating);
+                        
                     }}
                 />
                 <Rating>

@@ -5,14 +5,14 @@ import { useState } from "react";
 import Tablerow from "./Tablerow";
 import { useEffect } from "react";
 export default function Table({data}) {
-  const [startdate, setstartdate] = useState("01/01/1970");
-  const [enddate, setenddate] = useState("01/01/1970");
+  const [startdate, setstartdate] = useState("1970-01-01");
+  const [enddate, setenddate] = useState("1970-01-01");
 
-  var d1 = startdate.split("/");
-  var d2 = enddate.split("/");
+  var d1 = startdate.split("-");
+  var d2 = enddate.split("-");
 
-  var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);
-  var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
+  var from = new Date(d1[0], parseInt(d1[1]) - 1, d1[2]);
+  var to = new Date(d2[0], parseInt(d2[1]) - 1, d2[2]);
 
   return (
     <div className="table-content">
@@ -50,11 +50,11 @@ export default function Table({data}) {
           </thead>
           <tbody>
             {data.map((e,i) => {
-              let parts = e.date.split("/");
-              let date = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]);
+              let parts = e.date.split("-");
+              let date = new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
               if (
-                startdate === "01/01/1970" ||
-                enddate === "01/01/1970" ||
+                startdate === "1970-01-01" ||
+                enddate === "1970-01-01" ||
                 (date >= from && date <= to)
               )
                 return <TableRow data={e} sno={i+1}/>;

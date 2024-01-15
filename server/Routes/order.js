@@ -144,7 +144,7 @@ router.get("/", async (req, res) => {
     // Prepare the SQL query
     const query = `
       SELECT *
-      FROM orders
+      FROM orders ORDER BY date DESC,created_at DESC
     `;
 
     // Execute the SQL query
