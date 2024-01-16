@@ -365,9 +365,9 @@ const Orderuserdetails = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-3 delivery-img">
             <img
-              className="w-100  mt-4 d-inline-block my-card-main-img"
+              className="w-100 delivery-img mt-4 d-inline-block my-card-main-img"
               alt=""
               src={deliveryman}
             />
@@ -432,8 +432,8 @@ const Orderuserdetails = () => {
 
           
           </div> */}
-
-          <div className="  steps mb-5 px-5   flex-row  justify-content-between padding-top-2x padding-bottom-1x">
+<div className="col-lg-3">
+<div className="  steps mb-5 px-5   flex-row  justify-content-between padding-top-2x padding-bottom-1x">
             {timelineData.map((item, index) => (
               <div
                 className={` timeline-inverted flex-col step ${
@@ -485,6 +485,9 @@ const Orderuserdetails = () => {
               </div>
             ))}
           </div>
+</div>
+
+         
 
           <div className="col-lg-3 my-snow-img" >
             <img

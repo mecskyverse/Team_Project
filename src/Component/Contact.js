@@ -70,7 +70,7 @@ const Contact = () => {
                     <Link
                       className="text-decoration-none"
                       target="blank"
-                      to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67"
+                      to="https://maps.app.goo.gl/Zh7NH5onwaH9VPXJA"
                     >
                       <li className="mb-3">
                         <img
@@ -79,7 +79,7 @@ const Contact = () => {
                           src={location}
                         />
                         <p className="text-decoration-none text-dark">
-                          Show Room no.14,15 Darpan Residency Chindsa Colony
+                          Show Room no.14,15 Darpan Residency Dhindsa Colony
                           Khanpur, Kharar, 140301
                         </p>
                       </li>
@@ -229,7 +229,7 @@ const Contact = () => {
           </section>
         </div>
         <div className="container-fluid mb-5 p-0">
-          <Link to="https://maps.app.goo.gl/UN4CCqPbg4dnBaz67">
+          <Link to="https://maps.app.goo.gl/Zh7NH5onwaH9VPXJA">
             <div
               id="map-container-google-1"
               className="z-depth-1-half map-container"
@@ -240,7 +240,7 @@ const Contact = () => {
                 height="450"
                 loading="lazy"
                 allowfullscreen
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14324.907342859346!2d76.5935137201742!3d30.723829101383275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391afbd7c5be547f%3A0xd0b6013c1e16a839!2sShow%20Room%20no.14%2C15%20Darpan%20Residency%20Chindsa%20Colony%20Khanpur%2C%20Kharar%2C%20140301!5e0!3m2!1sen!2sin!4v1641492096615!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d749.3570892366429!2d76.62865964166951!3d30.748175605838448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fe540b0c4b351%3A0x825036e1078ee30b!2sNew%20Guru%20Nanak%20Dairy%20%26%20Sweets!5e0!3m2!1sen!2sin!4v1704989151523!5m2!1sen!2sin"
               ></iframe>
             </div>
           </Link>

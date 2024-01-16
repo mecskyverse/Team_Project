@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import "../services.css";
 import serviceimg from "../Component/images/services.jpeg";
 import normal_washing_img from "../Component/images/normal_washing_img.jpeg";
+import ironing_img from "../Component/images/ironing_img.jpeg";
 import premium_washing_img from "../Component/images/premium_washing_img.jpeg";
 import shoe_washing_img from "../Component/images/shoes_washing_img.jpeg";
 import dry_washing_img from "../Component/images/dry_cleaning_img.jpeg";
@@ -84,7 +85,7 @@ const Services = () => {
         </li>
         <li className=' list-unstyled'>
         <img className="w-25 d-inline-block my-card-main-img" alt="" src={blue_bed} />
-        <h5 className='d-inline-block mx-2 mx-lg-3'>Wash & Fold per Kg</h5> 
+        <h5 className='d-inline-block mx-2 mx-lg-3'>Wash & Iron per Kg</h5> 
         <h5 className='d-inline-block mx-1 mx-lg-2'>
         ₹ 79/-
         </h5>
@@ -131,7 +132,7 @@ const Services = () => {
    <div className='col-lg-4 mb-lg-0 mb-4 p-lg-4 my-card-main-img col-md-4 col-sm-12'>
   <div className="bg-image my-card-main-img " >
   <div className='bg-img-container'>
-    <img className="w-100 my-card-main-img" alt="" src={normal_washing_img} />
+    <img className="w-100 my-card-main-img" alt="" src={ironing_img} />
     <Link to='/pickup'> <button class="btn btn-overlay font-weight-bold"> Order Now</button> </Link> 
     </div>
   
