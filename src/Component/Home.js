@@ -16,11 +16,14 @@ import Caraousal from "./Caraousal"
 import Caraousalserv from "./Caraousalserv"
 import CaraousalServBottom from "./Caraousalservbottom";
 import Loader from "./Loader";
+import Offerpopup from '../Component/Offerpopup'; 
 
 
 const Home = () => {
   const loaderRef = useRef();
   const [loading, setLoading] = useState(true);
+  const [showOfferPopup, setShowOfferPopup] = useState(true);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -37,6 +40,14 @@ const Home = () => {
 
     fetchInitialData();
   }, []);
+
+
+  const closeOfferPopup = () => {
+    setShowOfferPopup(false);
+    
+  };
+  
+ 
   
   return (
     <>
@@ -45,8 +56,12 @@ const Home = () => {
         <Loader ref={loaderRef} />
       ) : (
         <>
-        <Navbar/>
-        <Bubble/>
+          {showOfferPopup && !token ? (
+            <Offerpopup closeoffer={closeOfferPopup} />
+          ) : (
+            <>
+              <Navbar />
+              <Bubble />
 
         {/* section1 */}
         <section className="container-fluid my-section-1">
@@ -143,15 +158,18 @@ At Laugh n' Laundry, we're more than just a laundry service; we're your go-to de
           </div>
         </section>
         
-  {/* Footer */}
- <Footer/>
-  {/* Footer */}
-  </>
-        )
-}
-      </>
- 
+ {/* Footer */}
+ <Footer />
+              {/* Footer */}
+            </>
+          )}
+        </>
+      )}
+    </>
   );
 };
+
+
+
 
 export default Home;

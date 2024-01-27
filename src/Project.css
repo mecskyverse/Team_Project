@@ -12,6 +12,10 @@ button:focus {
   text-decoration: none;
   color: black !important ;
 }
+
+.btn:hover {
+  text-decoration: none;
+}
 .my-nav-btn1 {
 background-color: #F9F3CC;
 border-radius: 10px;

@@ -72,6 +72,28 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.put('/passChange', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Find the user by email
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const query = `UPDATE users SET password = ? WHERE email = ?`;
+    const values = [hashedPassword ,email];
+
+    connection.query(query, values, async (err, rows) => {
+      if (err) {
+        console.error('User Update failed:', err.message);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.status(202).json({ message: 'Update successful!' });
+    });
+  } catch (error) {
+    console.error('Update failed:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 router.post("/sendEmail", sendEmail);
 
 router.post("/verify" , getOTPByEmail)

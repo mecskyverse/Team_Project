@@ -92,6 +92,7 @@ function SignUp() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 placeholder="Enter your name"
+                required
               />
             </label>
             <label  style={{display:"unset"}}>
@@ -102,6 +103,7 @@ function SignUp() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 placeholder="Enter your name"
+                required
               />
             </label>
             <label style={{display:"unset"}}>
@@ -112,6 +114,7 @@ function SignUp() {
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
                 placeholder="Phone number"
+                required
               />
             </label>
             <label  style={{display:"unset"}}>
@@ -122,6 +125,7 @@ function SignUp() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email"
+                required
               />
             </label>
 
@@ -134,6 +138,7 @@ function SignUp() {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Enter password"
+                  required
                 />
                 <button
                   type="button"
@@ -154,6 +159,7 @@ function SignUp() {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="Enter password"
+                  required
                 />
                 <button
                   type="button"

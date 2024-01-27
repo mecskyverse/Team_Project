@@ -103,6 +103,7 @@ console.log(data);
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email or phone number"
+                required
               />
             </label>
 
@@ -115,6 +116,7 @@ console.log(data);
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Enter password"
+                  required
                 />
                 <button
                   type="button"
@@ -140,7 +142,9 @@ console.log(data);
               <span className="slider"></span>
             </label>
             <h4>Remember me</h4>
+            <Link to={'/forgot-pass'}>
             <button type="button frgt-btn mt-0"> Forgot password?</button>
+            </Link>
           </div>
           <br />
           <div className="signin_button font-weight-bold">

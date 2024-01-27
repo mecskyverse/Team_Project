@@ -4,7 +4,7 @@ import TableRow from "./Tablerow";
 import { useState } from "react";
 import Tablerow from "./Tablerow";
 import { useEffect } from "react";
-export default function Table({data}) {
+export default function Table({data,  setdata, serialNumber}) {
   const [startdate, setstartdate] = useState("1970-01-01");
   const [enddate, setenddate] = useState("1970-01-01");
 
@@ -13,6 +13,7 @@ export default function Table({data}) {
 
   var from = new Date(d1[0], parseInt(d1[1]) - 1, d1[2]);
   var to = new Date(d2[0], parseInt(d2[1]) - 1, d2[2]);
+
 
   return (
     <div className="table-content">
@@ -49,6 +50,7 @@ export default function Table({data}) {
             </tr>
           </thead>
           <tbody>
+          
             {data.map((e,i) => {
               let parts = e.date.split("-");
               let date = new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
@@ -57,7 +59,8 @@ export default function Table({data}) {
                 enddate === "1970-01-01" ||
                 (date >= from && date <= to)
               )
-                return <TableRow data={e} sno={i+1}/>;
+console.log(serialNumber);
+                return <TableRow data={e} sno={serialNumber+i}/>;
             })}
             
           </tbody>

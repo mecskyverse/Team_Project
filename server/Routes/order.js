@@ -120,6 +120,8 @@ router.get("/user/:id", async (req, res) => {
       SELECT *
       FROM orders
       WHERE user = ?
+      ORDER BY date DESC,created_at DESC
+
     `;
 
     // Execute the SQL query

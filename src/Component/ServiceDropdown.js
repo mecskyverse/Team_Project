@@ -170,10 +170,10 @@ const ServiceDropdown = ({handleChangeService}) => {
     </Dropdown.Menu>
 
         <Dropdown.Menu title="Blanket Washing">
-          <Dropdown.Item   eventKey="Blanket Washing (Light Weight)">Light Weight</Dropdown.Item>
-          <Dropdown.Item eventKey="Blanket Washing (Single Bed)">Single Bed</Dropdown.Item>
-          <Dropdown.Item eventKey="Blanket Washing (Double Bed)">Double Bed</Dropdown.Item>
-          <Dropdown.Item eventKey="Blanket Washing (Heavy Weight)">Heavy Weight</Dropdown.Item>
+          <Dropdown.Item   eventKey="Blanket Washing (Light Weight)">Light Weight Single</Dropdown.Item>
+          <Dropdown.Item eventKey="Blanket Washing (Single Bed)">Light Weight Double</Dropdown.Item>
+          <Dropdown.Item eventKey="Blanket Washing (Double Bed)">Heavy Weight Single</Dropdown.Item>
+          <Dropdown.Item eventKey="Blanket Washing (Heavy Weight)">Heavy Weight Double</Dropdown.Item>
           
         </Dropdown.Menu>
 

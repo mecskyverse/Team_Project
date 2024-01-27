@@ -1,7 +1,4 @@
-
 import './App.css';
-
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,6 +16,7 @@ import Adminorder from './Component/Orderadmindetails';
 import Userorder from './Component/Orderuserdetails';
 import Responses from './Component/Responses';
 import Offerpopup from './Component/Offerpopup';
+import EmailOtpForm from './Component/ForgotPass';
 function App() {
   return (
     <Router>
@@ -37,6 +35,7 @@ function App() {
          <Route exact path="/responses" element={<Responses/>}/>
          <Route exact path="/admin" element={<AdminDashboard/>}/>
          <Route exact path="/offerpopup" element={<Offerpopup/>}/>
+         <Route exact path="/forgot-pass" element={<EmailOtpForm/>}/>
         </Routes>
       </div>
     </Router>

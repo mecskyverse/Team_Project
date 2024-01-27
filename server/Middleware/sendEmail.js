@@ -21,8 +21,6 @@ const sendMailAsync = promisify(transporter.sendMail).bind(transporter);
 
 const sendEmail = expressAsyncHandler(async (req, res) => {
   const { email } = req.body;
-  console.log(email);
-
   const otp = generateOTP();
 
   var mailOptions = {
@@ -36,7 +34,7 @@ const sendEmail = expressAsyncHandler(async (req, res) => {
     await sendMailAsync(mailOptions);
     storeOTP(email, otp);
     console.log("Email sent successfully!");
-    return res.status(200).json({ otp: otp });
+    return res.status(200).json({ otp: "Success" });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Error sending email" });

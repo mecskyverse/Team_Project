@@ -110,6 +110,7 @@ const email=localStorage.getItem("email");
                     placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div>
@@ -120,6 +121,7 @@ const email=localStorage.getItem("email");
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
@@ -149,6 +151,7 @@ const email=localStorage.getItem("email");
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div>
@@ -158,13 +161,21 @@ const email=localStorage.getItem("email");
                     onChange={handleSelectChangeTiming}
                     value={selectedOptionTiming}
                     name="timing"
+                    required
                   >
-                    <option id="input2" hidden>
+                    <option id="input2"   hidden>
                       Timing
                     </option>
-                    <option value="Timing 1">Timing 1</option>
+                    <option value="8:00AM-10:00 AM">8:00AM-10:00 AM</option>
+                    <option value="10:00AM-12:00PM">10:00AM-12:00PM</option>
+                    <option value="12:00PM-02:00PM">12:00PM-02:00PM</option>
+                    <option value="02:00PM-04:00PM">02:00PM-04:00PM</option>
+                    <option value="04:00PM-06:00PM">04:00PM-06:00PM</option>
                     {/* Add more options as needed */}
                   </select>
+
+
+                 
                 </div>
               </div>
 
@@ -176,6 +187,7 @@ const email=localStorage.getItem("email");
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -228,6 +240,19 @@ const email=localStorage.getItem("email");
 
               <div className="Submit_button">
                 <button type="submit">Submit</button>
+
+                
+
+
+                {/* <button
+                  type="submit"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+
+                >
+                  Submit
+                </button> */}
+
               </div>
             </form>
 
@@ -270,7 +295,7 @@ const email=localStorage.getItem("email");
                         <FaHouseUser className="mx-0 mb-1" /> Home
                       </button>
                     </Link>
-                    <Link to="/pickup" className="d-inline-block mx-2">
+                    <Link to="/myorder1" className="d-inline-block mx-2">
                       <button className="btn btn-order1 px-4  w-100 font-weight-bold">
                         View Order <FaArrowRight className="mx-1 mb-1" />{" "}
                       </button>

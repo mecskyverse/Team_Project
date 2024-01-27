@@ -18,6 +18,16 @@ import AdminNavbar from "./AdminNavbar";
 import AdminNavbar2 from "./AdminNavbar2";
 import userdata from "./Data";
 
+function extractNumberFromString(inputString) {
+  const match = inputString.match(/\d+/);
+
+  if (match) {
+    return parseInt(match[0], 10);
+  } else {
+    return null;
+  }
+}
+
 function getIconForStatus(status) {
   switch (status) {
     case "order-placed":
@@ -39,10 +49,12 @@ function getIconForStatus(status) {
 }
 const Orderadmindetails = () => {
   const [orders, setOrders] = useState([]);
+  const [PaymentParam, setPaymentParam] = useState('item');
   const [weight, setWeight] = useState(0);
   const [order, setorder] = useState({}); //userdata[orderid-1]
   const [items, setItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [pricing , setPricing] = useState(49)
   //
   const [selectedStatus, setSelectedStatus] = useState(""); // Default status
   const [timelineData, setTimelineData] = useState([]);
@@ -52,11 +64,67 @@ const Orderadmindetails = () => {
   // const urlquery=new URLSearchParams(params);
   const [queryParameters] = useSearchParams();
   const orderid = queryParameters.get("id");
-  // console.log(queryParameters.get("id"));
+
+  useEffect(()=>{
+    let service;
+    if(order){
+      service = order.services
+      switch (service) {
+        case 'Dry Cleaning (Shirt & Pants)':
+          setPricing(99);
+          break;
+        case 'Ironing (Steam Iron)':
+          setPricing(20)
+          break;
+        case 'Normal Washing (Wash & Fold)':
+          setPricing(49)
+          setPaymentParam('weight')
+          break;
+        case 'Normal Washing (Wash & Iron)':
+          setPricing(59)
+          setPaymentParam('weight')
+          break;
+        case 'Premium Washing (Wash & Fold)':
+          setPricing(69)
+          setPaymentParam('weight')
+          break;
+        case 'Premium Washing (Wash & Iron)':
+          setPricing(79)
+          setPaymentParam('weight')
+          break;
+        case 'Dry Cleaning (Jacket & Hoodie)':
+          setPricing(129)
+          break;
+        case 'Ironing (Normal Iron)':
+          setPricing(15)
+          break;
+        case 'Blanket Washing (Light Weight Single)':
+          setPricing(149)
+          break;
+        case 'Blanket Washing (Light Weight Double)':
+          setPricing(149)
+          break;
+        case 'Blanket Washing (Heavy Weight Single)':
+          setPricing(199)
+          break;
+        case 'Blanket Washing (Heavy Weight Double)':
+          setPricing(299)
+          break;
+        case 'Blanket Washing (Single Bed)':
+          setPricing(299)
+          break;
+        default:
+          const numberOfPairs = 1
+          setPricing(numberOfPairs * 59)
+          break;
+      }
+    }
+    
+  },[order])
+  
 
   console.log(orderid);
   console.log(order);
-
 
   const handleStatusChange = (newStatus) => {
     // alert(newStatus);
@@ -106,10 +174,16 @@ const Orderadmindetails = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
   // calculate amount
   useEffect(() => {
     // Recalculate total amount whenever weight or items change
-    const result = weight * items;
+    let result;
+    if(PaymentParam==='weight'){
+      result = weight * pricing;
+    }else{
+      result = items * pricing
+    }
     setTotalAmount(result);
     console.log(weight);
   
@@ -552,9 +626,7 @@ const Orderadmindetails = () => {
             <div className="px-lg-2 mt-3">
               <h5 className=" mb-3">Order Instruction</h5>
               <p className="text-muted">
-                Donec ac vehicula turpis. Aenean sagittis est eu arcu ornare,
-                eget venenatis purus lobortis. Aliquam erat volutpat. Aliquam
-                magna odio.
+                {order.specialInstruction}
               </p>
             </div>
           </div>

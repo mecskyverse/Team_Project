@@ -26,6 +26,7 @@ const AdminDashboard = () => {
 
   const [order, setorder] = useState(false);
   const [response, setresponse] = useState(false);
+  const [serialNumber, setSerialNumber] = useState(1);
 
   useEffect(() => {
     console.log(searchValue);
@@ -37,6 +38,10 @@ const AdminDashboard = () => {
     });
     setcopydata2(d);
   }, [searchValue, data2]);
+
+  useEffect(() => {
+    setSerialNumber(currentindex * 12 + 1);
+  }, [currentindex]);
 
   const orderdata = async () => {
     try {
@@ -381,7 +386,7 @@ console.log(`${year}-${month}-${day}`);
             </div>
           </div>
 
-          <Table data={copydata2} setdata={setdata} />
+          <Table data={copydata2} setdata={setdata}  serialNumber={serialNumber}  />
 
           <div className="page">
             <div class="pagination">{componentsArr}</div>

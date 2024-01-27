@@ -149,6 +149,7 @@ const Contact = () => {
                           className="form-control contact-form-input p-4 text-dark"
                           placeholder="Your Name"
                           onChange={handleChange}
+                          required
                         />
                       </div>
                     </div>
@@ -159,6 +160,7 @@ const Contact = () => {
                         <input
                           type="tel"
                           placeholder="Phone No."
+                          required
                           name="contact"
                           value={formData.contact}
                           onChange={handleChange}
@@ -184,6 +186,7 @@ const Contact = () => {
                           id="subject"
                           name="subject"
                           value={formData.subject}
+                          required
                           placeholder="Subjects"
                           className="form-control contact-form-input p-4 text-dark"
                           onChange={handleChange}
@@ -206,6 +209,7 @@ const Contact = () => {
                           value={formData.feedback}
                           onChange={handleChange}
                           placeholder="Message"
+                          required
                           defaultValue={""}
                         />
                       </div>

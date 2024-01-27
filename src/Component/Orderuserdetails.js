@@ -32,6 +32,10 @@ const Orderuserdetails = () => {
   const [timelineData, setTimelineData] = useState([]);
   const [completedIndex, setCompletedIndex] = useState(0);
 
+  
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+  const [formattedDateTimelineTime, setFormattedDateTimelineTime] = useState("");
+
   const [queryParameters] = useSearchParams();
   let orderid = queryParameters.get("id");
 
@@ -122,6 +126,27 @@ const Orderuserdetails = () => {
     setTimelineData(initialTimelineData);
   }, []);
 
+
+  useEffect(() => {
+    const formatDate = (dateTimeString) => {
+      const dateObject = new Date(dateTimeString);
+      const day = dateObject.getDate().toString().padStart(2, '0');
+      const month = (dateObject.getMonth() + 1).toString().padStart(2, '0');
+      const year = dateObject.getFullYear();
+      const hours = dateObject.getHours() % 12 || 12; // Convert to 12-hour format
+      const minutes = dateObject.getMinutes().toString().padStart(2, '0'); // Add leading zero if needed
+      const period = dateObject.getHours() >= 12 ? 'PM' : 'AM';
+
+      const formattedDate = `${day}/${month}/${year} - ${hours}:${minutes} ${period}`;
+      return formattedDate;
+    };
+
+    setFormattedDateTime(formatDate(order.created_at));
+    setFormattedDateTimelineTime(formatDate(order.updated_at))
+  }, [order]);
+
+
+
   // console.log(feedback);
   const UpdateOrders = async (type) => {
     console.log("Form data submitted:", formdata);
@@ -166,7 +191,16 @@ const Orderuserdetails = () => {
                       Order Placed:{" "}
                       <span className="ml-3 text-muted font-weight-light">
                         {" "}
-                        {order.date} -{order.timing} PM
+                        {/* {order.date} -{order.timing}  */}
+                        {formattedDateTime}
+
+
+
+
+
+
+
+
                       </span>
                     </li>
                     <li className="font-weight-bold py-2">
@@ -305,7 +339,8 @@ const Orderuserdetails = () => {
               </div>
             </div>
 
-            <div className="container mt-5 mb-5 ">
+            {order.status==='delivered' && ( <div>
+              <div className="container mt-5 mb-5 ">
               <div className="row py-lg-0 justify-content-start   px-4  py-3">
                 {/* shipping details */}
                 <div className="col-lg-5  col-md-6 col-sm-12 ">
@@ -364,6 +399,7 @@ const Orderuserdetails = () => {
                 </button>
               </div>
             </div>
+            </div>)}
           </div>
           <div className="col-lg-3 delivery-img">
             <img
@@ -433,7 +469,7 @@ const Orderuserdetails = () => {
           
           </div> */}
 <div className="col-lg-3">
-<div className="  steps mb-5 px-5   flex-row  justify-content-between padding-top-2x padding-bottom-1x">
+<div className="  steps mb-5 px-5   timeliner-steps-user flex-row  justify-content-between padding-top-2x padding-bottom-1x">
             {timelineData.map((item, index) => (
               <div
                 className={` timeline-inverted flex-col step ${
@@ -480,7 +516,13 @@ const Orderuserdetails = () => {
                   >
                     {item.status.toUpperCase()}
                   </p>
-                  <p className="date-time  " style={{color:"green"}}>21/12/23 - 01:00 PM</p>
+
+                  {index === completedIndex && (
+  <p className="date-time" style={{ color: "green" }}>
+    {formattedDateTimelineTime}
+  </p>
+)}
+                  <p className="date-time  " style={{color:"green"}}></p>
                 </div>
               </div>
             ))}
