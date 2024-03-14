@@ -11,8 +11,8 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "dhirajksahu01@gmail.com",
-    pass: "brqa xvnw zxaa nmbp", // Use App Password or your actual password
+    user: "krishchouhan486@gmail.com",
+    pass: "jfug obbi ihuk bbrj", // Use App Password or your actual password
   },
 });
 
@@ -24,7 +24,7 @@ const sendEmail = expressAsyncHandler(async (req, res) => {
   const otp = generateOTP();
 
   var mailOptions = {
-    from: "dhirajksahu01@gmail.com",
+    from: "krishchouhan486@gmail.com",
     to: email,
     subject: "OTP from Callback Coding",
     text: `Your OTP is: ${otp}`,

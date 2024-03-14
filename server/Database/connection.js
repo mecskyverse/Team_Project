@@ -17,20 +17,43 @@
 // module.exports = mongoose;
 
 
-const mysql = require('mysql2');
-const connection =  mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'test',
-  password : ""
-});
+const mysql = require('mysql2/promise');
+async function createConnection(){
+  try {
+    const connection = await mysql.createConnection({
+      host: '64.23.198.227', // Replace with your actual host
+      database: 'Kirsh_Project', // Replace with your actual database name
+      user: 'durgesh', // Replace with your actual username (avoid using 'root')
+      password: 'newpassword', // Replace with your actual password (avoid storing directly in code)
+    });
 
-connection.connect((error)=>{
-  if (error) {
-    console.log("Database connection Error" , error?.message)
-  }else{
-    console.log("Database connection successful using Sql")
+    console.log('Database connection successful using SQL');
+    return connection;
+  } catch (error) {
+    console.error('Database connection Error:', error.message);
+    throw error; // Re-throw the error to allow proper handling in the calling code
   }
-})
+}
 
-module.exports = connection
+async function runQuery(connection, query, ...params) {
+  try {
+    const [rows, fields] = await connection.execute(query, params);
+    return { rows, fields }; // Return query results
+  } catch (error) {
+    console.error('Error running query:', error.message);
+    throw error; // Re-throw the error to allow proper handling in the calling code
+  }
+}
+
+async function closeConnection(connection) {
+  try {
+    await connection.end();
+    console.log('Database connection closed');
+  } catch (error) {
+    console.error('Error closing connection:', error.message);
+  }
+}
+
+module.exports = {
+  createConnection, runQuery, closeConnection
+}

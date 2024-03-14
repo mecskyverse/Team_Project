@@ -1,23 +1,25 @@
 const express = require("express");
 const Response = require("../Models/response.js");
 const router = express.Router();
-const connection = require("../Database/connection.js");
+// const connection = require("../Database/connection.js");
+const { createConnection, closeConnection } = require ("../Database/connection.js")
+
 
 router.get("/", async (req, res) => {
   try {
-    // Prepare the SQL query
-    const query = `
+    // Establish connection using imported functions
+    const connection = await createConnection();
+
+    try {
+      // Prepare the SQL query with parameterized placeholder
+      const query = `
         SELECT *
         FROM responses
-ORDER BY createdAt DESC
+        ORDER BY createdAt DESC
       `;
 
-    // Execute the SQL query
-    connection.query(query, (err, rows) => {
-      if (err) {
-        console.error("Error fetching responses:", err);
-        return res.status(500).json({ error: "Internal Server Error" });
-      }
+      // Execute the SQL query using connection.execute
+      const [rows] = await connection.execute(query);
 
       // Check if responses are found
       if (!rows || rows.length === 0) {
@@ -26,65 +28,47 @@ ORDER BY createdAt DESC
 
       // Return the responses
       res.status(200).json(rows);
-    });
+    } catch (error) {
+      console.error("Error fetching responses:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    } finally {
+      await closeConnection(connection); // Ensure connection closure
+    }
   } catch (error) {
-    console.error("Response fetch error:", error);
+    console.error("Response fetch error:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 router.post("/", async (req, res) => {
   try {
-    // Extract data from the request body
     const { name, subject, feedback, contact } = req.body;
 
-    // Prepare the SQL query
-    const query = `
-    INSERT INTO responses (name, subject, feedback, contact)
-    VALUES (?, ?, ?, ?)
-    `;
+    // Establish connection using imported functions
+    const connection = await createConnection();
 
-    // Execute the SQL query with parameters
-    connection.query(
-      query,
-      [name, subject, feedback, contact],
-      (err, results) => {
-        if (err) {
-          console.error("Error adding response:", err);
-          return res.status(500).json({ error: "Internal Server Error" });
-        }
+    try {
+      // Prepare the SQL query with parameterized placeholders
+      const query = `
+        INSERT INTO responses (name, subject, feedback, contact)
+        VALUES (?, ?, ?, ?)
+      `;
 
-        // Get the ID of the newly inserted response
-        const insertedId = results.insertId;
+      // Execute the SQL query using connection.execute
+      const [result] = await connection.execute(query, [name, subject, feedback, contact]);
 
-        // Retrieve the inserted response from the database
-        const insertedResponseQuery = `
-        SELECT *
-        FROM responses
-        WHERE id = ?
-    `;
+      const insertedId = result.insertId;
 
-        // Execute the SQL query to get the inserted response
-        connection.query(insertedResponseQuery, [insertedId], (err, rows) => {
-          if (err) {
-            console.error("Error retrieving inserted response:", err);
-            return res.status(500).json({ error: "Internal Server Error" });
-          }
-
-          // Check if the response is found
-          if (!rows || rows.length === 0) {
-            return res
-              .status(404)
-              .json({ message: "Inserted response not found" });
-          }
-
-          // Return the inserted response
-          res.status(201).json(rows[0]);
-        });
-      }
-    );
+      // No need for separate retrieval query
+      res.status(201).json({ message: "Response added successfully", id: insertedId });
+    } catch (error) {
+      console.error("Error adding response:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    } finally {
+      await closeConnection(connection); // Ensure connection closure
+    }
   } catch (error) {
-    console.error("Error adding response:", error);
+    console.error("Error adding response:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
