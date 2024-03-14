@@ -16,13 +16,13 @@ import Caraousal from "./Caraousal"
 import Caraousalserv from "./Caraousalserv"
 import CaraousalServBottom from "./Caraousalservbottom";
 import Loader from "./Loader";
-import Offerpopup from '../Component/Offerpopup'; 
+// import Offerpopup from '../Component/Offerpopup'; 
 
 
 const Home = () => {
   const loaderRef = useRef();
   const [loading, setLoading] = useState(true);
-  const [showOfferPopup, setShowOfferPopup] = useState(true);
+  const [showOfferPopup, setShowOfferPopup] = useState(false);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Home = () => {
       ) : (
         <>
           {showOfferPopup && !token ? (
-            <Offerpopup closeoffer={closeOfferPopup} />
+            null
           ) : (
             <>
               <Navbar />

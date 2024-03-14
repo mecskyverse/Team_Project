@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from "react-router-dom"
 import "../Project.css";
 import { FaBars } from 'react-icons/fa';
 import logo from "../Component/images/nav-logo.png";
 const Navbar = () => {
+  const [checkAdmin, setCheckAdmin] = useState(false);
+  console.log('check ',checkAdmin)
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    role === 'admin' ? setCheckAdmin(true) : null;
+  }, [])
+  
+
   return (
     // <div>
 <nav 
@@ -60,12 +68,15 @@ const Navbar = () => {
                   Signup
                   </Link>
               </li>
+              
               <li className="nav-item ml-3 mr-3 ">
               <Link to="/login" className="btn py-1 px-4 my-nav-btn2 ">
                   Login
                   </Link>
                 
               </li>
+             
+              
             </ul>
           </div>
         </nav>

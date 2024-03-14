@@ -15,7 +15,7 @@ export default function AdminNavbar( {order,setorder,response,setresponse}) {
   };
 
 
- console.log(response);
+ //console.log(response);
 
   useEffect(() => {
     const currentURL = window.location.href;

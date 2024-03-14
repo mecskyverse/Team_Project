@@ -46,11 +46,11 @@ function SignUp() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post("https://laughnlaundry.in/api/auth/signup", formData);
 
 
 
-      console.log("Signup successful:", response.data);
+      //console.log("Signup successful:", response.data);
       navigate("/login");
       // You can handle success, redirect, or any other logic here
     } catch (error) {
@@ -59,7 +59,7 @@ function SignUp() {
       // Handle error appropriately, e.g., show an error message to the user
     }
 
-    // console.log("Signup submitted:", formData);
+    // //console.log("Signup submitted:", formData);
   };
 
   return (

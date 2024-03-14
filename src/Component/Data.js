@@ -134,10 +134,10 @@
 const userdata=[
   // Example fetch for orders
   // try {
-  //   const response = await fetch('http://localhost:5000/api/order');
+  //   const response = await fetch('https://laughnlaundry.in/api/order');
 
   //   const data = await response.json();
-  //   console.log(data);
+  //   //console.log(data);
 
   // } catch (error) {
   //   console.error(error);
@@ -145,10 +145,10 @@ const userdata=[
 
   // Example fetch for orders by id
   // try {
-  //   const response = await fetch('http://localhost:5000/api/order/' + orderId);
+  //   const response = await fetch('https://laughnlaundry.in/api/order/' + orderId);
 
   //   const data = await response.json();
-  //   console.log(data);
+  //   //console.log(data);
 
   // } catch (error) {
   //   console.error(error);
@@ -156,10 +156,10 @@ const userdata=[
 
   // Example fetch for User orders
   // try {
-  //   const response = await fetch('http://localhost:5000/api/order/user/' + userId);
+  //   const response = await fetch('https://laughnlaundry.in/api/order/user/' + userId);
 
   //   const data = await response.json();
-  //   console.log(data);
+  //   //console.log(data);
 
   // } catch (error) {
   //   console.error(error);
@@ -177,7 +177,7 @@ const userdata=[
   //   "specialInstruction": "sndkjbchs"
   // }
   // try {
-  //   const response = await fetch('http://localhost:5000/api/order/' + orderId,{
+  //   const response = await fetch('https://laughnlaundry.in/api/order/' + orderId,{
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ const userdata=[
   // formData = {"name" : "Dhiraj Sahu"
   // , "subject" : "Hello Bolra tha ", "feedback" : "Badhiya kaamm", "contact" : "9324211798"}
   // try {
-  //   const response = await fetch('http://localhost:5000/api/response/',{
+  //   const response = await fetch('https://laughnlaundry.in/api/response/',{
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
@@ -200,10 +200,10 @@ const userdata=[
 
   // Example fetch for All responses
   // try {
-  //   const response = await fetch('http://localhost:5000/api/response/');
+  //   const response = await fetch('https://laughnlaundry.in/api/response/');
 
   //   const data = await response.json();
-  //   console.log(data);
+  //   //console.log(data);
 
   // } catch (error) {
   //   console.error(error);

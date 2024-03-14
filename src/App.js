@@ -17,6 +17,7 @@ import Userorder from './Component/Orderuserdetails';
 import Responses from './Component/Responses';
 import Offerpopup from './Component/Offerpopup';
 import EmailOtpForm from './Component/ForgotPass';
+import PrivateRoute from './Component/ProtectedRoute';
 function App() {
   return (
     <Router>
@@ -33,7 +34,9 @@ function App() {
           <Route exact path="/userorder" element={<Userorder/>}/>
           <Route exact path="/adminorder" element={<Adminorder/>}/>
          <Route exact path="/responses" element={<Responses/>}/>
-         <Route exact path="/admin" element={<AdminDashboard/>}/>
+         <Route exact path="/admin" element={<PrivateRoute/>}>
+         <Route exact index element={<AdminDashboard/>}/>
+         </Route>
          <Route exact path="/offerpopup" element={<Offerpopup/>}/>
          <Route exact path="/forgot-pass" element={<EmailOtpForm/>}/>
         </Routes>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "../Component/Navbar";
 import "../admindashboard.css";
 import { Link } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router-dom';
 
 import { document } from "postcss";
 
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
   const [serialNumber, setSerialNumber] = useState(1);
 
   useEffect(() => {
-    console.log(searchValue);
+    // console.log(searchValue);
     const d = data2.filter((element) => {
       return (
         element.name.toLowerCase().substring(0, searchValue.length) ===
@@ -40,16 +41,20 @@ const AdminDashboard = () => {
   }, [searchValue, data2]);
 
   useEffect(() => {
+    const role = localStorage.getItem('role');
+    // console.log(role)
+
+  }, [])
+
+  useEffect(() => {
     setSerialNumber(currentindex * 12 + 1);
   }, [currentindex]);
 
   const orderdata = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/order");
-
+      const response = await fetch("https://laughnlaundry.in/api/order");
       const data = await response.json();
       // console.log(data);
-
       setcopydata(data);
       setdata(data);
     } catch (error) {
@@ -60,64 +65,6 @@ const AdminDashboard = () => {
   useEffect(() => {
     orderdata();
   }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   let componentsArr = [];
   for (let i = 1; i <= Math.ceil(copydata.length / 12); i++) {
@@ -147,24 +94,25 @@ const AdminDashboard = () => {
     setdata2(data.slice(currentindex * 12, (currentindex + 1) * 12));
     setcopydata2(data.slice(currentindex * 12, (currentindex + 1) * 12));
   }, [data, currentindex]);
-
+  console.log(copydata2)
   function getFormattedDate() {
     const today = new Date();
-    console.log(today);
+    //console.log(today);
 
     const day = String(today.getDate()).padStart(2, "0");
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based
     const year = today.getFullYear();
-console.log(`${year}-${month}-${day}`);
+//console.log(`${year}-${month}-${day}`);
     return `${year}-${month}-${day}`;
   }
   useEffect(() => {
     if (data.length) {
       settoday(
         data.reduce((acc, element) => {
+          const elementDate = new Date(element.created_at).toISOString().slice(0, 10);
           return (
             acc +
-            (element.date === getFormattedDate() &&
+            (elementDate === getFormattedDate() &&
               element.status === "order-placed")
           );
         }, 0)
@@ -173,7 +121,7 @@ console.log(`${year}-${month}-${day}`);
         data.reduce((acc, element) => {
           return (
             acc +
-            (element.date === getFormattedDate() && element.status === "picked")
+            (element.date === getFormattedDate() && element.status === "order-placed")
           );
         }, 0)
       );

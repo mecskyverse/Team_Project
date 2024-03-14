@@ -23,7 +23,7 @@ const ServiceDropdown = ({handleChangeService}) => {
   const handleSelectChangeServices = (eventKey, event) => {
     // Use eventKey to get the selected value
     setSelectedOptionServices(eventKey);
-    console.log(eventKey)
+    //console.log(eventKey)
     handleChangeService(eventKey)
   };
 

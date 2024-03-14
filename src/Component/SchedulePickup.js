@@ -32,6 +32,7 @@ const email=localStorage.getItem("email");
   });
 
   const [selectedOptionTiming, setSelectedOptionTiming] = useState("");
+  const [showSuccessfull, setShowSuccessfull] = useState(false);
 
   const handleSelectChangeTiming = (event) => {
     setSelectedOptionTiming(event.target.value);
@@ -49,25 +50,41 @@ const email=localStorage.getItem("email");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
 
-    // Add your form submission logic here
-    console.log("Form data submitted:", formData);
+    try{
+      const enteredDate = new Date(formData.date);
+      const today = new Date();
+      const yesterday = new Date(today.getTime() - (24 * 60 * 60 * 1000)); 
+      const next10Days = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000); // Calculate the date 10 days from now
+      if(enteredDate < yesterday || enteredDate > next10Days)
+      {
+        alert("Please check your date again!!")
+        return
+      }
+    }
+    catch(error){
+      alert(error.message); 
+    }
 
-    // You can make an API call to submit the data to the server
-    // Example:
+    if(formData.phone.length != 10){
+      alert("enter 10 digit mobile no.");
+      return
+    }
     try {
-      const response = await fetch("http://localhost:5000/api/order", {
+      const response = await fetch("https://laughnlaundry.in/api/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
+      
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Data saved successfully:", responseData);
-        alert("Pickup successful!");
+        //console.log("Data saved successfully:", responseData);
+        alert("Order successfully Placed!");
+        setShowSuccessfull(true)
       } else {
         const errorData = await response.json();
         console.error("Error saving data:", errorData);
@@ -82,12 +99,6 @@ const email=localStorage.getItem("email");
   return (
     <>
 
-
-
-
-
-
-
       <Navbar />
       <section className="container-fluid py-5 ">
         <div className="backgroundimg">
@@ -95,170 +106,179 @@ const email=localStorage.getItem("email");
         </div>
         <div className="PickUpForm">
           <div className="content">
-            <div className="toplogo">
-              <h2>Schedule A Pick Up</h2>
-              <img src={image1} alt="" />
-            </div>
-
-            <form onSubmit={handleSubmit}>
-              <div className="grid-container-pickup">
-                <div>
-                  <p style={{ marginBottom: "0px" }}>Name</p>
+            {
+              
+              !showSuccessfull ?
+              (
+                <>
+                <div className="toplogo">
+                <h2>Schedule A Pick Up</h2>
+                <img src={image1} alt="" />
+              </div>
+  
+              <form onSubmit={handleSubmit}>
+                <div className="grid-container-pickup">
+                  <div>
+                    <p style={{ marginBottom: "0px" }}>Name</p>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <p style={{ marginBottom: "0px" }}>Phone</p>
+                    <input
+                      type="number"
+                      placeholder="Enter your 10 digit mobile no."
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      minLength="10" // Set minimum length to 10
+                      maxLength="10" 
+                      required
+                    />
+                  </div>
+                </div>
+  
+                <div className="items_input">
+                  <p style={{ marginBottom: "0px" }}>Services</p>
+                  <div>
+                    <ServiceDropdown
+                      selectedOption={formData.services}
+                      onChange={(value) =>
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          services: value,
+                        }))
+                      }
+                      handleChangeService={handleChangeService}
+                    />
+                  </div>
+                </div>
+  
+                <div className="grid-container-pickup">
+                  <div className="date-input-container">
+                    <p style={{ marginBottom: "0px" }}>Date</p>
+                    <input
+                      type="date"
+                      placeholder="Date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <p style={{ marginBottom: "0px" }}>Time</p>
+                    <select
+                      id="input9"
+                      onChange={handleSelectChangeTiming}
+                      value={selectedOptionTiming}
+                      name="timing"
+                      required
+                    >
+                      <option id="input2"   hidden>
+                        Timing
+                      </option>
+                      <option value="8:00AM-10:00 AM">8:00AM-10:00 AM</option>
+                      <option value="10:00AM-12:00PM">10:00AM-12:00PM</option>
+                      <option value="12:00PM-02:00PM">12:00PM-02:00PM</option>
+                      <option value="02:00PM-04:00PM">02:00PM-04:00PM</option>
+                      <option value="04:00PM-06:00PM">04:00PM-06:00PM</option>
+                      {/* Add more options as needed */}
+                    </select>
+  
+  
+                   
+                  </div>
+                </div>
+  
+                <div className="Address_pickup">
+                  <p style={{ marginBottom: "0px" }}>Address</p>
                   <input
                     type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name}
+                    placeholder="Address"
+                    name="address"
+                    value={formData.address}
                     onChange={handleChange}
                     required
                   />
                 </div>
+  
                 <div>
-                  <p style={{ marginBottom: "0px" }}>Phone</p>
                   <input
-                    type="phone"
-                    placeholder="+91"
-                    name="phone"
-                    value={formData.phone}
+                    type="text"
+                    placeholder="Special Instruction (Optional)"
+                    name="specialInstruction"
+                    value={formData.specialInstruction}
                     onChange={handleChange}
-                    required
                   />
                 </div>
-              </div>
-
-              <div className="items_input">
-                <p style={{ marginBottom: "0px" }}>Services</p>
-                <div>
-                  <ServiceDropdown
-                    selectedOption={formData.services}
-                    onChange={(value) =>
-                      setFormData((prevData) => ({
-                        ...prevData,
-                        services: value,
-                      }))
-                    }
-                    handleChangeService={handleChangeService}
-                  />
-                </div>
-              </div>
-
-              <div className="grid-container-pickup">
-                <div className="date-input-container">
-                  <p style={{ marginBottom: "0px" }}>Date</p>
-                  <input
-                    type="date"
-                    placeholder="Date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <p style={{ marginBottom: "0px" }}>Time</p>
-                  <select
-                    id="input9"
-                    onChange={handleSelectChangeTiming}
-                    value={selectedOptionTiming}
-                    name="timing"
-                    required
+  
+                <div className="pickup-textarea-schedule">
+                  <p
+                    className="note-text-area"
+                    style={{
+                      color: "#111",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                      fontStyle: "normal",
+                      fontWeight: 500,
+                      lineHeight: "150%",
+                    }}
                   >
-                    <option id="input2"   hidden>
-                      Timing
-                    </option>
-                    <option value="8:00AM-10:00 AM">8:00AM-10:00 AM</option>
-                    <option value="10:00AM-12:00PM">10:00AM-12:00PM</option>
-                    <option value="12:00PM-02:00PM">12:00PM-02:00PM</option>
-                    <option value="02:00PM-04:00PM">02:00PM-04:00PM</option>
-                    <option value="04:00PM-06:00PM">04:00PM-06:00PM</option>
-                    {/* Add more options as needed */}
-                  </select>
-
-
-                 
+                    NOTE
+                  </p>
+                  <p
+                    style={{
+                      width: "100%",
+                      flexShrink: 0,
+                      background: "rgb(220, 203, 186)",
+                      color: "var(--Gray-Scale-Gray-600, #666)",
+                      fontFamily: "Poppins",
+                      fontSize: "14px",
+                      fontStyle: "normal",
+                      fontWeight: 400,
+                      lineHeight: "150%",
+                      border: "0px solid red",
+                      textAlign: "left",
+                    }}
+                    className="write-text-pickup"
+                  >
+                    1. Premium garments are recommended to be laundered using
+                    premium washing services. <br />
+                    2. Free deliveries are available for orders weighing 8kg or
+                    above.
+                  </p>
                 </div>
-              </div>
-
-              <div className="Address_pickup">
-                <p style={{ marginBottom: "0px" }}>Address</p>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <input
-                  type="text"
-                  placeholder="Special Instruction (Optional)"
-                  name="specialInstruction"
-                  value={formData.specialInstruction}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="pickup-textarea-schedule">
-                <p
-                  className="note-text-area"
-                  style={{
-                    color: "#111",
-                    fontFamily: "Poppins",
-                    fontSize: "16px",
-                    fontStyle: "normal",
-                    fontWeight: 500,
-                    lineHeight: "150%",
-                  }}
-                >
-                  NOTE
-                </p>
-                <p
-                  style={{
-                    width: "100%",
-                    flexShrink: 0,
-                    background: "rgb(220, 203, 186)",
-                    color: "var(--Gray-Scale-Gray-600, #666)",
-                    fontFamily: "Poppins",
-                    fontSize: "14px",
-                    fontStyle: "normal",
-                    fontWeight: 400,
-                    lineHeight: "150%",
-                    border: "0px solid red",
-                    textAlign: "left",
-                  }}
-                  className="write-text-pickup"
-                >
-                  1. Premium garments are recommended to be laundered using
-                  premium washing services. <br />
-                  2. Free deliveries are available for orders weighing 8kg or
-                  above.
-                </p>
-              </div>
-
-              <div className="Submit_button">
-                <button type="submit">Submit</button>
-
-                
-
-
-                {/* <button
-                  type="submit"
-                  data-toggle="modal"
-                  data-target="#exampleModalCenter"
-
-                >
-                  Submit
-                </button> */}
-
-              </div>
-            </form>
-
-            {/* popup */}
-            <div
-              className="modal w-100 container-fluid"
+  
+                <div className="Submit_button">
+                  <button type="submit">Submit</button>
+  
+                  
+  
+  
+                  {/* <button
+                    type="submit"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+  
+                  >
+                    Submit
+                  </button> */}
+  
+                </div>
+              </form>
+              </>
+            )
+            :
+            (
+              <div
+              // className="modal w-100 container-fluid"
               id="exampleModalCenter"
               role="dialog"
               aria-labelledby="exampleModalCenterTitle"
@@ -304,6 +324,10 @@ const email=localStorage.getItem("email");
                 </div>
               </div>
             </div>
+             )
+            }
+
+            
           </div>
         </div>
       </section>

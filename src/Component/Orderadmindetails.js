@@ -123,9 +123,6 @@ const Orderadmindetails = () => {
   },[order])
   
 
-  console.log(orderid);
-  console.log(order);
-
   const handleStatusChange = (newStatus) => {
     // alert(newStatus);
     // Update the selectedStatus when the dropdown value changes
@@ -149,12 +146,12 @@ const Orderadmindetails = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/order/" + orderid
+        "https://laughnlaundry.in/api/order/" + orderid
       );
 
       const data = await response.json() .then((res)=>{
         setorder(res);
-        console.log(res);
+        //console.log(res);
         setTotalAmount(res.totalAmount);
         setWeight(res.totalWeight);
         setItems(res.totalItems);
@@ -162,7 +159,7 @@ const Orderadmindetails = () => {
      
 
       });
-      // console.log(data);
+      // //console.log(data);
 
     
 
@@ -185,7 +182,7 @@ const Orderadmindetails = () => {
       result = items * pricing
     }
     setTotalAmount(result);
-    console.log(weight);
+    //console.log(weight);
   
   }, [weight, items]);
 
@@ -236,7 +233,7 @@ const Orderadmindetails = () => {
   const UpdateOrders = async (type) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/order/" + orderid,
+        "http://laughnlaundry.in/api/order/" + orderid,
         {
           method: "PUT",
           headers: {

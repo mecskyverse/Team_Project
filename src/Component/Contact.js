@@ -16,7 +16,7 @@ const Contact = () => {
     subject: "",
     feedback: "",
   });
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -26,10 +26,14 @@ const Contact = () => {
     event.preventDefault();
 
     // Add your form submission logic here
-    console.log("Form data submitted:", formData);
-
+    //console.log("Form data submitted:", formData);
+    if(formData.contact.length != 10){
+      alert("enter 10 digit mobile no.");
+      return
+    }
+  
     try {
-      const response = await fetch("http://localhost:5000/api/response", {
+      const response = await fetch("https://laughnlaundry.in/api/response", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +43,7 @@ const Contact = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Data saved successfully:", responseData);
+        //console.log("Data saved successfully:", responseData);
         alert("Submitted successful!");
       } else {
         const errorData = await response.json();

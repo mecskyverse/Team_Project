@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const EmailOtpForm = () => {
   const [email, setEmail] = useState('');
@@ -6,12 +7,13 @@ const EmailOtpForm = () => {
   const [PasswordChange, setPasswordChange] = useState(false);
   const [otp, setOtp] = useState('');
   const [password, setpassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/sendEmail', {
+      const response = await fetch('https://laughnlaundry.in/api/auth/sendEmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,7 +22,7 @@ const EmailOtpForm = () => {
       });
 
       const data = await response.json();
-      console.log('Data for email submission', data);
+      //console.log('Data for email submission', data);
       setShowOtpField(true);
     } catch (error) {
       console.error('OTP sent failed', error?.message);
@@ -31,7 +33,7 @@ const EmailOtpForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/verify', {
+      const response = await fetch('https://laughnlaundry.in/api/auth/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +55,8 @@ const EmailOtpForm = () => {
   };
 
   const handlePasswordChange = async () => {
-
     try {
-      const response = await fetch('http://localhost:5000/api/auth/passChange', {
+      const response = await fetch('https://laughnlaundry.in/api/auth/passChange', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -65,6 +66,11 @@ const EmailOtpForm = () => {
 
       const data = await response.json();
       console.log(data)
+      if(data.message.includes("update successful!"))
+        {
+          alert("password updated successfully!");
+          navigate('/login');
+        }
     } catch (error) {
       console.error('OTP verification failed', error?.message);
     }

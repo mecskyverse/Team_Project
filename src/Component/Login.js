@@ -37,9 +37,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your login logic here using formData
-    // console.log("Login submitted:", formData);
+    // //console.log("Login submitted:", formData);
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('https://laughnlaundry.in/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,11 +53,13 @@ console.log(data);
 
       // Save the token to localStorage or state for future requests
 
-      console.log('Login successful', data);
+      //console.log('Login successful', data);
       const email=data.user.email;
       const id =data.user.id;
+      const role = data.user.role;
       localStorage.setItem("id",id);
       localStorage.setItem("email", email);
+      localStorage.setItem("role",role );
       const token = data.token
       localStorage.setItem("token", token);
       navigate("/");
@@ -153,11 +155,11 @@ console.log(data);
           <br />
           <hr />
           <br />
-          <div className="signin_button_with_google">
+          {/* <div className="signin_button_with_google">
             <button type="button" className="flexing_google">
               <img   src={image12} alt="" /> <p style={{marginBottom: "1px"}}>  Or sign in with Google</p>
             </button>
-          </div>
+          </div> */}
 
           <div className="last_para">
             <p style={{marginBottom: "0px"}}>Don't have an account?</p>

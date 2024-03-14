@@ -6,7 +6,7 @@ const Starrating = ({rate,setrate,isadmin,UpdateOrders}) => {
 
     
 
-console.log(rate);
+//console.log(rate);
 
 
 
@@ -30,7 +30,7 @@ console.log(rate);
                             `Are you sure you want to give 
                             ${givenRating} stars ?`
                         );
-                        console.log(rate);
+                        //console.log(rate);
                         UpdateOrders(givenRating);
                         
                     }}

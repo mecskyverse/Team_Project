@@ -59,7 +59,7 @@ export default function Table({data,  setdata, serialNumber}) {
                 enddate === "1970-01-01" ||
                 (date >= from && date <= to)
               )
-console.log(serialNumber);
+//console.log(serialNumber);
                 return <TableRow data={e} sno={serialNumber+i}/>;
             })}
             

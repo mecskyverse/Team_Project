@@ -39,7 +39,7 @@ const Orderuserdetails = () => {
   const [queryParameters] = useSearchParams();
   let orderid = queryParameters.get("id");
 
-  console.log(orderid);
+  //console.log(orderid);
 
   const handleStatusChange = (newStatus) => {
     // alert(newStatus);
@@ -60,11 +60,11 @@ const Orderuserdetails = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/order/" + orderid
+        "https://laughnlaundry.in/api/order/" + orderid
       );
 
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       setorder(data);
     } catch (error) {
       console.error(error);
@@ -97,11 +97,11 @@ const Orderuserdetails = () => {
   //   const formData2={
   //     feedback: feedback,
   //   }
-  // console.log(feedback);
+  // //console.log(feedback);
   const formdata1 = {
     feedback: formdata.feedback,
   };
-  console.log(rate);
+  //console.log(rate);
   const formdata2 = {
     rating: rate,
   };
@@ -147,12 +147,13 @@ const Orderuserdetails = () => {
 
 
 
-  // console.log(feedback);
+  // //console.log(feedback);
   const UpdateOrders = async (type) => {
-    console.log("Form data submitted:", formdata);
+    //console.log("Form data submitted:", formdata);
     try {
+      console.log(`https://laughnlaundry.in/api/order/${orderid}`)
       const response = await fetch(
-        "http://localhost:5000/api/order/" + orderid,
+        `https://laughnlaundry.in/api/order/${orderid}`,
         {
           method: "PUT",
           headers: {
@@ -162,6 +163,7 @@ const Orderuserdetails = () => {
         }
       ).then(() => {
         alert("Order Updated");
+
       });
     } catch (error) {
       console.error(error);
@@ -193,14 +195,6 @@ const Orderuserdetails = () => {
                         {" "}
                         {/* {order.date} -{order.timing}  */}
                         {formattedDateTime}
-
-
-
-
-
-
-
-
                       </span>
                     </li>
                     <li className="font-weight-bold py-2">

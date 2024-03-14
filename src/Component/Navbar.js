@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import {Link, useNavigate} from "react-router-dom"
 import "../Project.css";
 import logo from "../Component/images/nav-logo.png";
 import { FaBars, FaTimes } from 'react-icons/fa';
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [checkAdmin, setCheckAdmin] = useState(false);
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    role === 'admin' ? setCheckAdmin(true) : setCheckAdmin(false);
+  }, [])
+
   const navigate=useNavigate();
   const handleLogout = (e) => {
     localStorage.removeItem("token");
@@ -15,10 +22,8 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
+
   return (
-
-
-
 
     <div>
 
@@ -116,7 +121,13 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </li>
-              
+              {
+                checkAdmin? <li className="nav-item ml-3">
+                <Link className="nav-link font-weight-bold my-links" to="/admin">
+                  Admin
+                </Link>
+              </li>: null
+              }
               {!token ?
                (
                <div className='d-flex'>

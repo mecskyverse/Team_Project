@@ -7,15 +7,15 @@ import "../offerpopup.css"
 
 
 const Offerpopup = ({closeoffer}) => {
-  console.log("Received closeoffer:", closeoffer);
+  //console.log("Received closeoffer:", closeoffer);
   
   const handleCancel = () => {
-    console.log("Cancel button clicked");
+    //console.log("Cancel button clicked");
     closeoffer();
     // Ensure onClose is being called
   };
   const handleBookNow = () => {
-    console.log("Book Now button clicked");
+    //console.log("Book Now button clicked");
     closeoffer();
 
     // Add any action you want to perform when the "Book Now" button is clicked

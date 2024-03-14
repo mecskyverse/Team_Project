@@ -9,11 +9,11 @@ const Responsesadmin = () => {
 
   const fetchResponses = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/response/");
+      const response = await fetch("https://laughnlaundry.in/api/response/");
       if (response.ok) {
         const data = await response.json();
         setResp(data);
-        console.log("Response:", data);
+        //console.log("Response:", data);
       } else {
         console.error("Error fetching response:", response.statusText);
       }

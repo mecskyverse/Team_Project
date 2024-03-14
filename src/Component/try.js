@@ -15,6 +15,6 @@ dates.forEach(element => {
    let parts = element.split("/");
    let date= new Date(parts[2], parseInt(parts[1]) - 1, parts[0]);
         if (date >= from && date <= to) {
-           console.log('dates in range', date);
+           //console.log('dates in range', date);
         }
 })
