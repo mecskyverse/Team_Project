@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
   const orderdata = async ( )=>{
     try {
-      const response = await fetch('https://laughnlaundry.onrender.com/api/order');
+      const response = await fetch('https://laughnlaundry.in/api/order');
   
       const data = await response.json();
       // console.log(data);

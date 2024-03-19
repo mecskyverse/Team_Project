@@ -46,7 +46,7 @@ function SignUp() {
       return;
     }
     try {
-      const response = await axios.post("https://laughnlaundry.onrender.com/api/auth/signup", formData);
+      const response = await axios.post("https://laughnlaundry.in/api/auth/signup", formData);
       console.log("Signup successful:", response.data);
       navigate("/login");
       // You can handle success, redirect, or any other logic here

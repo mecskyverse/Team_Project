@@ -19,15 +19,15 @@
 
 const mysql = require('mysql2');
 const connection =  mysql.createConnection({
-  host: '193.203.184.37',
-  database: 'u548717484_Laundry',
-  user: 'u548717484_Laundry',
-  password : "Laundry$13716",
+  host: '64.23.198.227',
+  database: 'Kirsh_Project',
+  user: 'durgesh',
+  password : "newpassword",
 });
 
 connection.connect((error)=>{
   if (error) {
-    console.log("Database connection Error" , error?.message)
+    console.log("Database connection Error" , error?.message, error?.stack)
   }else{
     console.log("Database connection successful using Sql")
   }

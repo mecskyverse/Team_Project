@@ -21,28 +21,28 @@ import Offerpopup from './Component/Offerpopup';
 
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Make a GET request to the server
-        const response = await fetch('https://laughnlaundry.onrender.com/'); // Adjust the URL and port accordingly
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // Make a GET request to the server
+  //       const response = await fetch('https://laughnlaundry.in/'); // Adjust the URL and port accordingly
 
-        // Check if the response status is OK (200)
-        if (response.ok) {
-          // Parse the response JSON or text
-          const data = await response.json(); // If the response is JSON
-          console.log(data)
-        } else {
-          console.error('Failed to fetch server data');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-    };
+  //       // Check if the response status is OK (200)
+  //       if (response.ok) {
+  //         // Parse the response JSON or text
+  //         const data = await response.json(); // If the response is JSON
+  //         console.log(data)
+  //       } else {
+  //         console.error('Failed to fetch server data');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error.message);
+  //     }
+  //   };
 
-    // Call the fetchData function when the component mounts
-    fetchData();
-  }, []);
+  //   // Call the fetchData function when the component mounts
+  //   fetchData();
+  // }, []);
 
   return (
     <Router>

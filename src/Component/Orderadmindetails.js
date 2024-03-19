@@ -60,7 +60,7 @@ const Orderadmindetails = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "https://laughnlaundry.onrender.com/api/order/" + orderid
+        "https://laughnlaundry.in/api/order/" + orderid
       );
 
       const data = await response.json();
@@ -128,7 +128,7 @@ const Orderadmindetails = () => {
   const UpdateOrders = async () => {
     try {
       const response = await fetch(
-        "https://laughnlaundry.onrender.com/api/order/" + orderid,
+        "https://laughnlaundry.in/api/order/" + orderid,
         {
           method: "PUT",
           headers: {
